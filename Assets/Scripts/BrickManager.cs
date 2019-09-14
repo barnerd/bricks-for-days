@@ -16,9 +16,9 @@ public class BrickManager : MonoBehaviour
     public void LoadLevel(int difficulty = 1)
     {
         // bricks go from 0 to 9 in the x directions and 0 to 7 in the y
-        for (int x = 0; x < 1; x++)
+        for (int x = 0; x < 9; x++)
         {
-            for (int y = 0; y < 2; y++)
+            for (int y = 0; y < 7; y++)
             {
                 CreateBrick(x, y, 1);
             }
