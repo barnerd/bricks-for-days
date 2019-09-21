@@ -21,7 +21,7 @@ public class BallController : MonoBehaviour
     {
         if (ballHeld)
         {
-            transform.position = new Vector2(paddle.position.x, -3.18f);
+            transform.position = new Vector2(paddle.position.x, transform.position.y);
         }
     }
 
@@ -55,6 +55,7 @@ public class BallController : MonoBehaviour
     public void ResetBall()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        transform.position = new Vector2(transform.position.x, paddle.localScale.y + paddle.position.y - transform.localScale.y);
         ballHeld = true;
     }
 }

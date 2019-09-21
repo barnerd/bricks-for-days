@@ -2,10 +2,20 @@
 
 public class BrickManager : MonoBehaviour
 {
+    [Header("Game Objects")]
     public GameController gc;
 
     // Bricks
     public GameObject brickPrefab;
+
+    [Space]
+
+    [Header("Grid Size")]
+
+    public int maxColumn = 17; // should always be odd
+    public int maxRow = 15;
+
+    public bool gameHasEnded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,10 +25,9 @@ public class BrickManager : MonoBehaviour
 
     public void LoadLevel(int difficulty = 1)
     {
-        // bricks go from 0 to 9 in the x directions and 0 to 7 in the y
-        for (int x = 0; x < 9; x++)
+        for (int x = 0; x < maxColumn; x++)
         {
-            for (int y = 0; y < 7; y++)
+            for (int y = 0; y < maxRow; y++)
             {
                 CreateBrick(x, y, 1);
             }
@@ -27,7 +36,7 @@ public class BrickManager : MonoBehaviour
 
     Brick CreateBrick(int col, int row, int level)
     {
-        Vector3 position = new Vector3((brickPrefab.transform.localScale.x + .05f) * (col - 4f), (brickPrefab.transform.localScale.y + .05f) * (row - 1f), 0);
+        Vector3 position = new Vector3(brickPrefab.transform.localScale.x * (col - ((maxColumn - 1) / 2)), brickPrefab.transform.localScale.y * (row - 7), 0);
         // figure out position of new Brick
 
         Brick b = Instantiate(brickPrefab, position, Quaternion.identity).GetComponent<Brick>();
