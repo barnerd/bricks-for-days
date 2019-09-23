@@ -35,18 +35,11 @@ public class BrickManager : MonoBehaviour
         }
     }
 
-    Brick CreateBrick(int col, int row, int level)
+    void CreateBrick(int col, int row, int level)
     {
         Brick b = Instantiate(brickPrefab, brickSlots.transform.Find("Brick Slot " + col + "x" + row).position, Quaternion.identity).GetComponent<Brick>();
 
-        //Debug.Log(brickPrefab.GetComponent<SpriteRenderer>().bounds.size.ToString());
-
-        //b.transform.position = new Vector3(brickPrefab.GetComponent<SpriteRenderer>().bounds.size.x * (col - ((maxColumn - 1) / 2)), brickPrefab.GetComponent<SpriteRenderer>().bounds.size.y * (row - 1), 0);
-
         // init each brick
         b.initBrick(level, gc);
-
-        // position brick
-        return b;
     }
 }
