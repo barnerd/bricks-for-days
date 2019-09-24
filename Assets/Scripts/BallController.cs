@@ -60,7 +60,7 @@ public class BallController : MonoBehaviour
     public void ResetBall()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-        transform.position = new Vector2(paddle.transform.position.x, paddle.GetComponent<BoxCollider2D>().bounds.center.y + paddle.GetComponent<BoxCollider2D>().bounds.extents.y + GetComponent<CircleCollider2D>().bounds.extents.y);
+        transform.position = new Vector2(paddle.transform.position.x, paddle.GetComponent<CapsuleCollider2D>().bounds.center.y + paddle.GetComponent<CapsuleCollider2D>().bounds.extents.y + GetComponent<CircleCollider2D>().bounds.extents.y);
         ballHeld = true;
     }
 }
