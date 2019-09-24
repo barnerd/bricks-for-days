@@ -21,8 +21,11 @@ public class BallController : MonoBehaviour
     {
         if (ballHeld)
         {
-            transform.position = new Vector2(paddle.position.x, transform.position.y);
+            transform.position = new Vector2(paddle.transform.position.x, transform.position.y);
         }
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
+        //Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude);
+
     }
 
     // FixedUpdate is used with physics
@@ -32,8 +35,13 @@ public class BallController : MonoBehaviour
         if (ballHeld && Input.GetKey(releaseBall))
         {
             ballHeld = false;
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, ballSpeed));
+            // add random angle from 80 to 100 degrees, or something like that.
+            float angle = Mathf.Deg2Rad * Random.Range(80, 100);
+            //Debug.Log("Angle: " + angle + " cos: " + ballSpeed * Mathf.Cos(angle) + " sin: " + ballSpeed * Mathf.Sin(angle));
+            GetComponent<Rigidbody2D>().velocity = new Vector2(ballSpeed * Mathf.Cos(angle), ballSpeed * Mathf.Sin(angle));
         }
+
+        GetComponent<Rigidbody2D>().velocity = ballSpeed * (GetComponent<Rigidbody2D>().velocity.normalized);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,21 +49,18 @@ public class BallController : MonoBehaviour
         if (collision.collider.tag == "paddle")
         {
             float ballCenter = collision.contacts[0].point.x;
-            float paddleCenter = collision.collider.transform.position.x;
-            float paddleWidth = collision.collider.transform.localScale.x / 2;
+            float paddleCenter = collision.collider.bounds.center.x;
+            float paddleWidth = collision.collider.bounds.extents.x;
             float percentOnPaddle = (ballCenter - paddleCenter) / paddleWidth;
 
-            // add force based on where on the paddle it hits
-            // TODO: factor in current velocity?
-            // TODO: factor in paddle velocity?
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(ballSpeed*Mathf.Sin(percentOnPaddle), 0));
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(paddle.GetComponent<PaddleController>().paddleForce * Mathf.Sin(percentOnPaddle) * Mathf.PI / 2, 0));
         }
     }
 
     public void ResetBall()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-        transform.position = new Vector2(transform.position.x, paddle.localScale.y + paddle.position.y - transform.localScale.y);
+        transform.position = new Vector2(paddle.transform.position.x, paddle.GetComponent<BoxCollider2D>().bounds.center.y + paddle.GetComponent<BoxCollider2D>().bounds.extents.y + GetComponent<CircleCollider2D>().bounds.extents.y);
         ballHeld = true;
     }
 }

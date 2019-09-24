@@ -976,7 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paddle: {fileID: 976936084}
   releaseBall: 115
-  ballSpeed: 40
+  ballSpeed: 5
   ballHeld: 0
   gc: {fileID: 1947342644}
   bm: {fileID: 0}
@@ -2108,6 +2108,7 @@ GameObject:
   - component: {fileID: 762244641}
   - component: {fileID: 762244640}
   - component: {fileID: 762244642}
+  - component: {fileID: 762244643}
   m_Layer: 0
   m_Name: leftWall
   m_TagString: Untagged
@@ -2205,6 +2206,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &762244643
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762244639}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &796851806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2623304617873138256, guid: 2c5b6a8f51db845789b566a218f33854,
@@ -2321,7 +2343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 151, y: 280}
+  m_AnchoredPosition: {x: 141.8, y: 280}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &873838745
@@ -2634,6 +2656,7 @@ MonoBehaviour:
   moveLeft: 97
   moveRight: 100
   paddleSpeed: 750
+  paddleForce: 30
 --- !u!1001 &991935467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2714,6 +2737,7 @@ GameObject:
   - component: {fileID: 1007255069}
   - component: {fileID: 1007255068}
   - component: {fileID: 1007255070}
+  - component: {fileID: 1007255071}
   m_Layer: 0
   m_Name: rightWall
   m_TagString: Untagged
@@ -2811,6 +2835,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1007255071
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007255067}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &1039691157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2623304617873138256, guid: 2c5b6a8f51db845789b566a218f33854,
@@ -4819,6 +4864,7 @@ GameObject:
   - component: {fileID: 1554799461}
   - component: {fileID: 1554799460}
   - component: {fileID: 1554799462}
+  - component: {fileID: 1554799463}
   m_Layer: 0
   m_Name: topWall
   m_TagString: Untagged
@@ -4916,6 +4962,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1554799463
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554799459}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1557877170
 GameObject:
   m_ObjectHideFlags: 0

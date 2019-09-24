@@ -7,6 +7,7 @@ public class PaddleController : MonoBehaviour
     public KeyCode moveRight; // define as d
 
     public float paddleSpeed = 500f;
+    public float paddleForce = 100f;
 
     // FixedUpdate is used with physics
     void FixedUpdate()
