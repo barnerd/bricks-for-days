@@ -19,6 +19,8 @@ public class BrickManager : MonoBehaviour
     public KeyCode loadLevel; // define as l
     public bool gameHasEnded = false;
 
+    public int NumBrickLevels = 7;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,10 +49,11 @@ public class BrickManager : MonoBehaviour
         // randomly place patterns
 
         /* ********* Patterns *********
-         *
-         * Full Fill
+         * 
          * Whole Row or Rows
          * Blank Row
+         * Checkered
+         * Mirrored or offset
          * Whole Column or groups of columns
          * Diamonds
          * 
@@ -58,7 +61,7 @@ public class BrickManager : MonoBehaviour
 
         int rowsRemaining = maxRow;
         int pattern;
-        bool mirrored;
+        bool mirrored, rainbow, ascending;
 
         while (rowsRemaining > 0)
         {
@@ -98,11 +101,22 @@ public class BrickManager : MonoBehaviour
                         checkered = true;
                     }
 
+                    rainbow = Random.Range(0, 2) == 0;
+                    ascending = Random.Range(0, 2) == 0 && rainbow;
+                    int minBrickLevel = Random.Range(1, NumBrickLevels + 1 - numRows);
+                    int maxBrickLevel = Random.Range(minBrickLevel, NumBrickLevels + 1);
+                    int brickLevel = rainbow ? (ascending ? minBrickLevel : maxBrickLevel) : Random.Range(1, NumBrickLevels + 1);
+
                     for (int y = 0; y < numRows; y++)
                     {
                         for (int x = (checkered && y % 2 == 0) ? minCol + 1 : minCol; x <= maxCol; x += checkered ? 2 : 1)
                         {
-                            CreateBrick(x, rowsRemaining - 1 - y, 1);
+                            CreateBrick(x, rowsRemaining - 1 - y, brickLevel);
+                        }
+
+                        if (rainbow)
+                        {
+                            brickLevel += ascending ? 1 : -1;
                         }
                     }
                     rowsRemaining -= numRows;
@@ -120,7 +134,9 @@ public class BrickManager : MonoBehaviour
 
     void CreateBrick(int col, int row, int level)
     {
-        Brick b = Instantiate(brickPrefab, brickSlots.transform.Find("Brick Slot " + col + "x" + row).position, Quaternion.identity).GetComponent<Brick>();
+        Vector3 p = brickSlots.transform.Find("Row" + row).Find("Col" + col).position;
+
+        Brick b = Instantiate(brickPrefab, p, Quaternion.identity).GetComponent<Brick>();
 
         // init each brick
         b.initBrick(level, gc);
