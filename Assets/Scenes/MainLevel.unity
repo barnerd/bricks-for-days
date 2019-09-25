@@ -749,6 +749,7 @@ MonoBehaviour:
   brickSlots: {fileID: 915420030}
   maxColumn: 7
   maxRow: 9
+  loadLevel: 108
   gameHasEnded: 0
 --- !u!224 &274422789
 RectTransform:

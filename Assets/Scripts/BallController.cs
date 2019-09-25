@@ -41,6 +41,7 @@ public class BallController : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(ballSpeed * Mathf.Cos(angle), ballSpeed * Mathf.Sin(angle));
         }
 
+        // maintain a constant speed
         GetComponent<Rigidbody2D>().velocity = ballSpeed * (GetComponent<Rigidbody2D>().velocity.normalized);
     }
 
