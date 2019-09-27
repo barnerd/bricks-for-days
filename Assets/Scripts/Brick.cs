@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    public int level;
-    public int score;
+    public int level = 1;
+    public int score = 10;
+    public bool hasPowerUp = false;
 
     private GameController gc;
 
     [Header("Sprites")]
     public List<Sprite> brickSprites;
 
-    public void initBrick(int l, GameController g)
+    public void initBrick(int _level, bool _hasPowerUp, GameController _gameController)
     {
-        level = (l >= 1 && l <= 7) ? l : 1;
+        level = (_level >= 1 && _level <= 7) ? _level : 1;
         score = 10 * level;
 
-        gc = g;
+        hasPowerUp = _hasPowerUp;
+
+        gc = _gameController;
 
         // update graphics of brick
         GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
@@ -28,9 +31,15 @@ public class Brick : MonoBehaviour
     {
         level -= 1;
 
+        gc.Score(score);
+        score -= 10;
+
         if (level <= 0)
         {
-            gc.Score(score);
+            if (hasPowerUp)
+            {
+                //Instantiate(PowerUp, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
 
             // TODO: Figure out why there's one left over
@@ -41,12 +50,8 @@ public class Brick : MonoBehaviour
         }
         else
         {
-            gc.Score(score);
-            score -= 10;
-
             // display new brick level
             GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
-
         }
     }
 

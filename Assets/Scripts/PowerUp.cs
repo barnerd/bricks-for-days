@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Sprite powerupSprite;
+
+    public static GameController gc;
+    public static GameObject paddle;
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("paddle"))
+        {
+            UsePowerUpPayload();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void UsePowerUpPayload()
     {
-        
+        // spawn a cool effect
+
+        // apply power up
+        paddle.transform.localScale *= 2f; // or .5f
+
+        Destroy(gameObject);
     }
 }

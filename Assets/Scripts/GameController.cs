@@ -5,7 +5,8 @@ public class GameController : MonoBehaviour
 {
     [Header("Game Values")]
     public int score;
-    public int lives;
+    private int _lives;
+    public int lives { get { return _lives; } }
 
     public bool gameHasEnded = false;
 
@@ -20,9 +21,9 @@ public class GameController : MonoBehaviour
         gameHasEnded = false;
     }
 
-    public void Score(int s)
+    public void Score(int _score)
     {
-        score += s;
+        score += _score;
     }
 
     public void LevelWon()
@@ -30,18 +31,38 @@ public class GameController : MonoBehaviour
         completeLevelUI.SetActive(true);
     }
 
-    public void LoseLife()
+    public void GainLife(int _life = 1)
     {
-        lives -= 1;
-
-        if (lives == 0)
+        if (_life >= 0)
         {
-            EndGame();
+            _lives += _life;
         }
         else
         {
-            // reset level
-            FindObjectOfType<BallController>().ResetBall();
+            LoseLife(_life);
+        }
+
+    }
+
+    public void LoseLife(int _life = 1)
+    {
+        if(_life >= 0)
+        {
+            _lives -= _life;
+
+            if (_lives == 0)
+            {
+                EndGame();
+            }
+            else
+            {
+                // reset level
+                FindObjectOfType<BallController>().ResetBall();
+            }
+        }
+        else
+        {
+            GainLife(_life);
         }
     }
 

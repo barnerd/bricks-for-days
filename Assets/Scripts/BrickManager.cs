@@ -132,13 +132,13 @@ public class BrickManager : MonoBehaviour
 
     }
 
-    void CreateBrick(int col, int row, int level)
+    void CreateBrick(int _col, int _row, int _level, bool _hasPowerUp = false)
     {
-        Vector3 p = brickSlots.transform.Find("Row" + row).Find("Col" + col).position;
+        Vector3 p = brickSlots.transform.Find("Row" + _row).Find("Col" + _col).position;
 
         Brick b = Instantiate(brickPrefab, p, Quaternion.identity).GetComponent<Brick>();
 
         // init each brick
-        b.initBrick(level, gc);
+        b.initBrick(_level, _hasPowerUp, gc);
     }
 }
