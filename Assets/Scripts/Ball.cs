@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 
-public class BallController : MonoBehaviour
+public class Ball : MonoBehaviour
 {
     public Transform paddle;
     public KeyCode releaseBall;
     public float ballSpeed = 50f;
+    public FloatVariable ballSpeedMultiplier;
     public bool ballHeld;
+
+    public Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +38,11 @@ public class BallController : MonoBehaviour
             // add random angle from 80 to 100 degrees, or something like that.
             float angle = Mathf.Deg2Rad * Random.Range(80, 100);
             //Debug.Log("Angle: " + angle + " cos: " + ballSpeed * Mathf.Cos(angle) + " sin: " + ballSpeed * Mathf.Sin(angle));
-            GetComponent<Rigidbody2D>().velocity = new Vector2(ballSpeed * Mathf.Cos(angle), ballSpeed * Mathf.Sin(angle));
+            rb.velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         }
 
         // maintain a constant speed
-        GetComponent<Rigidbody2D>().velocity = ballSpeed * (GetComponent<Rigidbody2D>().velocity.normalized);
+        rb.velocity = ballSpeed * ballSpeedMultiplier.Value * rb.velocity.normalized;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,13 +54,14 @@ public class BallController : MonoBehaviour
             float paddleWidth = collision.collider.bounds.extents.x;
             float percentOnPaddle = (ballCenter - paddleCenter) / paddleWidth;
 
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(paddle.GetComponent<PaddleController>().paddleForce * Mathf.Sin(percentOnPaddle) * Mathf.PI / 2, 0));
+            rb.AddForce(new Vector2(paddle.GetComponent<PaddleController>().paddleForce * Mathf.Sin(percentOnPaddle) * Mathf.PI / 2, 0));
         }
     }
 
     public void ResetBall()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        rb.velocity = new Vector2(0f, 0f);
+        ballSpeedMultiplier.Value = 1f;
         transform.position = new Vector2(paddle.transform.position.x, paddle.GetComponent<CapsuleCollider2D>().bounds.center.y + paddle.GetComponent<CapsuleCollider2D>().bounds.extents.y + GetComponent<CircleCollider2D>().bounds.extents.y);
         ballHeld = true;
     }

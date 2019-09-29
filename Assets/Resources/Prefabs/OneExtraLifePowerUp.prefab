@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: -811357709983525618}
   - component: {fileID: 5468955840890155364}
   - component: {fileID: 3418482014691955620}
-  - component: {fileID: 4779362478093537557}
+  - component: {fileID: 7837214872894494849}
   m_Layer: 0
-  m_Name: PowerUpExtraLives
+  m_Name: OneExtraLifePowerUp
   m_TagString: powerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4779362478093537557
+--- !u!114 &7837214872894494849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,17 +140,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4779362478093537643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce41c1af418644cb5a4c8470558ee672, type: 3}
+  m_Script: {fileID: 11500000, guid: 15a85904063bb4a5881c3beabbcfbe3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 1000
-  powerUpSprite: {fileID: 0}
-  gameScore:
-    UseConstant: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  extraLives: 1
-  playerLives:
-    UseConstant: 1
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
+  powerUp: {fileID: 11400000, guid: d57d4e28404b64e12a49d876f491cb3c, type: 2}
+  powerUpDropSpeed: {fileID: 11400000, guid: 30b45b4b8a5dd4520b7064f3118708ae, type: 2}

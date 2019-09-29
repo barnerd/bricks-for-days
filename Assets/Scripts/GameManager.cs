@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Game Values")]
-    public IntReference gameScore;
-    public IntReference playerLives;
+    public IntVariable gameScore;
+    public IntVariable playerLives;
 
     public bool gameHasEnded = false;
 
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (playerLives.Value == 0)
+        if (playerLives.Value <= 0)
         {
             gameHasEnded = true;
             EndGame();

@@ -2105,13 +2105,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 283558392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810d8a5ccb6d047f9948a303b4e75a42, type: 3}
+  m_Script: {fileID: 11500000, guid: ee4e4ab776b7b40cc99ee96eb051962c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   paddle: {fileID: 976936084}
   releaseBall: 115
-  ballSpeed: 5
+  ballSpeed: 4
+  ballSpeedMultiplier: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300,
+    type: 2}
   ballHeld: 0
+  rb: {fileID: 283558393}
 --- !u!1001 &288534330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13040,14 +13043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb8440b66f604c5ea8c40963d7434b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScore:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  playerLives:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
+  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   gameHasEnded: 0
   completeLevelUI: {fileID: 1927412331}
   gameOverUI: {fileID: 376990388}
@@ -13118,7 +13115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1952564950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b1da135334e4ae7b8fdae06b6f09ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 84db66b5726234e75b6e835ec5d90362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}

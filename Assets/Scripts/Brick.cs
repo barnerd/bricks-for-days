@@ -35,7 +35,7 @@ public class Brick : MonoBehaviour
         {
             if (hasPowerUp)
             {
-                GameObject prefab = Resources.Load("Prefabs/PowerUpExtraLives") as GameObject;
+                GameObject prefab = Resources.Load("Prefabs/HalfBallSpeedPowerUp") as GameObject;
                 Debug.Log(prefab + " created");
 
                 Instantiate(prefab, transform.position, Quaternion.identity);
