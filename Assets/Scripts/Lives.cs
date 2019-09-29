@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class Lives : MonoBehaviour
 {
-    public GameController gc;
+    public IntVariable playerLives;
     public Text livesText;
 
     // Update is called once per frame
     void Update()
     {
-        livesText.text = "Lives: " + gc.lives;
+        livesText.text = "Lives: " + playerLives.Value;
     }
 }

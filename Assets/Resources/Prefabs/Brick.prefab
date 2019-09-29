@@ -124,6 +124,7 @@ MonoBehaviour:
   level: 0
   score: 0
   hasPowerUp: 0
+  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   brickSprites:
   - {fileID: -5382688720841754248, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   - {fileID: -5594777721449392504, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}

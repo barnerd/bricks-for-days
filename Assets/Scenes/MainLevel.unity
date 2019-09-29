@@ -1873,10 +1873,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 274422786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f289648660f478b90d0688bd649b6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ad94a41b6d8b46b69daba3c588b74f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gc: {fileID: 1947342644}
   brickPrefab: {fileID: 2623304617873138284, guid: cdde03e4d551643c784856736166176f,
     type: 3}
   brickSlots: {fileID: 915420030}
@@ -2113,8 +2112,6 @@ MonoBehaviour:
   releaseBall: 115
   ballSpeed: 5
   ballHeld: 0
-  gc: {fileID: 1947342644}
-  bm: {fileID: 0}
 --- !u!1001 &288534330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3208,53 +3205,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 585235596}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &587026623
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 587026624}
-  - component: {fileID: 587026625}
-  m_Layer: 0
-  m_Name: PowerUpExtraLives
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &587026624
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587026623}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1597859351}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &587026625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587026623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce41c1af418644cb5a4c8470558ee672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerupSprite: {fileID: 0}
-  gc: {fileID: 1947342644}
-  paddle: {fileID: 976936080}
-  extraLives: 1
 --- !u!1001 &587413660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5317,7 +5267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bac1502117624342bf844aef6516957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gc: {fileID: 1947342644}
+  playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   livesText: {fileID: 873838745}
 --- !u!1001 &877627172
 PrefabInstance:
@@ -6338,7 +6288,7 @@ Transform:
   m_GameObject: {fileID: 976936080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.29, z: 0}
-  m_LocalScale: {x: 1.7562499, y: 0.3142216, z: 0.94414}
+  m_LocalScale: {x: 1.7562498, y: 0.3142216, z: 0.94414}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -6376,7 +6326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79b276619ea546bbbb496f58960aa6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paddle: {fileID: 976936085}
   moveLeft: 97
   moveRight: 100
   paddleSpeed: 750
@@ -7618,7 +7567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301693045fbfa4221a1617a405b1ad01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gc: {fileID: 1947342644}
+  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   scoreText: {fileID: 1123485426}
 --- !u!1 &1127156244
 GameObject:
@@ -11083,120 +11032,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1589661164}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1597859348
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1597859351}
-  - component: {fileID: 1597859350}
-  - component: {fileID: 1597859349}
-  - component: {fileID: 1597859352}
-  m_Layer: 0
-  m_Name: PowerUps
-  m_TagString: powerUp
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1597859349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597859348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c5d8a0cce216450f803df0cb4fac5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerupSprite: {fileID: 0}
-  gc: {fileID: 1947342644}
-  paddle: {fileID: 976936080}
---- !u!212 &1597859350
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597859348}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2114710997
-  m_SortingLayer: 1
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1597859351
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597859348}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 587026624}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1597859352
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597859348}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1001 &1598592393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13202,11 +13037,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1947342641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f7a02f1b148c47fa8c54b69d54deba2, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb8440b66f604c5ea8c40963d7434b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
-  lives: 3
+  gameScore:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  playerLives:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   gameHasEnded: 0
   completeLevelUI: {fileID: 1927412331}
   gameOverUI: {fileID: 376990388}
@@ -13280,7 +13121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b1da135334e4ae7b8fdae06b6f09ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gc: {fileID: 1947342644}
+  playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
 --- !u!1001 &1965921160
 PrefabInstance:
   m_ObjectHideFlags: 0

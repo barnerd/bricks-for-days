@@ -45,44 +45,50 @@ namespace Tests
         // `yield return null;` to skip a frame.
         [UnityTest]
         [Timeout(3 * 60 * 1000)] // max time of 3 mins
-        public IEnumerator initBrick_level1_ScoreEquals10()
+        public IEnumerator initBrick_level1noPowerUp_CheckValues()
         {
             // AAA - Act
-            b.initBrick(1, false, null);
+            b.initBrick(1, false);
 
             // Use yield to skip a frame.
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
 
             // AAA - Assert
-            Assert.AreEqual(10, b.score);
+            Assert.AreEqual(1, b.level);
+            Assert.AreEqual(1, b.score);
+            Assert.False(b.hasPowerUp);
         }
 
         [UnityTest]
         [Timeout(3 * 60 * 1000)] // max time of 3 mins
-        public IEnumerator initBrick_level7_ScoreEquals70()
+        public IEnumerator initBrick_level7noPowerUp_CheckValues()
         {
             // AAA - Act
-            b.initBrick(7, false, null);
+            b.initBrick(7, false);
 
             // Use yield to skip a frame.
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
 
             // AAA - Assert
-            Assert.AreEqual(70, b.score);
+            Assert.AreEqual(7, b.level);
+            Assert.AreEqual(7, b.score);
+            Assert.False(b.hasPowerUp);
         }
 
         [UnityTest]
         [Timeout(3 * 60 * 1000)] // max time of 3 mins
-        public IEnumerator initBrick_level8_ScoreEquals10()
+        public IEnumerator initBrick_level8noPowerUp_CheckValues()
         {
             // AAA - Act
-            b.initBrick(8, false, null);
+            b.initBrick(8, false);
 
             // Use yield to skip a frame.
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
 
             // AAA - Assert
-            Assert.AreEqual(10, b.score);
+            Assert.AreEqual(1, b.level);
+            Assert.AreEqual(1, b.score);
+            Assert.False(b.hasPowerUp);
         }
     }
 }

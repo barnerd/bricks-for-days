@@ -7,20 +7,17 @@ public class Brick : MonoBehaviour
     public int level = 1;
     public int score = 10;
     public bool hasPowerUp = false;
-
-    private GameController gc;
+    public IntVariable gameScore;
 
     [Header("Sprites")]
     public List<Sprite> brickSprites;
 
-    public void initBrick(int _level, bool _hasPowerUp, GameController _gameController)
+    public void initBrick(int _level, bool _hasPowerUp)
     {
         level = (_level >= 1 && _level <= 7) ? _level : 1;
-        score = 10 * level;
+        score = level;
 
         hasPowerUp = _hasPowerUp;
-
-        gc = _gameController;
 
         // update graphics of brick
         GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
@@ -31,22 +28,19 @@ public class Brick : MonoBehaviour
     {
         level -= 1;
 
-        gc.Score(score);
-        score -= 10;
+        gameScore.Value += score;
+        score -= 1;
 
         if (level <= 0)
         {
             if (hasPowerUp)
             {
-                //Instantiate(PowerUp, transform.position, Quaternion.identity);
+                GameObject prefab = Resources.Load("Prefabs/PowerUpExtraLives") as GameObject;
+                Debug.Log(prefab + " created");
+
+                Instantiate(prefab, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
-
-            // TODO: Figure out why there's one left over
-            if (GameObject.FindGameObjectsWithTag("brick").Length == 1)
-            {
-                gc.LevelWon();
-            }
         }
         else
         {
@@ -62,5 +56,4 @@ public class Brick : MonoBehaviour
             decreaseLevel();
         }
     }
-
 }

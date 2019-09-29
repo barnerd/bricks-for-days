@@ -2,12 +2,18 @@
 
 public class PaddleController : MonoBehaviour
 {
-    public Rigidbody2D paddle;
     public KeyCode moveLeft; // define as a
     public KeyCode moveRight; // define as d
 
+    private Rigidbody2D paddle;
+
     public float paddleSpeed = 500f;
     public float paddleForce = 100f;
+
+    private void Start()
+    {
+        paddle = GetComponent<Rigidbody2D>();
+    }
 
     // FixedUpdate is used with physics
     void FixedUpdate()

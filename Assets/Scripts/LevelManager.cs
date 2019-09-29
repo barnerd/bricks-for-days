@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 
-public class BrickManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    [Header("Game Objects")]
-    public GameController gc;
-
     // Bricks
     public GameObject brickPrefab;
     public GameObject brickSlots;
@@ -132,13 +129,13 @@ public class BrickManager : MonoBehaviour
 
     }
 
-    void CreateBrick(int _col, int _row, int _level, bool _hasPowerUp = false)
+    void CreateBrick(int _col, int _row, int _level, bool _hasPowerUp = true)
     {
         Vector3 p = brickSlots.transform.Find("Row" + _row).Find("Col" + _col).position;
 
         Brick b = Instantiate(brickPrefab, p, Quaternion.identity).GetComponent<Brick>();
 
         // init each brick
-        b.initBrick(_level, _hasPowerUp, gc);
+        b.initBrick(_level, _hasPowerUp);
     }
 }

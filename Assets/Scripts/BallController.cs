@@ -6,10 +6,6 @@ public class BallController : MonoBehaviour
     public KeyCode releaseBall;
     public float ballSpeed = 50f;
     public bool ballHeld;
-
-    public GameController gc;
-    public BrickManager bm;
-
     // Start is called before the first frame update
     void Start()
     {

@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public GameController gc;
+    public IntVariable gameScore;
     public Text scoreText;
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = gc.score.ToString();
+        scoreText.text = gameScore.Value.ToString();
     }
 }

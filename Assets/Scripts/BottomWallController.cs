@@ -2,13 +2,14 @@
 
 public class BottomWallController : MonoBehaviour
 {
-    public GameController gc;
+    public IntVariable playerLives;
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         if (hitInfo.tag == "ball")
         {
-            gc.LoseLife();
+            playerLives.Value -= 1;
+            hitInfo.GetComponent<BallController>().ResetBall();
         }
     }
 }

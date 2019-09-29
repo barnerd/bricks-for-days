@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public Sprite powerupSprite;
+    public int score;
+    public Sprite powerUpSprite;
 
-    public static GameController gc;
-    public static GameObject paddle;
+    public IntVariable gameScore;
+
+    private void Start()
+    {
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, -200f));
+    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("paddle"))
         {
+            Debug.Log("Collided with the paddle");
             UsePowerUpPayload();
         }
     }
@@ -21,8 +27,11 @@ public class PowerUp : MonoBehaviour
     {
         // spawn a cool effect
 
+        // add score for collecting PowerUp
+        gameScore.Value += score;
+
         // apply power up
-        paddle.transform.localScale *= 2f; // or .5f
+        //paddle.transform.localScale *= 2f; // or .5f
 
         Destroy(gameObject);
     }
