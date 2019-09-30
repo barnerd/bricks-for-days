@@ -6,6 +6,7 @@ public class Brick : MonoBehaviour
 {
     public int level = 1;
     public int score = 1;
+    public int scoreMultiplierPerLevel = 1;
     public bool hasPowerUp = false;
     public IntVariable gameScore;
 
@@ -20,7 +21,7 @@ public class Brick : MonoBehaviour
     public void initBrick(int _level, bool _hasPowerUp)
     {
         level = (_level >= 1 && _level <= 7) ? _level : 1;
-        score = level;
+        score = level * scoreMultiplierPerLevel;
 
         hasPowerUp = _hasPowerUp;
 
@@ -32,11 +33,12 @@ public class Brick : MonoBehaviour
     {
         level -= decrease;
 
+        // Consider moving this to a variable and calculated at creation time instead of runtime
         int totalScore = 0;
         for (int i = 0; i < decrease && score > 0; i++)
         {
             totalScore += score;
-            score -= 1;
+            score -= scoreMultiplierPerLevel;
         }
         gameScore.Value += totalScore;
 
