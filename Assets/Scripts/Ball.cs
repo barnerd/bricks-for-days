@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     public float ballSpeed = 50f;
     public FloatVariable ballSpeedMultiplier;
     public bool ballHeld;
+    public BoolVariable ballAlwaysHeld;
 
     public Rigidbody2D rb;
 
@@ -32,12 +33,11 @@ public class Ball : MonoBehaviour
     void FixedUpdate()
     {
         // If the ball needs to be released, release ball on key stroke
-        if (ballHeld && Input.GetKey(releaseBall))
+        if (ballHeld && Input.GetKeyUp(releaseBall))
         {
             ballHeld = false;
             // add random angle from 80 to 100 degrees, or something like that.
             float angle = Mathf.Deg2Rad * Random.Range(80, 100);
-            //Debug.Log("Angle: " + angle + " cos: " + ballSpeed * Mathf.Cos(angle) + " sin: " + ballSpeed * Mathf.Sin(angle));
             rb.velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         }
 
@@ -49,20 +49,38 @@ public class Ball : MonoBehaviour
     {
         if (collision.collider.tag == "paddle")
         {
-            float ballCenter = collision.contacts[0].point.x;
-            float paddleCenter = collision.collider.bounds.center.x;
-            float paddleWidth = collision.collider.bounds.extents.x;
-            float percentOnPaddle = (ballCenter - paddleCenter) / paddleWidth;
+            if (ballAlwaysHeld.Value)
+            {
+                ballHeld = true;
+                ResetBallPosition();
+            }
+            else
+            {
+                float ballCenter = collision.contacts[0].point.x;
+                float paddleCenter = collision.collider.bounds.center.x;
+                float paddleWidth = collision.collider.bounds.extents.x;
+                float percentOnPaddle = (ballCenter - paddleCenter) / paddleWidth;
 
-            rb.AddForce(new Vector2(paddle.GetComponent<PaddleController>().paddleForce * Mathf.Sin(percentOnPaddle) * Mathf.PI / 2, 0));
+                rb.AddForce(new Vector2(paddle.GetComponent<PaddleController>().paddleForce * Mathf.Sin(percentOnPaddle) * Mathf.PI / 2, 0));
+            }
         }
     }
 
     public void ResetBall()
     {
-        rb.velocity = new Vector2(0f, 0f);
         ballSpeedMultiplier.Value = 1f;
-        transform.position = new Vector2(paddle.transform.position.x, paddle.GetComponent<CapsuleCollider2D>().bounds.center.y + paddle.GetComponent<CapsuleCollider2D>().bounds.extents.y + GetComponent<CircleCollider2D>().bounds.extents.y);
+        ballAlwaysHeld.Value = false;
+
+        ResetBallPosition();
+    }
+
+    private void ResetBallPosition()
+    {
         ballHeld = true;
+        rb.velocity = new Vector2(0f, 0f);
+
+        // use an x value of ballAlwaysHeld.Value ? transform.position.x : paddle.transform.position.x
+        // but this conflicts with Update();
+        transform.position = new Vector2(paddle.transform.position.x, paddle.GetComponent<CapsuleCollider2D>().bounds.center.y + paddle.GetComponent<CapsuleCollider2D>().bounds.extents.y + GetComponent<CircleCollider2D>().bounds.extents.y);
     }
 }

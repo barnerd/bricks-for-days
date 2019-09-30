@@ -2114,7 +2114,8 @@ MonoBehaviour:
   ballSpeed: 4
   ballSpeedMultiplier: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300,
     type: 2}
-  ballHeld: 0
+  ballHeld: 1
+  ballAlwaysHeld: {fileID: 11400000, guid: 6213dab8516f74dea8a9a877337b0d47, type: 2}
   rb: {fileID: 283558393}
 --- !u!114 &283558399
 MonoBehaviour:

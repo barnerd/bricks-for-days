@@ -12,6 +12,9 @@ public class Brick : MonoBehaviour
     [Header("Sprites")]
     public List<Sprite> brickSprites;
 
+    [Header("PowerUps")]
+    public GameObject powerUpPrefab;
+
     public void initBrick(int _level, bool _hasPowerUp)
     {
         level = (_level >= 1 && _level <= 7) ? _level : 1;
@@ -35,10 +38,7 @@ public class Brick : MonoBehaviour
         {
             if (hasPowerUp)
             {
-                GameObject prefab = Resources.Load("Prefabs/HalfBallSpeedPowerUp") as GameObject;
-                Debug.Log(prefab + " created");
-
-                Instantiate(prefab, transform.position, Quaternion.identity);
+                Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }

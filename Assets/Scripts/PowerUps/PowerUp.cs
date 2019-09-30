@@ -3,7 +3,6 @@
 public class PowerUp : ScriptableObject
 {
     public IntVariable score;
-
     public IntVariable gameScore;
 
     public virtual void UsePowerUpPayload()
@@ -12,8 +11,5 @@ public class PowerUp : ScriptableObject
 
         // add score for collecting PowerUp
         gameScore.Value += score.Value;
-
-        // apply power up
-        //paddle.transform.localScale *= 2f; // or .5f
     }
 }

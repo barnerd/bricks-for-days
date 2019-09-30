@@ -135,3 +135,5 @@ MonoBehaviour:
   - {fileID: 7732266518838291544, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   - {fileID: 1217184777182393201, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   - {fileID: -8342414399252672130, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
+  powerUpPrefab: {fileID: 4779362478093537643, guid: 56348d8316c6f45e796ece8f5f9a36a7,
+    type: 3}
