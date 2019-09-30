@@ -5,7 +5,7 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     public int level = 1;
-    public int score = 10;
+    public int score = 1;
     public bool hasPowerUp = false;
     public IntVariable gameScore;
 
@@ -32,11 +32,12 @@ public class Brick : MonoBehaviour
     {
         level -= decrease;
 
-        // TODO: Double check this is adding the right score. Currently looks negative
         int totalScore = 0;
-        for (int i = 0; i < decrease; i++)
+        for (int i = 0; i < decrease && score > 0; i++)
         {
             totalScore += score;
+            //Debug.Log("sscore: " + score);
+            //Debug.Log("step: " + totalScore);
             score -= 1;
         }
         gameScore.Value += totalScore;
@@ -44,7 +45,7 @@ public class Brick : MonoBehaviour
         if (level <= 0)
         {
             // figure out why this is 1 and there's one left over
-            Debug.Log(GameObject.FindGameObjectsWithTag("brick").Length);
+            // Debug.Log(GameObject.FindGameObjectsWithTag("brick").Length);
             if (GameObject.FindGameObjectsWithTag("brick").Length <= 1)
             {
                 onLevelComplete.Raise();
