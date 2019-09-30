@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc5cd8802b254e75a8fe327f7a2e65d, type: 3}
-  m_Name: powerUpScore
+  m_Script: {fileID: 11500000, guid: 9d736d392c4c04aaead2cd374945eb21, type: 3}
+  m_Name: OnBallExit
   m_EditorClassIdentifier: 
-  Value: 10

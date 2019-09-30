@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859431bcf96f841a5a75ddafb9f6f280, type: 3}
   m_Name: OneExtraLife
   m_EditorClassIdentifier: 
-  score: 100
+  score: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   extraLives: 1
   playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}

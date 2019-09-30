@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b04df80b58ce48778e1b202478464a0, type: 3}
   m_Name: HalfBallSpeed
   m_EditorClassIdentifier: 
-  score: 100
+  score: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   multiplier: 0.75
   ballSpeedMultiplier: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300,

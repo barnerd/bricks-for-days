@@ -1992,6 +1992,7 @@ GameObject:
   - component: {fileID: 283558393}
   - component: {fileID: 283558397}
   - component: {fileID: 283558398}
+  - component: {fileID: 283558399}
   m_Layer: 12
   m_Name: Ball
   m_TagString: ball
@@ -2115,6 +2116,33 @@ MonoBehaviour:
     type: 2}
   ballHeld: 0
   rb: {fileID: 283558393}
+--- !u!114 &283558399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283558392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 283558398}
+        m_MethodName: ResetBall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &288534330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5192,6 +5220,7 @@ GameObject:
   - component: {fileID: 873838746}
   - component: {fileID: 873838745}
   - component: {fileID: 873838747}
+  - component: {fileID: 873838748}
   m_Layer: 5
   m_Name: Lives
   m_TagString: Untagged
@@ -5272,6 +5301,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   livesText: {fileID: 873838745}
+--- !u!114 &873838748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873838743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873838747}
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &877627172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13119,6 +13175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
+  OnBallExit: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
 --- !u!1001 &1965921160
 PrefabInstance:
   m_ObjectHideFlags: 0
