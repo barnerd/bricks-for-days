@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5468955840890155364}
   - component: {fileID: 3418482014691955620}
   - component: {fileID: 7837214872894494849}
+  - component: {fileID: -9029640866967439777}
+  - component: {fileID: 6319163565235902515}
   m_Layer: 0
   m_Name: DoubleBallSpeedPowerUp
   m_TagString: powerUp
@@ -145,3 +147,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUp: {fileID: 11400000, guid: 4b694b4d4041046e3b8286e87fa6602b, type: 2}
   powerUpDropSpeed: {fileID: 11400000, guid: 30b45b4b8a5dd4520b7064f3118708ae, type: 2}
+--- !u!114 &-9029640866967439777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779362478093537643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7837214872894494849}
+        m_MethodName: DestroyPowerUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6319163565235902515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779362478093537643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7837214872894494849}
+        m_MethodName: DestroyPowerUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
