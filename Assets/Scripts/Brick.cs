@@ -36,8 +36,6 @@ public class Brick : MonoBehaviour
         for (int i = 0; i < decrease && score > 0; i++)
         {
             totalScore += score;
-            //Debug.Log("sscore: " + score);
-            //Debug.Log("step: " + totalScore);
             score -= 1;
         }
         gameScore.Value += totalScore;
