@@ -2,21 +2,20 @@
 
 public class LevelManager : MonoBehaviour
 {
-    // Bricks
+    [Header("Bricks")]
     public GameObject brickPrefab;
     public GameObject brickSlots;
 
     [Space]
 
     [Header("Grid Size")]
-
     public int maxColumn = 17; // should always be odd
     public int maxRow = 15;
 
     public KeyCode loadLevel; // define as l
-    public bool gameHasEnded = false;
 
     public int NumBrickLevels = 7;
+    public IntVariable gameScore;
 
     // Start is called before the first frame update
     void Start()
@@ -27,20 +26,20 @@ public class LevelManager : MonoBehaviour
     // Called once a frame.
     void Update()
     {
-        // move paddle Left
         if (Input.GetKeyUp(loadLevel))
         {
-            foreach (var b in GameObject.FindGameObjectsWithTag("brick"))
-            {
-                Destroy(b);
-            }
-
             LoadLevel();
         }
     }
 
-    public void LoadLevel(int difficulty = 1)
+    public void LoadLevel()
     {
+        // Ensure all bricks are gone
+        foreach (var b in GameObject.FindGameObjectsWithTag("brick"))
+        {
+            Destroy(b);
+        }
+
         // define patterns
         // randomly select patterns
         // randomly place patterns

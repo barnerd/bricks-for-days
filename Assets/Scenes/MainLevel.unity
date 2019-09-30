@@ -1857,6 +1857,8 @@ GameObject:
   m_Component:
   - component: {fileID: 274422789}
   - component: {fileID: 274422787}
+  - component: {fileID: 274422788}
+  - component: {fileID: 274422790}
   m_Layer: 0
   m_Name: BrickManager
   m_TagString: Untagged
@@ -1882,8 +1884,35 @@ MonoBehaviour:
   maxColumn: 9
   maxRow: 17
   loadLevel: 108
-  gameHasEnded: 0
   NumBrickLevels: 7
+  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+--- !u!114 &274422788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274422786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 274422787}
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &274422789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1903,6 +1932,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &274422790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274422786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c060e7748dfd74697b081069e47c6cd9, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 274422787}
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &281551327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1993,6 +2049,7 @@ GameObject:
   - component: {fileID: 283558397}
   - component: {fileID: 283558398}
   - component: {fileID: 283558399}
+  - component: {fileID: 283558400}
   m_Layer: 12
   m_Name: Ball
   m_TagString: ball
@@ -2016,7 +2073,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7f4a3723131994fa6bc441d602d4260f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -2090,7 +2147,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 283558392}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: b5c6ea251791548dcac681678a2ab963, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2116,6 +2173,7 @@ MonoBehaviour:
     type: 2}
   ballHeld: 1
   ballAlwaysHeld: {fileID: 11400000, guid: 6213dab8516f74dea8a9a877337b0d47, type: 2}
+  BallPower: {fileID: 11400000, guid: fb2edea36861a4410b6e686aae2997f3, type: 2}
   rb: {fileID: 283558393}
 --- !u!114 &283558399
 MonoBehaviour:
@@ -2135,6 +2193,33 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 283558398}
         m_MethodName: ResetBall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &283558400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283558392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 283558398}
+        m_MethodName: ResetBallPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13062,6 +13147,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1947342643}
   - component: {fileID: 1947342644}
+  - component: {fileID: 1947342642}
+  - component: {fileID: 1947342645}
   m_Layer: 0
   m_Name: _GM
   m_TagString: Untagged
@@ -13069,6 +13156,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1947342642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947342641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: b88094dd419bb44c4a431f460f1c11bd, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1947342644}
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1947342643
 Transform:
   m_ObjectHideFlags: 0
@@ -13101,10 +13215,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
-  gameHasEnded: 0
+  onGameStart: {fileID: 11400000, guid: c060e7748dfd74697b081069e47c6cd9, type: 2}
   completeLevelUI: {fileID: 1927412331}
   gameOverUI: {fileID: 376990388}
+--- !u!114 &1947342645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947342641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c060e7748dfd74697b081069e47c6cd9, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1947342644}
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1952564950
 GameObject:
   m_ObjectHideFlags: 0
@@ -13131,7 +13271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952564950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.97, y: -1.46, z: 0}
+  m_LocalPosition: {x: -0.97, y: -1.71, z: 0}
   m_LocalScale: {x: 8.032499, y: 0.6375, z: 1}
   m_Children: []
   m_Father: {fileID: 1947342643}
@@ -13177,6 +13317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   OnBallExit: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
+  OnGameOver: {fileID: 11400000, guid: b88094dd419bb44c4a431f460f1c11bd, type: 2}
 --- !u!1001 &1965921160
 PrefabInstance:
   m_ObjectHideFlags: 0

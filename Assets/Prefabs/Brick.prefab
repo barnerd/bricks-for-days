@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2623304617873138259}
   - component: {fileID: 5082389147112450217}
   - component: {fileID: 9064174934582955796}
+  - component: {fileID: -8681027038330959792}
+  - component: {fileID: 3909609784591825847}
   m_Layer: 10
   m_Name: Brick
   m_TagString: brick
@@ -125,6 +127,7 @@ MonoBehaviour:
   score: 0
   hasPowerUp: 0
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  onLevelComplete: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
   brickSprites:
   - {fileID: -5382688720841754248, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   - {fileID: -5594777721449392504, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
@@ -135,5 +138,59 @@ MonoBehaviour:
   - {fileID: 7732266518838291544, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   - {fileID: 1217184777182393201, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   - {fileID: -8342414399252672130, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
-  powerUpPrefab: {fileID: 4779362478093537643, guid: 56348d8316c6f45e796ece8f5f9a36a7,
+  powerUpPrefab: {fileID: 4779362478093537643, guid: f2b4c8e783e5c4308993d195d82c4815,
     type: 3}
+--- !u!114 &-8681027038330959792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623304617873138284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8014e135b3a7b43048efcc024390737a, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9064174934582955796}
+        m_MethodName: TurnToTrigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3909609784591825847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623304617873138284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9064174934582955796}
+        m_MethodName: ResetCollider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

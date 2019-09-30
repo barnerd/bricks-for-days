@@ -9,6 +9,8 @@ public class Brick : MonoBehaviour
     public bool hasPowerUp = false;
     public IntVariable gameScore;
 
+    public GameEvent onLevelComplete;
+
     [Header("Sprites")]
     public List<Sprite> brickSprites;
 
@@ -24,19 +26,30 @@ public class Brick : MonoBehaviour
 
         // update graphics of brick
         GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
-        Debug.Log(brickSprites[level - 1]);
     }
 
-    public void decreaseLevel()
+    public void decreaseLevel(int decrease = 1)
     {
-        level -= 1;
+        level -= decrease;
 
-        gameScore.Value += score;
-        score -= 1;
+        // TODO: Double check this is adding the right score. Currently looks negative
+        int totalScore = 0;
+        for (int i = 0; i < decrease; i++)
+        {
+            totalScore += score;
+            score -= 1;
+        }
+        gameScore.Value += totalScore;
 
         if (level <= 0)
         {
-            if (hasPowerUp)
+            // figure out why this is 1 and there's one left over
+            Debug.Log(GameObject.FindGameObjectsWithTag("brick").Length);
+            if (GameObject.FindGameObjectsWithTag("brick").Length <= 1)
+            {
+                onLevelComplete.Raise();
+            }
+            else if (hasPowerUp)
             {
                 Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
             }
@@ -51,9 +64,27 @@ public class Brick : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "ball")
+        if (collision.collider.CompareTag("ball"))
         {
-            decreaseLevel();
+            decreaseLevel(collision.collider.GetComponent<Ball>().BallPower.Value);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ball"))
+        {
+            decreaseLevel(collision.GetComponent<Ball>().BallPower.Value);
+        }
+    }
+
+    public void TurnToTrigger()
+    {
+        GetComponent<BoxCollider2D>().isTrigger = true;
+    }
+
+    public void ResetCollider()
+    {
+        GetComponent<BoxCollider2D>().isTrigger = false;
     }
 }

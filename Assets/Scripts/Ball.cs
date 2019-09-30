@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     public FloatVariable ballSpeedMultiplier;
     public bool ballHeld;
     public BoolVariable ballAlwaysHeld;
+    public IntVariable BallPower;
 
     public Rigidbody2D rb;
 
@@ -68,13 +69,15 @@ public class Ball : MonoBehaviour
 
     public void ResetBall()
     {
+        // Reset Power Ups
         ballSpeedMultiplier.Value = 1f;
+        BallPower.Value = 1;
         ballAlwaysHeld.Value = false;
 
         ResetBallPosition();
     }
 
-    private void ResetBallPosition()
+    public void ResetBallPosition()
     {
         ballHeld = true;
         rb.velocity = new Vector2(0f, 0f);
