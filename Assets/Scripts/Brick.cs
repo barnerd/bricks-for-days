@@ -7,6 +7,7 @@ public class Brick : MonoBehaviour
     public int level = 1;
     public int score = 1;
     public int scoreMultiplierPerLevel = 1;
+    private int totalScore;
     public IntVariable gameScore;
 
     public GameEvent onLevelComplete;
@@ -22,6 +23,13 @@ public class Brick : MonoBehaviour
         level = (_level >= 1 && _level <= 7) ? _level : 1;
         score = level * scoreMultiplierPerLevel;
 
+        totalScore = 0;
+        for (int i = 0; i < level; i++)
+        {
+            totalScore += scoreMultiplierPerLevel;
+        }
+
+
         // update graphics of brick
         GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
     }
@@ -30,17 +38,10 @@ public class Brick : MonoBehaviour
     {
         level -= decrease;
 
-        // TODO: Consider moving this to a variable and calculated at creation time instead of runtime
-        int totalScore = 0;
-        for (int i = 0; i < decrease && score > 0; i++)
-        {
-            totalScore += score;
-            score -= scoreMultiplierPerLevel;
-        }
-        gameScore.Value += totalScore;
-
         if (level <= 0)
         {
+            gameScore.Value += totalScore;
+
             if (powerUp != null)
             {
                 Instantiate(powerUp, transform.position, Quaternion.identity);
@@ -48,7 +49,7 @@ public class Brick : MonoBehaviour
 
             Destroy(gameObject);
 
-            // Set to 1 left as Destroy is not immediately completed.
+            // Set to 1 left as Destroy does not immediately completed.
             if (GameObject.FindGameObjectsWithTag("brick").Length <= 1)
             {
                 onLevelComplete.Raise();
@@ -56,6 +57,10 @@ public class Brick : MonoBehaviour
         }
         else
         {
+            gameScore.Value += score;
+            totalScore -= score;
+            score -= scoreMultiplierPerLevel;
+
             // display new brick level
             GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
         }
