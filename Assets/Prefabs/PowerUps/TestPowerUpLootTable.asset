@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: TestPowerUpLootTable
   m_EditorClassIdentifier: 
   gameObjectIntLookup:
-    keys: []
-    values: 
+    keys:
+    - {fileID: 4779362478093537643, guid: 56348d8316c6f45e796ece8f5f9a36a7, type: 3}
+    - {fileID: 4779362478093537643, guid: 4fc555bbf07744aefaa9d783af37b914, type: 3}
+    - {fileID: 4779362478093537643, guid: 7e474d0c9ddce4ab389537c9641a3bdd, type: 3}
+    - {fileID: 4779362478093537643, guid: a517f338751db4a47aa2c46e8ca2a28f, type: 3}
+    - {fileID: 4779362478093537643, guid: f2b4c8e783e5c4308993d195d82c4815, type: 3}
+    - {fileID: 0}
+    values: 010000000100000001000000010000000100000000000000
