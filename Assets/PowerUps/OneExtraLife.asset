@@ -16,3 +16,5 @@ MonoBehaviour:
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   extraLives: 1
   playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
+  OnPowerUpExtraLivesGain: {fileID: 11400000, guid: 85028f6056d054f7e9c3622e043b1aa6,
+    type: 2}
