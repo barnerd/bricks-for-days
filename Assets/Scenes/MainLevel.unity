@@ -13215,7 +13215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  onGameStart: {fileID: 11400000, guid: c060e7748dfd74697b081069e47c6cd9, type: 2}
   completeLevelUI: {fileID: 1927412331}
   gameOverUI: {fileID: 376990388}
 --- !u!114 &1947342645

@@ -33,7 +33,7 @@ public class Brick : MonoBehaviour
     {
         level -= decrease;
 
-        // Consider moving this to a variable and calculated at creation time instead of runtime
+        // TODO: Consider moving this to a variable and calculated at creation time instead of runtime
         int totalScore = 0;
         for (int i = 0; i < decrease && score > 0; i++)
         {

@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject completeLevelUI;
     public GameObject gameOverUI;
 
+    private void Start()
+    {
+        StartGame();
+    }
+
     // TODO: Figure out who is Raising() onGameStart event
     public void StartGame()
     {
