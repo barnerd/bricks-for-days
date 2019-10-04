@@ -5,14 +5,14 @@ using UnityEngine;
 
 // pulled from https://wiki.unity3d.com/index.php/SerializableDictionary
 
-[CreateAssetMenu(fileName = "WeightedPowerUps", menuName = "Structures/Weighted Power Ups")]
-public class WeightedPowerUps : ScriptableObject
+[CreateAssetMenu(fileName = "WeightedObjects", menuName = "Structures/Weighted Objects")]
+public class WeightedObjects : ScriptableObject
 {
     [SerializeField]
-    private PowerUpIntDictionary powerUpIntLookup = PowerUpIntDictionary.New<PowerUpIntDictionary>();
-    private Dictionary<PowerUp, int> powerUpInts
+    private GameObjectIntDictionary gameObjectIntLookup = GameObjectIntDictionary.New<GameObjectIntDictionary>();
+    private Dictionary<GameObject, int> gameObjectWeights
     {
-        get { return powerUpIntLookup.dictionary; }
+        get { return gameObjectIntLookup.dictionary; }
     }
 
     /// <summary>
@@ -20,14 +20,14 @@ public class WeightedPowerUps : ScriptableObject
     /// </summary>
     /// <param name="spawnRate">An ordered list withe the current spawn rates. The list will be updated so that selected items will have a smaller chance of being repeated.</param>
     /// <returns>The randomized item.</returns>
-    public PowerUp TakeOne()
+    public GameObject TakeOne()
     {
         // Sorts the spawn rate list
-        var sortedSpawnRate = Sort(powerUpInts);
+        var sortedSpawnRate = Sort(gameObjectWeights);
 
         // Sums all spawn rates
         int sum = 0;
-        foreach (var spawn in powerUpInts.Values)
+        foreach (var spawn in gameObjectWeights.Values)
         {
             sum += spawn;
         }
@@ -37,7 +37,7 @@ public class WeightedPowerUps : ScriptableObject
         int roll = UnityEngine.Random.Range(0, sum);
 
         // Finds chosen item based on spawn rate
-        PowerUp selected = sortedSpawnRate[sortedSpawnRate.Count - 1].Key;
+        GameObject selected = sortedSpawnRate[sortedSpawnRate.Count - 1].Key;
         foreach (var spawn in sortedSpawnRate)
         {
             if (roll < spawn.Value)
@@ -52,14 +52,14 @@ public class WeightedPowerUps : ScriptableObject
         return selected;
     }
 
-    private List<KeyValuePair<PowerUp, int>> Sort(Dictionary<PowerUp, int> weights)
+    private List<KeyValuePair<GameObject, int>> Sort(Dictionary<GameObject, int> weights)
     {
-        var list = new List<KeyValuePair<PowerUp, int>>(weights);
+        var list = new List<KeyValuePair<GameObject, int>>(weights);
 
         // Sorts the Spawn Rate List for randomization later
         list.Sort(
-            delegate (KeyValuePair<PowerUp, int> firstPair,
-                     KeyValuePair<PowerUp, int> nextPair)
+            delegate (KeyValuePair<GameObject, int> firstPair,
+                     KeyValuePair<GameObject, int> nextPair)
             {
                 return firstPair.Value.CompareTo(nextPair.Value);
             }

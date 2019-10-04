@@ -5,4 +5,4 @@ using UnityEngine;
 //  PowerUp => Int
 // ---------------
 [Serializable]
-public class PowerUpIntDictionary : SerializableDictionary<PowerUp, int> { }
+public class GameObjectIntDictionary : SerializableDictionary<GameObject, int> { }

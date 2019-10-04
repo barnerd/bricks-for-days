@@ -16,7 +16,7 @@ public class Brick : MonoBehaviour
     public List<Sprite> brickSprites;
 
     [Header("PowerUps")]
-    public GameObject powerUpPrefab;
+    public WeightedObjects powerUpLootTable;
 
     public void initBrick(int _level, bool _hasPowerUp)
     {
@@ -52,7 +52,11 @@ public class Brick : MonoBehaviour
             }
             else if (hasPowerUp)
             {
-                Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
+                GameObject powerUp = powerUpLootTable.TakeOne();
+                if(powerUp != null)
+                {
+                    Instantiate(powerUp, transform.position, Quaternion.identity);
+                }
             }
             Destroy(gameObject);
         }

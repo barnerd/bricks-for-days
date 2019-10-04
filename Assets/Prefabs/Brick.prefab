@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   score: 0
+  scoreMultiplierPerLevel: 1
   hasPowerUp: 0
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   onLevelComplete: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
@@ -140,6 +141,7 @@ MonoBehaviour:
   - {fileID: -8342414399252672130, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   powerUpPrefab: {fileID: 4779362478093537643, guid: f2b4c8e783e5c4308993d195d82c4815,
     type: 3}
+  powerUpLootTable: {fileID: 11400000, guid: e6678d7bd8cc74c6abec54aea9d12685, type: 2}
 --- !u!114 &-8681027038330959792
 MonoBehaviour:
   m_ObjectHideFlags: 0
