@@ -1886,6 +1886,7 @@ MonoBehaviour:
   loadLevel: 108
   NumBrickLevels: 7
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  powerUpLootTable: {fileID: 11400000, guid: e6678d7bd8cc74c6abec54aea9d12685, type: 2}
 --- !u!114 &274422788
 MonoBehaviour:
   m_ObjectHideFlags: 0

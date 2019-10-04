@@ -48,7 +48,7 @@ namespace Tests
         public IEnumerator initBrick_level1noPowerUp_CheckValues()
         {
             // AAA - Act
-            b.initBrick(1, false);
+            b.SetLevel(1);
 
             // Use yield to skip a frame.
             yield return null;
@@ -56,7 +56,6 @@ namespace Tests
             // AAA - Assert
             Assert.AreEqual(1, b.level);
             Assert.AreEqual(1, b.score);
-            Assert.False(b.hasPowerUp);
         }
 
         [UnityTest]
@@ -64,7 +63,7 @@ namespace Tests
         public IEnumerator initBrick_level7noPowerUp_CheckValues()
         {
             // AAA - Act
-            b.initBrick(7, false);
+            b.SetLevel(7);
 
             // Use yield to skip a frame.
             yield return null;
@@ -72,7 +71,6 @@ namespace Tests
             // AAA - Assert
             Assert.AreEqual(7, b.level);
             Assert.AreEqual(7, b.score);
-            Assert.False(b.hasPowerUp);
         }
 
         [UnityTest]
@@ -80,7 +78,7 @@ namespace Tests
         public IEnumerator initBrick_level8noPowerUp_CheckValues()
         {
             // AAA - Act
-            b.initBrick(8, false);
+            b.SetLevel(8);
 
             // Use yield to skip a frame.
             yield return null;
@@ -88,7 +86,6 @@ namespace Tests
             // AAA - Assert
             Assert.AreEqual(1, b.level);
             Assert.AreEqual(1, b.score);
-            Assert.False(b.hasPowerUp);
         }
     }
 }

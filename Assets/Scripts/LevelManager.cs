@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
     public int NumBrickLevels = 7;
     public IntVariable gameScore;
 
+    public WeightedObjects powerUpLootTable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -128,13 +130,13 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    void CreateBrick(int _col, int _row, int _level, bool _hasPowerUp = true)
+    void CreateBrick(int _col, int _row, int _level)
     {
         Vector3 p = brickSlots.transform.Find("Row" + _row).Find("Col" + _col).position;
 
         Brick b = Instantiate(brickPrefab, p, Quaternion.identity).GetComponent<Brick>();
 
-        // init each brick
-        b.initBrick(_level, _hasPowerUp);
+        b.SetLevel(_level);
+        b.powerUp = powerUpLootTable.TakeOne();
     }
 }
