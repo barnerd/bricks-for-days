@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4779362478093537556}
   - component: {fileID: -811357709983525618}
-  - component: {fileID: 5468955840890155364}
   - component: {fileID: 3418482014691955620}
+  - component: {fileID: 323326857160129661}
   - component: {fileID: 7837214872894494849}
   - component: {fileID: 7472152148941703605}
   - component: {fileID: 5214060410562769299}
@@ -74,8 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8342414399252672130, guid: eb61e2df95da541d3afb98b9e3f99c6e,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b4b3d12a905d467eb2340a62cab7bfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,32 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5468955840890155364
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4779362478093537643}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8201334, y: 0.26500002}
-    newSize: {x: 0.8201334, y: 0.26500002}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8201334, y: 0.26500002}
-  m_EdgeRadius: 0
 --- !u!50 &3418482014691955620
 Rigidbody2D:
   serializedVersion: 4
@@ -133,6 +106,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &323326857160129661
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779362478093537643}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.20853162
 --- !u!114 &7837214872894494849
 MonoBehaviour:
   m_ObjectHideFlags: 0
