@@ -41,20 +41,18 @@ public class Brick : MonoBehaviour
 
         if (level <= 0)
         {
-            // figure out why this is 1 and there's one left over
-            // Debug.Log(GameObject.FindGameObjectsWithTag("brick").Length);
+            if (powerUp != null)
+            {
+                Instantiate(powerUp, transform.position, Quaternion.identity);
+            }
+
+            Destroy(gameObject);
+
+            // Set to 1 left as Destroy is not immediately completed.
             if (GameObject.FindGameObjectsWithTag("brick").Length <= 1)
             {
                 onLevelComplete.Raise();
             }
-            else
-            {
-                if(powerUp != null)
-                {
-                    Instantiate(powerUp, transform.position, Quaternion.identity);
-                }
-            }
-            Destroy(gameObject);
         }
         else
         {
