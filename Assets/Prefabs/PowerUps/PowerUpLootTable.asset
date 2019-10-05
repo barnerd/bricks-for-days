@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5e2bbe7a1f174483be30a5e1f968f27, type: 3}
-  m_Name: TestPowerUpLootTable
+  m_Name: PowerUpLootTable
   m_EditorClassIdentifier: 
   gameObjectIntLookup:
     keys:
@@ -20,4 +20,4 @@ MonoBehaviour:
     - {fileID: 4779362478093537643, guid: a517f338751db4a47aa2c46e8ca2a28f, type: 3}
     - {fileID: 4779362478093537643, guid: f2b4c8e783e5c4308993d195d82c4815, type: 3}
     - {fileID: 0}
-    values: 000000000000000000000000000000000100000000000000
+    values: 010000000100000001000000010000000100000004000000
