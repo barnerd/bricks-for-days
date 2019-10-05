@@ -29,7 +29,6 @@ public class Brick : MonoBehaviour
             totalScore += scoreMultiplierPerLevel;
         }
 
-
         // update graphics of brick
         GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
     }
