@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Prefabs/PowerUps/TestPowerUpLootTable.asset
+Assets/Prefabs/PowerUps/TestPowerUpLootTable.asset.meta
