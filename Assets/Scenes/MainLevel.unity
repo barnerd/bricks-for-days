@@ -2074,7 +2074,7 @@ Rigidbody2D:
   m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0
+  m_GravityScale: 0.001
   m_Material: {fileID: 6200000, guid: 7f4a3723131994fa6bc441d602d4260f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2169,7 +2169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paddle: {fileID: 976936084}
-  releaseBall: 115
   ballSpeed: 4
   ballSpeedMultiplier: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300,
     type: 2}
@@ -6503,7 +6502,7 @@ MonoBehaviour:
   ball: {fileID: 283558392}
   paddleSpeed: 750
   paddleForce: 30
-  inputs: {fileID: 11400000, guid: cc9eece929759478691b3ca6ab9e8b30, type: 2}
+  inputs: {fileID: 11400000, guid: 8ccdd9f0d72344de0b95e9d9ebf50a01, type: 2}
 --- !u!1001 &983552764
 PrefabInstance:
   m_ObjectHideFlags: 0
