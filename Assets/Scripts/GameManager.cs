@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public IntVariable gameScore;
+    public IntVariable playerLives;
 
     [Header("UI Components")]
     public GameObject completeLevelUI;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameScore.Value = 0;
+        playerLives.Value = 5;
     }
 
     public void LevelWon()

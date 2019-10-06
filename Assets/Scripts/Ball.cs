@@ -30,8 +30,15 @@ public class Ball : MonoBehaviour
     // FixedUpdate is used with physics
     void FixedUpdate()
     {
-        // maintain a constant speed
-        rb.velocity = ballSpeed * ballSpeedMultiplier.Value * rb.velocity.normalized;
+        if (ballHeld)
+        {
+            rb.velocity = new Vector2(0f, 0f);
+        }
+        else
+        {
+            // maintain a constant speed
+            rb.velocity = ballSpeed * ballSpeedMultiplier.Value * rb.velocity.normalized;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

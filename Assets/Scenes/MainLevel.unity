@@ -2071,7 +2071,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.2
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0.001
@@ -13315,6 +13315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   completeLevelUI: {fileID: 1927412331}
   gameOverUI: {fileID: 376990388}
 --- !u!114 &1947342645
