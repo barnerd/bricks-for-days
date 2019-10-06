@@ -11,6 +11,7 @@ public class AIController : InputController
     private Paddle paddle;
     private Collider2D paddleCollider;
     private Vector3 paddleCenter;
+    private float paddleWidth;
 
     private Ball ball;
     private Collider2D ballCollider;
@@ -30,6 +31,7 @@ public class AIController : InputController
     public override void ProcessInput(GameObject obj)
     {
         paddleCenter = paddleCollider.bounds.center;
+        paddleWidth = paddleCollider.bounds.extents.x;
         ballCenter = ballCollider.bounds.center;
 
         Vector3 closestPowerUp = GetClosestPowerUp();
@@ -64,8 +66,7 @@ public class AIController : InputController
                     paddle.MoveRight();
                 }
             }
-            // TODO: paddle can't get to the first/last column of bricks and therefore never releases the ball
-            else if (Mathf.Abs(bestBrick.x - paddleCenter.x) > thresholdToPaddle)
+            else if (Mathf.Abs(bestBrick.x - paddleCenter.x) > thresholdToPaddle + paddleWidth / 2)
             {
                 Debug.Log("Positioning under a good brick because I have the ball");
                 // move paddle Left
@@ -113,7 +114,6 @@ public class AIController : InputController
             }
             else
             {
-                // TODO: consider who has smallest .y instead of closest
                 if (Vector3.Distance(paddleCenter, ballCenter) < Vector3.Distance(paddleCenter, closestPowerUp) || (ballRigidBody.velocity.y < 0 && ballCenter.y < heightToFocusOnBall))
                 {
                     Debug.Log("Let's get that ball");
@@ -166,14 +166,16 @@ public class AIController : InputController
         GameObject[] powerUps;
         float minDistance = 99999f;
         float newDistance;
+        float paddleHeight = paddleCenter.y;
+        float powerUpHeight;
 
         powerUps = GameObject.FindGameObjectsWithTag("powerUp");
         foreach (GameObject powerUp in powerUps)
         {
             newDistance = Vector3.Distance(paddleCenter, powerUp.GetComponent<Collider2D>().bounds.center);
+            powerUpHeight = powerUp.GetComponent<Collider2D>().bounds.center.y;
 
-            // TODO: Don't select power ups below the paddle
-            if (newDistance < minDistance)
+            if (newDistance < minDistance && powerUpHeight > paddleHeight)
             {
                 closestPowerUp = powerUp.GetComponent<Collider2D>().bounds.center;
                 minDistance = newDistance;
@@ -198,8 +200,7 @@ public class AIController : InputController
             newDistance = Vector3.Distance(paddleCenter, brick.GetComponent<Collider2D>().bounds.center);
             newLevel = brick.GetComponent<Brick>().level;
 
-            // TODO: doesn't look like it's selecting highest brick level
-            if (newDistance < minDistance && newLevel >= maxLevel)
+            if(newLevel > maxLevel || (newDistance < minDistance && newLevel == maxLevel))
             {
                 bestBrick = brick.GetComponent<Collider2D>().bounds.center;
                 minDistance = newDistance;
