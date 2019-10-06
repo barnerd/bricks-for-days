@@ -14,6 +14,7 @@ public class AIController : InputController
 
     private Ball ball;
     private Collider2D ballCollider;
+    private Rigidbody2D ballRigidBody;
     private Vector3 ballCenter;
 
     public override void Initialize(GameObject obj)
@@ -23,6 +24,7 @@ public class AIController : InputController
 
         ball = paddle.ball.GetComponent<Ball>();
         ballCollider = paddle.ball.GetComponent<Collider2D>();
+        ballRigidBody = paddle.ball.GetComponent<Rigidbody2D>();
     }
 
     public override void ProcessInput(GameObject obj)
@@ -112,8 +114,7 @@ public class AIController : InputController
             else
             {
                 // TODO: consider who has smallest .y instead of closest
-                // TODO: figure out how to prioritize ball over powerups
-                if (Vector3.Distance(paddleCenter, ballCenter) < Vector3.Distance(paddleCenter, closestPowerUp) || ballCenter.y < heightToFocusOnBall)
+                if (Vector3.Distance(paddleCenter, ballCenter) < Vector3.Distance(paddleCenter, closestPowerUp) || (ballRigidBody.velocity.y < 0 && ballCenter.y < heightToFocusOnBall))
                 {
                     Debug.Log("Let's get that ball");
                     // check ball to move left or right
