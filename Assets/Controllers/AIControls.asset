@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a578d539a994edfa2cc924362b7f5c, type: 3}
   m_Name: AIControls
   m_EditorClassIdentifier: 
-  thresholdToBall: 0.1
+  thresholdToPaddle: 0.4
   waitTimeToReleaseBall: 0.75
