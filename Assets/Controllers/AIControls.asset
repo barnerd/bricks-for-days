@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: AIControls
   m_EditorClassIdentifier: 
   thresholdToBall: 0.1
+  waitTimeToReleaseBall: 0.75
