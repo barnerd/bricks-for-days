@@ -5,6 +5,7 @@ using UnityEngine;
 public class AIController : InputController
 {
     public float thresholdToPaddle;
+    public float heightToFocusOnBall;
     public float waitTimeToReleaseBall;
 
     private Paddle paddle;
@@ -14,7 +15,6 @@ public class AIController : InputController
     private Ball ball;
     private Collider2D ballCollider;
     private Vector3 ballCenter;
-
 
     public override void Initialize(GameObject obj)
     {
@@ -113,7 +113,7 @@ public class AIController : InputController
             {
                 // TODO: consider who has smallest .y instead of closest
                 // TODO: figure out how to prioritize ball over powerups
-                if (Vector3.Distance(paddleCenter, ballCenter) < Vector3.Distance(paddleCenter, closestPowerUp))
+                if (Vector3.Distance(paddleCenter, ballCenter) < Vector3.Distance(paddleCenter, closestPowerUp) || ballCenter.y < heightToFocusOnBall)
                 {
                     Debug.Log("Let's get that ball");
                     // check ball to move left or right
