@@ -3,18 +3,18 @@
 public class Ball : MonoBehaviour
 {
     public Transform paddle;
-    public KeyCode releaseBall;
     public float ballSpeed = 50f;
     public FloatVariable ballSpeedMultiplier;
     public bool ballHeld;
     public BoolVariable ballAlwaysHeld;
     public IntVariable BallPower;
 
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         ResetBall();
     }
 
@@ -25,23 +25,11 @@ public class Ball : MonoBehaviour
         {
             transform.position = new Vector2(paddle.transform.position.x, transform.position.y);
         }
-        //Debug.Log(GetComponent<Rigidbody2D>().velocity);
-        //Debug.Log(GetComponent<Rigidbody2D>().velocity.magnitude);
-
     }
 
     // FixedUpdate is used with physics
     void FixedUpdate()
     {
-        // If the ball needs to be released, release ball on key stroke
-        if (ballHeld && Input.GetKeyUp(releaseBall))
-        {
-            ballHeld = false;
-            // add random angle from 80 to 100 degrees, or something like that.
-            float angle = Mathf.Deg2Rad * Random.Range(80, 100);
-            rb.velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-        }
-
         // maintain a constant speed
         rb.velocity = ballSpeed * ballSpeedMultiplier.Value * rb.velocity.normalized;
     }
@@ -62,7 +50,8 @@ public class Ball : MonoBehaviour
                 float paddleWidth = collision.collider.bounds.extents.x;
                 float percentOnPaddle = (ballCenter - paddleCenter) / paddleWidth;
 
-                rb.AddForce(new Vector2(paddle.GetComponent<PaddleController>().paddleForce * Mathf.Sin(percentOnPaddle) * Mathf.PI / 2, 0));
+                // TODO: turn paddleForce into a FloatVariable and reference it here, instead of having GetComponent<Paddle>
+                rb.AddForce(new Vector2(paddle.GetComponent<Paddle>().paddleForce * Mathf.Sin(percentOnPaddle) * Mathf.PI / 2, 0));
             }
         }
     }
@@ -85,5 +74,13 @@ public class Ball : MonoBehaviour
         // use an x value of ballAlwaysHeld.Value ? transform.position.x : paddle.transform.position.x
         // but this conflicts with Update();
         transform.position = new Vector2(paddle.transform.position.x, paddle.GetComponent<CapsuleCollider2D>().bounds.center.y + paddle.GetComponent<CapsuleCollider2D>().bounds.extents.y + GetComponent<CircleCollider2D>().bounds.extents.y);
+    }
+
+    public void ReleaseBall()
+    {
+        ballHeld = false;
+        // add random angle from 80 to 100 degrees, or something like that.
+        float angle = Mathf.Deg2Rad * Random.Range(80, 100);
+        rb.velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
     }
 }

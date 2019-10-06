@@ -11,6 +11,8 @@ public class AIController : InputController
         float paddleCenter = obj.GetComponent<Collider2D>().bounds.center.x;
         float ballCenter = paddle.ball.GetComponent<Collider2D>().bounds.center.x;
 
+        Ball ball = paddle.ball.GetComponent<Ball>();
+
         // TODO: Track PowerUps and determine to go get them
 
         if (Mathf.Abs(ballCenter - paddleCenter) > thresholdToBall)
@@ -25,6 +27,13 @@ public class AIController : InputController
             {
                 paddle.MoveRight();
             }
+        }
+
+        // TODO: move to the a good position under bricks and then release ball
+        // If the ball needs to be released, release ball
+        if (ball.ballHeld)
+        {
+            ball.ReleaseBall();
         }
     }
 }
