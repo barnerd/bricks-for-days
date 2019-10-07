@@ -28,7 +28,7 @@ public class PowerUpBallSpeed : PowerUp
         }
         else if((ballSpeedMultiplier.Value > 1f && multiplier < 1f) || (ballSpeedMultiplier.Value < 1f && multiplier > 1f))
         {
-            ballSpeedMultiplier = 1f;
+            ballSpeedMultiplier.Value = 1f;
         }
     }
 }
