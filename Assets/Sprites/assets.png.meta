@@ -38,6 +38,12 @@ TextureImporter:
   - first:
       213: -1687144669380700377
     second: assets_1
+  - first:
+      213: 6940726409706374831
+    second: paddle_small
+  - first:
+      213: 5879711150799299874
+    second: paddle_large
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -338,13 +344,13 @@ TextureImporter:
       name: paddle
       rect:
         serializedVersion: 2
-        x: 594
-        y: 632
-        width: 331
-        height: 76
+        x: 605
+        y: 636
+        width: 310
+        height: 63
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 11, y: 3, z: 11, w: 9}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -393,6 +399,48 @@ TextureImporter:
       bones: []
       spriteID: 0c4a19e6c61a54fd2ba91c5067b255fc
       internalID: -1687144669380700377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paddle_small
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 781
+        width: 207
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2846815130ab4f95ad4620016c32dc4
+      internalID: 6940726409706374831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paddle_large
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 488
+        width: 472
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d7501fdc99842d49fa728b970fdd48
+      internalID: 5879711150799299874
       vertices: []
       indices: 
       edges: []
