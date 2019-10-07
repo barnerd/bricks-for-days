@@ -9,6 +9,6 @@ public class Lives : MonoBehaviour
     // Update is called once per frame
     public void UpdateText()
     {
-        livesText.text = "Lives: " + playerLives.Value;
+        livesText.text = playerLives.Value.ToString();
     }
 }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public IntVariable gameScore;
     public IntVariable playerLives;
 
+    public float gameScale;
+
     [Header("UI Components")]
     public GameObject completeLevelUI;
     public GameObject gameOverUI;
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartGame();
+        Time.timeScale = gameScale;
     }
 
     // TODO: Figure out who is Raising() onGameStart event
