@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f59c321ee85423d9589e7f548b66e7, type: 3}
+  m_Name: EvilBanana
+  m_EditorClassIdentifier: 
+  score: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
+  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  bananaBall: {fileID: 11400000, guid: 4f2fc9632bad643fc8a52febc36a09f7, type: 2}
+  OnBananaBall: {fileID: 11400000, guid: dde0aab6c7471416ea722e15e2f0087b, type: 2}

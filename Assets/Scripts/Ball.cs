@@ -7,14 +7,25 @@ public class Ball : MonoBehaviour
     public FloatVariable ballSpeedMultiplier;
     public bool ballHeld;
     public BoolVariable ballAlwaysHeld;
-    public IntVariable BallPower;
+    public IntVariable ballPower;
+
+    [Header("Sprites")]
+    public Sprite ballSprite;
+    public Color ballSpriteColor;
+    [Space()]
+    public Sprite bananaSprite;
+    public Color bananaSpriteColor;
+
+    public BoolVariable bananaBall;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         ResetBall();
     }
 
@@ -67,8 +78,11 @@ public class Ball : MonoBehaviour
     {
         // Reset Power Ups
         ballSpeedMultiplier.Value = 1f;
-        BallPower.Value = 1;
+        ballPower.Value = 1;
         ballAlwaysHeld.Value = false;
+
+        bananaBall.Value = false;
+        SetSprite();
 
         ResetBallPosition();
     }
@@ -89,5 +103,19 @@ public class Ball : MonoBehaviour
         // add random angle from 80 to 100 degrees, or something like that.
         float angle = Mathf.Deg2Rad * Random.Range(80, 100);
         rb.velocity = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+    }
+
+    public void SetSprite()
+    {
+        if (bananaBall.Value)
+        {
+            spriteRenderer.sprite = bananaSprite;
+            spriteRenderer.color = bananaSpriteColor;
+        }
+        else
+        {
+            spriteRenderer.sprite = ballSprite;
+            spriteRenderer.color = ballSpriteColor;
+        }
     }
 }

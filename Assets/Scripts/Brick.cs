@@ -69,7 +69,7 @@ public class Brick : MonoBehaviour
     {
         if (collision.collider.CompareTag("ball"))
         {
-            DecreaseLevel(collision.collider.GetComponent<Ball>().BallPower.Value);
+            DecreaseLevel(collision.collider.GetComponent<Ball>().ballPower.Value);
         }
     }
 
@@ -77,7 +77,7 @@ public class Brick : MonoBehaviour
     {
         if (collision.CompareTag("ball"))
         {
-            DecreaseLevel(collision.GetComponent<Ball>().BallPower.Value);
+            DecreaseLevel(collision.GetComponent<Ball>().ballPower.Value);
         }
     }
 
