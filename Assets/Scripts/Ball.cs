@@ -95,7 +95,7 @@ public class Ball : MonoBehaviour
     public void ResetBallPosition()
     {
         ballHeld = true;
-        rb.velocity = new Vector2(0f, 0f);
+        rb.velocity = Vector2.zero;
 
         // use an x value of ballAlwaysHeld.Value ? transform.position.x : paddle.transform.position.x
         // but this conflicts with Update();
