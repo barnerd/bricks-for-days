@@ -3,6 +3,7 @@
 public class Ball : MonoBehaviour
 {
     public Transform paddle;
+    public Transform ballPositionOnPaddle;
     public float ballSpeed = 50f;
     public FloatVariable ballSpeedMultiplier;
     public bool ballHeld;
@@ -35,6 +36,10 @@ public class Ball : MonoBehaviour
         if (ballHeld)
         {
             transform.position = new Vector2(paddle.transform.position.x, transform.position.y);
+        }
+        else
+        {
+            transform.Rotate(Vector3.forward * 10f);
         }
     }
 
@@ -94,7 +99,7 @@ public class Ball : MonoBehaviour
 
         // use an x value of ballAlwaysHeld.Value ? transform.position.x : paddle.transform.position.x
         // but this conflicts with Update();
-        transform.position = new Vector2(paddle.transform.position.x, paddle.GetComponent<CapsuleCollider2D>().bounds.center.y + paddle.GetComponent<CapsuleCollider2D>().bounds.extents.y + GetComponent<CircleCollider2D>().bounds.extents.y);
+        transform.position = ballPositionOnPaddle.position;
     }
 
     public void ReleaseBall()

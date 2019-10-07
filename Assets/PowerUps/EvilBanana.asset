@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  scoreMultiplier: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
   bananaBall: {fileID: 11400000, guid: 4f2fc9632bad643fc8a52febc36a09f7, type: 2}
   OnBananaBall: {fileID: 11400000, guid: dde0aab6c7471416ea722e15e2f0087b, type: 2}

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  scoreMultiplier: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
   multiplier: 1.5
   ballSpeedMultiplier: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300,
     type: 2}
