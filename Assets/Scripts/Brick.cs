@@ -9,6 +9,7 @@ public class Brick : MonoBehaviour
     public int scoreMultiplierPerLevel = 1;
     private int totalScore;
     public IntVariable gameScore;
+    public IntVariable scoreMultiplier;
 
     public GameEvent onLevelComplete;
 
@@ -39,7 +40,7 @@ public class Brick : MonoBehaviour
 
         if (level <= 0)
         {
-            gameScore.Value += totalScore;
+            gameScore.Value += totalScore * scoreMultiplier.Value;
 
             if (powerUp != null)
             {
@@ -56,7 +57,7 @@ public class Brick : MonoBehaviour
         }
         else
         {
-            gameScore.Value += score;
+            gameScore.Value += score * scoreMultiplier.Value;
             totalScore -= score;
             score -= scoreMultiplierPerLevel;
 

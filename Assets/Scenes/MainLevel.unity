@@ -1888,7 +1888,7 @@ MonoBehaviour:
   NumBrickLevels: 7
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   OnLevelComplete: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
-  powerUpLootTable: {fileID: 11400000, guid: 6f8d17f7e3a304cce9489921266d45e8, type: 2}
+  powerUpLootTable: {fileID: 11400000, guid: 990328ceb665b442ba97a833a60802ca, type: 2}
 --- !u!114 &274422788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13359,6 +13359,7 @@ GameObject:
   - component: {fileID: 1947342644}
   - component: {fileID: 1947342642}
   - component: {fileID: 1947342645}
+  - component: {fileID: 1947342646}
   m_Layer: 0
   m_Name: _GM
   m_TagString: Untagged
@@ -13425,6 +13426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  scoreMultiplier: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
   playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   gameScale: 1
   completeLevelUI: {fileID: 1927412331}
@@ -13447,6 +13449,33 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1947342646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947342641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1947342644}
+        m_MethodName: ResetScoreMultiplier
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
