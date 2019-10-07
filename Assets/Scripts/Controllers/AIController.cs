@@ -54,7 +54,7 @@ public class AIController : InputController
         {
             if (closestPowerUp != new Vector3(0, 0, 0))
             {
-                Debug.Log("Chasing Power Up because I'm holding the ball");
+                //Debug.Log("Chasing Power Up because I'm holding the ball");
                 // move paddle Left
                 if (paddleCenter.x > closestPowerUp.x)
                 {
@@ -68,7 +68,7 @@ public class AIController : InputController
             }
             else if (Mathf.Abs(bestBrick.x - paddleCenter.x) > thresholdToPaddle + paddleWidth / 2)
             {
-                Debug.Log("Positioning under a good brick because I have the ball");
+                //Debug.Log("Positioning under a good brick because I have the ball");
                 // move paddle Left
                 if (paddleCenter.x > bestBrick.x)
                 {
@@ -82,7 +82,7 @@ public class AIController : InputController
             }
             else
             {
-                Debug.Log("I can't hold onto the ball forever");
+                //Debug.Log("I can't hold onto the ball forever");
                 ball.StartCoroutine(ReleaseBallCoroutine(ball));
             }
         }
@@ -96,7 +96,7 @@ public class AIController : InputController
              * */
             if (closestPowerUp == new Vector3(0, 0, 0))
             {
-                Debug.Log("Let's get that ball");
+                //Debug.Log("Let's get that ball");
                 // check ball to move left or right
                 if (Mathf.Abs(ballCenter.x - paddleCenter.x) > thresholdToPaddle)
                 {
@@ -116,7 +116,7 @@ public class AIController : InputController
             {
                 if (Vector3.Distance(paddleCenter, ballCenter) < Vector3.Distance(paddleCenter, closestPowerUp) || (ballRigidBody.velocity.y < 0 && ballCenter.y < heightToFocusOnBall))
                 {
-                    Debug.Log("Let's get that ball");
+                    //Debug.Log("Let's get that ball");
                     // check ball to move left or right
                     if (Mathf.Abs(ballCenter.x - paddleCenter.x) > thresholdToPaddle)
                     {
@@ -134,7 +134,7 @@ public class AIController : InputController
                 }
                 else
                 {
-                    Debug.Log("Let's get that powerup");
+                    //Debug.Log("Let's get that powerup");
                     // check ball to move left or right
                     if (Mathf.Abs(closestPowerUp.x - paddleCenter.x) > thresholdToPaddle)
                     {

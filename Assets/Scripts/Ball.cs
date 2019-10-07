@@ -21,12 +21,14 @@ public class Ball : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private AudioSource bounceSound;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        bounceSound = GetComponent<AudioSource>();
         ResetBall();
     }
 
@@ -59,6 +61,11 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!ballHeld)
+        {
+            bounceSound.Play();
+        }
+
         if (collision.collider.tag == "paddle")
         {
             if (ballAlwaysHeld.Value)
