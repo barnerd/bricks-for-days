@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
     public IntVariable scoreMultiplier;
     public IntVariable playerLives;
 
-    public float gameScale;
-
     [Header("UI Components")]
     public GameObject completeLevelUI;
     public GameObject gameOverUI;
@@ -16,15 +14,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartGame();
-        Time.timeScale = gameScale;
+        Time.timeScale = 4f;
     }
 
-    // TODO: Figure out who is Raising() onGameStart event
     public void StartGame()
     {
         gameScore.Value = 0;
         ResetScoreMultiplier();
         playerLives.Value = 5;
+        Time.timeScale = 1f;
     }
 
     public void LevelWon()

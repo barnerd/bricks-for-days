@@ -136,6 +136,8 @@ public class LevelManager : MonoBehaviour
         Vector3 p = brickSlots.transform.Find("Row" + _row).Find("Col" + _col).position;
 
         Brick b = Instantiate(brickPrefab, p, Quaternion.identity).GetComponent<Brick>();
+        // make child of levelManager
+        b.transform.parent = transform;
 
         b.SetLevel(_level);
         b.powerUp = powerUpLootTable.TakeOne();

@@ -2050,10 +2050,11 @@ GameObject:
   - component: {fileID: 283558393}
   - component: {fileID: 283558397}
   - component: {fileID: 283558398}
+  - component: {fileID: 283558401}
   - component: {fileID: 283558399}
   - component: {fileID: 283558400}
   - component: {fileID: 283558395}
-  - component: {fileID: 283558401}
+  - component: {fileID: 283558402}
   m_Layer: 12
   m_Name: Ball
   m_TagString: ball
@@ -2364,6 +2365,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &283558402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283558392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c060e7748dfd74697b081069e47c6cd9, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 283558398}
+        m_MethodName: ResetBall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &288534330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2622,6 +2650,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e6f5a87c049245578fc4c9159a6d0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: 0
+  loadingScreen: {fileID: 0}
+  loadingText: {fileID: 0}
+  loadingProgressBar: {fileID: 0}
+  onGameStart: {fileID: 0}
 --- !u!1 &391243203
 GameObject:
   m_ObjectHideFlags: 0
@@ -6590,6 +6623,7 @@ GameObject:
   - component: {fileID: 976936081}
   - component: {fileID: 976936082}
   - component: {fileID: 976936086}
+  - component: {fileID: 976936083}
   m_Layer: 13
   m_Name: Paddle
   m_TagString: paddle
@@ -6663,6 +6697,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &976936083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976936080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c060e7748dfd74697b081069e47c6cd9, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 976936086}
+        m_MethodName: SetInputController
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: cc9eece929759478691b3ca6ab9e8b30,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: InputController, Main
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &976936084
 Transform:
   m_ObjectHideFlags: 0
@@ -6714,7 +6776,9 @@ MonoBehaviour:
   ball: {fileID: 283558392}
   paddleSpeed: 750
   paddleForce: 30
-  inputs: {fileID: 11400000, guid: 8ccdd9f0d72344de0b95e9d9ebf50a01, type: 2}
+  playerInputs: {fileID: 11400000, guid: cc9eece929759478691b3ca6ab9e8b30, type: 2}
+  aiInputs: {fileID: 11400000, guid: 8ccdd9f0d72344de0b95e9d9ebf50a01, type: 2}
+  setAI: 105
 --- !u!1001 &983552764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13560,7 +13624,6 @@ MonoBehaviour:
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   scoreMultiplier: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
   playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
-  gameScale: 1
   completeLevelUI: {fileID: 1927412331}
   gameOverUI: {fileID: 376990388}
 --- !u!114 &1947342645
