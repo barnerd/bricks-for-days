@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyUp(optionsKey) && !optionsUI.activeSelf)
         {
-            optionsUI.SetActive(true);
+            OpenWindow(optionsUI);
             Time.timeScale = 0f;
         }
     }
