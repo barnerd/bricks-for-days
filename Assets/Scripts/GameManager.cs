@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
     {
         gameScore.Value = 0;
         playerLives.Value = 5;
+        newHighscoreRank = -1;
     }
 
     public void ResetScoreMultiplier()
@@ -177,8 +178,9 @@ public class GameManager : MonoBehaviour
             else
             {
                 scoreEntry.gameObject.SetActive(true);
+                scoreEntry.Find("Player").gameObject.SetActive(newHighscoreRank != i);
                 scoreEntry.Find("Player").GetComponent<Text>().text = hs.names[i];
-                scoreEntry.Find("PlayerInputField").gameObject.SetActive(false);
+                scoreEntry.Find("PlayerInputField").gameObject.SetActive(newHighscoreRank == i);
                 scoreEntry.Find("Date").GetComponent<Text>().text = hs.dates[i].ToString("MM/dd/yy");
                 scoreEntry.Find("Score").GetComponent<Text>().text = hs.scores[i].ToString("N0");
             }
