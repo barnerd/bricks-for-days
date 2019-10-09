@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         newHighscoreRank = hs.AddHighscore(gameScore.Value);
 
-        if (newHighscoreRank > 0)
+        if (newHighscoreRank >= 0)
         {
             // There's a new highscore
             // show text field to get name
@@ -154,6 +154,12 @@ public class GameManager : MonoBehaviour
     public void SaveHighScores()
     {
         SaveSystem.SaveHighScores(hs);
+    }
+
+    public void ResetHighScores()
+    {
+        hs = new Highscores();
+        UpdateHighScoresUI();
     }
 
     public void UpdateHighScoresUI()
