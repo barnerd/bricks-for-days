@@ -2218,8 +2218,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 1245296123}
+  m_Placeholder: {fileID: 1395856853}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -2233,10 +2233,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 199398452}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4207,8 +4207,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 91670045}
+  m_Placeholder: {fileID: 553276334}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -4222,10 +4222,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 355385494}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7130,8 +7130,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 765836008}
+  m_Placeholder: {fileID: 73027506}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -7145,10 +7145,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 748810558}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9133,10 +9133,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 887079684}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9905,8 +9905,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 1718940183}
+  m_Placeholder: {fileID: 1735799882}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -9920,10 +9920,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 932840864}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15058,8 +15058,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 585446041}
+  m_Placeholder: {fileID: 715938759}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -15073,10 +15073,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1374299497}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16046,8 +16046,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 156909464}
+  m_Placeholder: {fileID: 1495056850}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -16061,10 +16061,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1457671755}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17996,8 +17996,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 1949602659}
+  m_Placeholder: {fileID: 1984628407}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -18011,10 +18011,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1588116066}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19745,8 +19745,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 742875742}
+  m_Placeholder: {fileID: 1885538697}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -19760,10 +19760,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1755877004}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -23673,8 +23673,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 887079685}
-  m_TextComponent: {fileID: 455018563}
-  m_Placeholder: {fileID: 2010269900}
+  m_TextComponent: {fileID: 835564506}
+  m_Placeholder: {fileID: 642250101}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -23688,10 +23688,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1947342644}
         m_MethodName: SaveHighscoresName
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2135659777}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.InputField, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

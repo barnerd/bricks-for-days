@@ -73,13 +73,6 @@ public class GameManager : MonoBehaviour
         if (newHighscoreRank >= 0)
         {
             // There's a new highscore
-            // show text field to get name
-            nameInput = highscoresUI.transform.Find("Background").Find("Score" + (newHighscoreRank + 1)).Find("PlayerInputField").gameObject;
-            GameObject playerName = highscoresUI.transform.Find("Background").Find("Score" + (newHighscoreRank + 1)).Find("Player").gameObject;
-
-            playerName.SetActive(false);
-            nameInput.SetActive(true);
-
             UpdateHighScoresUI();
             OpenWindow(highscoresUI);
         }
@@ -87,12 +80,11 @@ public class GameManager : MonoBehaviour
         OpenWindow(gameOverUI);
     }
 
-    public void SaveHighscoresName()
+    public void SaveHighscoresName(InputField _text)
     {
         if (newHighscoreRank >= 0)
         {
-            hs.names[newHighscoreRank] = nameInput.GetComponent<InputField>().text;
-            nameInput.SetActive(false);
+            hs.names[newHighscoreRank] = _text.text;
             newHighscoreRank = -1;
 
             UpdateHighScoresUI();
