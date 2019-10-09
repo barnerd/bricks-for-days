@@ -39,4 +39,23 @@ public class Highscores
         }
         return -1;
     }
+
+    public void Load()
+    {
+        Highscores hs = SaveSystem.LoadHighScores();
+
+        if(hs == null)
+        {
+            hs = new Highscores();
+        }
+        names = hs.names;
+        dates = hs.dates;
+        scores = hs.scores;
+    }
+
+    public void Save()
+    {
+        SaveSystem.SaveHighScores(this);
+    }
+
 }

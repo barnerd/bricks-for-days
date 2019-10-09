@@ -37,7 +37,10 @@ public class GameManager : MonoBehaviour
         // Add function call to wantsToQuit event
         Application.wantsToQuit += Exiting;
         hs = new Highscores();
-        LoadHighScores();
+        hs.Load();
+
+        // Update UI with highscores
+        UpdateHighScoresUI();
     }
 
     private void Update()
@@ -132,27 +135,8 @@ public class GameManager : MonoBehaviour
 
     private bool Exiting()
     {
-        SaveHighScores();
+        hs.Save();
         return true;
-    }
-    
-    // TODO: move to Highscores
-    public void LoadHighScores()
-    {
-        hs = SaveSystem.LoadHighScores();
-
-        if(hs == null)
-        {
-            hs = new Highscores();
-        }
-        // Update UI with highscores
-        UpdateHighScoresUI();
-    }
-
-    // TODO: move to Highscores
-    public void SaveHighScores()
-    {
-        SaveSystem.SaveHighScores(hs);
     }
 
     // TODO: move to UI Manager
