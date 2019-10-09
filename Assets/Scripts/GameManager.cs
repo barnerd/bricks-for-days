@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveHighscoresName()
     {
-        if (newHighscoreRank > 0)
+        if (newHighscoreRank >= 0)
         {
             hs.names[newHighscoreRank] = nameInput.GetComponent<InputField>().text;
             nameInput.SetActive(false);
@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
             {
                 scoreEntry.gameObject.SetActive(true);
                 scoreEntry.Find("Player").GetComponent<Text>().text = hs.names[i];
+                scoreEntry.Find("PlayerInputField").gameObject.SetActive(false);
                 scoreEntry.Find("Date").GetComponent<Text>().text = hs.dates[i].ToString("MM/dd/yy");
                 scoreEntry.Find("Score").GetComponent<Text>().text = hs.scores[i].ToString("N0");
             }
