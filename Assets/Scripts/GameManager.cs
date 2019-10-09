@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    // TODO: move to UI Manager?
     public void LevelWon()
     {
         OpenWindow(levelCompleteUI);
@@ -80,9 +81,10 @@ public class GameManager : MonoBehaviour
         OpenWindow(gameOverUI);
     }
 
+    // TODO: move to UI Manager
     public void SaveHighscoresName(InputField _text)
     {
-        if (newHighscoreRank >= 0)
+        if (newHighscoreRank >= 0 && _text.text != null && _text.text != "")
         {
             hs.names[newHighscoreRank] = _text.text;
             newHighscoreRank = -1;
@@ -103,11 +105,13 @@ public class GameManager : MonoBehaviour
         scoreMultiplier.Value = 1;
     }
 
+    // TODO: move to UI Manager
     public void OpenWindow(GameObject window)
     {
         window.SetActive(true);
     }
 
+    // TODO: move to UI Manager
     public void CloseWindow(GameObject window)
     {
         window.SetActive(false);
@@ -131,7 +135,8 @@ public class GameManager : MonoBehaviour
         SaveHighScores();
         return true;
     }
-
+    
+    // TODO: move to Highscores
     public void LoadHighScores()
     {
         hs = SaveSystem.LoadHighScores();
@@ -144,17 +149,20 @@ public class GameManager : MonoBehaviour
         UpdateHighScoresUI();
     }
 
+    // TODO: move to Highscores
     public void SaveHighScores()
     {
         SaveSystem.SaveHighScores(hs);
     }
 
+    // TODO: move to UI Manager
     public void ResetHighScores()
     {
         hs = new Highscores();
         UpdateHighScoresUI();
     }
 
+    // TODO: move to UI Manager
     public void UpdateHighScoresUI()
     {
         Transform bg = highscoresUI.transform.Find("Background");
