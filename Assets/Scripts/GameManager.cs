@@ -28,16 +28,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Add function call to wantsToQuit event
-        Application.wantsToQuit += Exiting;
-        hs = new Highscores();
-        LoadHighScores();
-
         ResetGameValues();
         ResetScoreMultiplier();
         playerLives.Value = 5;
 
         Time.timeScale = AITimeScale;
+
+        // Add function call to wantsToQuit event
+        Application.wantsToQuit += Exiting;
+        hs = new Highscores();
+        LoadHighScores();
     }
 
     private void Update()
