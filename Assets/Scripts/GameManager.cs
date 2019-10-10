@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
     private Highscores hs;
     private int newHighscoreRank;
     private GameObject nameInput;
+
+    [Header("Audio Components")]
+    public AudioMixer soundMixer;
 
     private void Start()
     {
@@ -123,11 +127,9 @@ public class GameManager : MonoBehaviour
         !levelCompleteUI.activeSelf &&
         !gameOverUI.activeSelf &&
         !highscoresUI.activeSelf &&
-        !optionsUI.activeSelf)
-        /* TODO add these in once they're created
-         * &&
-    !powerupInfoUI.activeSelf &&
-    !creditsUI)*/
+        !optionsUI.activeSelf &&
+        !powerupInfoUI.activeSelf &&
+        !creditsUI.activeSelf)
         {
             Time.timeScale = 1f;
         }
@@ -168,6 +170,34 @@ public class GameManager : MonoBehaviour
                 scoreEntry.Find("Date").GetComponent<Text>().text = hs.dates[i].ToString("MM/dd/yy");
                 scoreEntry.Find("Score").GetComponent<Text>().text = hs.scores[i].ToString("N0");
             }
+        }
+    }
+
+    // TODO: move to UI Manager
+    public void ToggleMusic(bool _sound)
+    {
+        if(_sound)
+        {
+            soundMixer.ClearFloat("backgroundVolume");
+        }
+        else
+        {
+            soundMixer.SetFloat("backgroundVolume", -80f);
+        }
+    }
+
+    // TODO: move to UI Manager
+    public void ToggleSoundFX(bool _sound)
+    {
+        if (_sound)
+        {
+            soundMixer.ClearFloat("ballFXVolume");
+            soundMixer.ClearFloat("soundFXVolume");
+        }
+        else
+        {
+            soundMixer.SetFloat("ballFXVolume", -80f);
+            soundMixer.SetFloat("soundFXVolume", -80f);
         }
     }
 }
