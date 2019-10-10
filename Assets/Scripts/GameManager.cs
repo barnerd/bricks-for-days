@@ -52,11 +52,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(pauseKey))
         {
             pauseUI.SetActive(!pauseUI.activeSelf);
-            Time.timeScale = (!pauseUI.activeSelf) ? 0f : 1f;
+            Time.timeScale = (pauseUI.activeSelf) ? 0f : 1f;
         }
-        if (Input.GetKeyUp(optionsKey) && !optionsUI.activeSelf)
+        if (Input.GetKeyUp(optionsKey))
         {
-            OpenWindow(optionsUI);
+            optionsUI.gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
     }
@@ -71,21 +71,23 @@ public class GameManager : MonoBehaviour
     // TODO: move to UI Manager?
     public void LevelWon()
     {
-        OpenWindow(levelCompleteUI);
+        levelCompleteUI.gameObject.SetActive(true);
     }
 
     public void EndGame()
     {
+        Time.timeScale = 0f;
+
         newHighscoreRank = hs.AddHighscore(gameScore.Value);
 
         if (newHighscoreRank >= 0)
         {
             // There's a new highscore
             UpdateHighScoresUI();
-            OpenWindow(highscoresUI);
+            highscoresUI.gameObject.SetActive(true);
         }
         // show end game UI
-        OpenWindow(gameOverUI);
+        gameOverUI.gameObject.SetActive(true);
     }
 
     // TODO: move to UI Manager
@@ -112,27 +114,9 @@ public class GameManager : MonoBehaviour
         scoreMultiplier.Value = 1;
     }
 
-    // TODO: move to UI Manager
-    public void OpenWindow(GameObject window)
+    public void ResumePlay()
     {
-        window.SetActive(true);
-    }
-
-    // TODO: move to UI Manager
-    public void CloseWindow(GameObject window)
-    {
-        window.SetActive(false);
-
-        if (!pauseUI.activeSelf &&
-        !levelCompleteUI.activeSelf &&
-        !gameOverUI.activeSelf &&
-        !highscoresUI.activeSelf &&
-        !optionsUI.activeSelf &&
-        !powerupInfoUI.activeSelf &&
-        !creditsUI.activeSelf)
-        {
-            Time.timeScale = 1f;
-        }
+        Time.timeScale = 1f;
     }
 
     private bool Exiting()
@@ -176,7 +160,7 @@ public class GameManager : MonoBehaviour
     // TODO: move to UI Manager
     public void ToggleMusic(bool _sound)
     {
-        if(_sound)
+        if (_sound)
         {
             soundMixer.ClearFloat("backgroundVolume");
         }
