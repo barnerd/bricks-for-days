@@ -32,10 +32,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ResetGameValues();
-        ResetScoreMultiplier();
-        playerLives.Value = 5;
-
         Time.timeScale = AITimeScale;
 
         // Add function call to wantsToQuit event
