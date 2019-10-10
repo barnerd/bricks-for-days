@@ -24728,7 +24728,7 @@ MonoBehaviour:
   optionsUI: {fileID: 1358589103}
   powerupInfoUI: {fileID: 1199541980}
   creditsUI: {fileID: 223120613}
-  soundMixer: {fileID: 0}
+  soundMixer: {fileID: 24100000, guid: d8ee4d1982f534ff79957f560357ab04, type: 2}
 --- !u!114 &1947342645
 MonoBehaviour:
   m_ObjectHideFlags: 0
