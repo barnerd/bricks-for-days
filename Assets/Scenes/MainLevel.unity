@@ -24743,20 +24743,9 @@ MonoBehaviour:
   gameOverUI: {fileID: 376990388}
   highscoresUI: {fileID: 193705211}
   optionsUI: {fileID: 1358589103}
-<<<<<<< HEAD
-  powerupInfoUI: {fileID: 0}
-  creditsUI: {fileID: 0}
-=======
   powerupInfoUI: {fileID: 1199541980}
   creditsUI: {fileID: 223120613}
-<<<<<<< HEAD
-  music: {fileID: -9065366395333978034, guid: d8ee4d1982f534ff79957f560357ab04, type: 2}
-  ballFX: {fileID: -654135426111316244, guid: d8ee4d1982f534ff79957f560357ab04, type: 2}
-  soundFX: {fileID: 4521646165722958929, guid: d8ee4d1982f534ff79957f560357ab04, type: 2}
->>>>>>> feature
-=======
   soundMixer: {fileID: 0}
->>>>>>> feature
 --- !u!114 &1947342645
 MonoBehaviour:
   m_ObjectHideFlags: 0
