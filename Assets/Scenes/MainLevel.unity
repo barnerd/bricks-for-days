@@ -3221,7 +3221,7 @@ MonoBehaviour:
   NumBrickLevels: 7
   gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   OnLevelComplete: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
-  powerUpLootTable: {fileID: 11400000, guid: 6f8d17f7e3a304cce9489921266d45e8, type: 2}
+  powerUpLootTable: {fileID: 11400000, guid: 990328ceb665b442ba97a833a60802ca, type: 2}
 --- !u!114 &274422788
 MonoBehaviour:
   m_ObjectHideFlags: 0
