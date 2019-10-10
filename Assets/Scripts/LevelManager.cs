@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public KeyCode loadLevel; // define as l
 
     public int NumBrickLevels = 7;
+    public int scorePerBrickLevel;
     public IntVariable gameScore;
     public GameEvent OnLevelComplete;
 
@@ -37,6 +38,9 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel()
     {
+        int[,] grid = new int[maxColumn, maxRow];
+        GameObject[,] powerUpPrefabs = new GameObject[maxColumn, maxRow];
+
         // Ensure all bricks are gone
         foreach (var b in GameObject.FindGameObjectsWithTag("brick"))
         {
@@ -47,16 +51,36 @@ public class LevelManager : MonoBehaviour
         // randomly select patterns
         // randomly place patterns
 
-        /* ********* Patterns *********
-         * 
-         * Whole Row or Rows
-         * Blank Row
-         * Checkered
-         * Mirrored or offset
-         * Whole Column or groups of columns
-         * Diamonds
-         * 
-         * ***************************/
+        /* Start with empty grid
+         * Create patterns
+         * Add borders / unbreakable brick patterns
+         * check level score
+         * adjust somehow
+         * measure brickScore:powerUpScore ->
+         * have ratio of 1 for easier levels
+         * have ratio of 1/5 for harder levels
+                 * ******** Difficulty ********
+                 * maxBrickLevel = score / 10,000 -> level 8 at 70,000
+                 * bricksPerPowerUp = score / 5,000 -> no powerups at 760,000
+                 *
+                 * 
+                 *
+                 * 
+                 *
+                 ********** Patterns *********
+                 * 
+                 * Whole Row or Rows
+                 * Blank Row
+                 * Checkered
+                 * Mirrored or offset
+                 * Whole Column or groups of columns
+                 * Diamonds
+                 * Horizontal Rainbow
+                 * Vertical Rainbow
+                 * 
+                 * https://yumyummatt.wordpress.com/tag/powerups/
+                 * 
+                 * ***************************/
 
         int rowsRemaining = maxRow;
         int pattern;
@@ -102,15 +126,16 @@ public class LevelManager : MonoBehaviour
 
                     rainbow = Random.Range(0, 2) == 0;
                     ascending = Random.Range(0, 2) == 0 && rainbow;
-                    int minBrickLevel = Random.Range(1, NumBrickLevels + 1 - numRows);
-                    int maxBrickLevel = Random.Range(minBrickLevel, NumBrickLevels + 1);
-                    int brickLevel = rainbow ? (ascending ? minBrickLevel : maxBrickLevel) : Random.Range(1, NumBrickLevels + 1);
+                    int minBrickLevel = Random.Range(1, Mathf.Min(NumBrickLevels + 1 - numRows, (int)Mathf.Ceil(gameScore.Value / scorePerBrickLevel)));
+                    int maxBrickLevel = Random.Range(minBrickLevel, Mathf.Min(NumBrickLevels + 1, (int)Mathf.Ceil(gameScore.Value / scorePerBrickLevel)));
+                    int brickLevel = rainbow ? (ascending ? minBrickLevel : maxBrickLevel) : Random.Range(1, Mathf.Min(NumBrickLevels + 1, (int)Mathf.Ceil(gameScore.Value / scorePerBrickLevel)));
 
                     for (int y = 0; y < numRows; y++)
                     {
                         for (int x = (checkered && y % 2 == 0) ? minCol + 1 : minCol; x <= maxCol; x += checkered ? 2 : 1)
                         {
-                            CreateBrick(x, rowsRemaining - 1 - y, brickLevel);
+                            grid[x, rowsRemaining - 1 - y] = brickLevel;
+                            powerUpPrefabs[x, rowsRemaining - 1 - y] = powerUpLootTable.TakeOne();
                         }
 
                         if (rainbow)
@@ -129,9 +154,43 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-    }
+        // get level score
+        int totalBrickScore = 0;
+        int totalPowerUpScore = 0;
+        for (int x = 0; x < grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < grid.GetLength(1); y++)
+            {
+                if (grid[x, y] > 0)
+                {
+                    totalBrickScore += grid[x, y] * brickPrefab.GetComponent<Brick>().scoreMultiplierPerLevel;
+                    if (powerUpPrefabs[x, y] != null)
+                    {
+                        totalPowerUpScore += powerUpPrefabs[x, y].GetComponent<PowerUpBehaviour>().powerUp.score.Value;
+                    }
+                }
+            }
+        }
+        Debug.Log(totalBrickScore + ":" + totalPowerUpScore);
 
-    void CreateBrick(int _col, int _row, int _level)
+        // turn grid into bricks
+        for (int x = 0; x < grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < grid.GetLength(1); y++)
+            {
+                if (grid[x, y] > 0)
+                {
+                    CreateBrick(x, y, grid[x, y], powerUpPrefabs[x, y]);
+                }
+            }
+        }
+    }
+    // 153:0 score for full board level 1, no powerup
+    // 153:1530 score for full board level 1, all powerup
+    // 1071:0 score for full board level 8, no powerup
+    // 2601:1530 score for full board level 8, all powerups
+
+    void CreateBrick(int _col, int _row, int _level, GameObject _powerUp)
     {
         Vector3 p = brickSlots.transform.Find("Row" + _row).Find("Col" + _col).position;
 
@@ -140,6 +199,6 @@ public class LevelManager : MonoBehaviour
         b.transform.parent = transform;
 
         b.SetLevel(_level);
-        b.powerUp = powerUpLootTable.TakeOne();
+        b.powerUp = _powerUp;
     }
 }
