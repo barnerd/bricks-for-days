@@ -4,7 +4,7 @@ using System.Collections;
 [CreateAssetMenu(fileName = "PowerUp", menuName = "Power Up/Score Multiplier")]
 public class PowerUpScoreMultiplier : PowerUp
 {
-    public int multipler;
+    public int multipler = 1;
 
     public override void UsePowerUpPayload()
     {
