@@ -81,14 +81,4 @@ public class Brick : MonoBehaviour
             DecreaseLevel(collision.GetComponent<Ball>().ballPower.Value);
         }
     }
-
-    public void TurnOnTrigger()
-    {
-        GetComponent<BoxCollider2D>().isTrigger = true;
-    }
-
-    public void ResetTrigger()
-    {
-        GetComponent<BoxCollider2D>().isTrigger = false;
-    }
 }
