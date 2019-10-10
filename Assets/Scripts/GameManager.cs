@@ -123,11 +123,9 @@ public class GameManager : MonoBehaviour
         !levelCompleteUI.activeSelf &&
         !gameOverUI.activeSelf &&
         !highscoresUI.activeSelf &&
-        !optionsUI.activeSelf)
-        /* TODO add these in once they're created
-         * &&
-    !powerupInfoUI.activeSelf &&
-    !creditsUI)*/
+        !optionsUI.activeSelf &&
+        !powerupInfoUI.activeSelf &&
+        !creditsUI.activeSelf)
         {
             Time.timeScale = 1f;
         }
