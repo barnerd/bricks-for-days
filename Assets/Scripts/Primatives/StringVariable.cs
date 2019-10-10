@@ -1,16 +1,16 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BoolVariable", menuName = "Primatives/BoolVariable")]
-public class BoolVariable : ScriptableObject, ISerializationCallbackReceiver
+[CreateAssetMenu(fileName = "StringVariable", menuName = "Primatives/StringVariable")]
+public class StringVariable : ScriptableObject, ISerializationCallbackReceiver
 {
-    [SerializeField] private bool InitialValue;
+    [SerializeField] private string InitialValue;
     [SerializeField] private bool IsConstant = true;
     [SerializeField] private string Description;
 
-    private bool _value;
+    private string _value;
 
-    public bool Value
+    public string Value
     {
         get { return IsConstant ? InitialValue : _value; }
         set { _value = value; }

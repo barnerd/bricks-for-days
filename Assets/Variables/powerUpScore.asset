@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc5cd8802b254e75a8fe327f7a2e65d, type: 3}
   m_Name: powerUpScore
   m_EditorClassIdentifier: 
-  Value: 10
+  InitialValue: 10
+  IsConstant: 1
+  Description: How many points each power up is worth

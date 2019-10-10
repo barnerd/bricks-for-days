@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc5cd8802b254e75a8fe327f7a2e65d, type: 3}
   m_Name: scoreMultiplier
   m_EditorClassIdentifier: 
-  Value: 1
+  InitialValue: 1
+  IsConstant: 0
+  Description: How much points should be multiplied by. Used by power ups.

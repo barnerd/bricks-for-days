@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe43001ef9bf4778a8f37ecb3a90385, type: 3}
   m_Name: ballAlwaysHeld
   m_EditorClassIdentifier: 
-  Value: 0
+  InitialValue: 0
+  IsConstant: 0
+  Description: Turned on for when the paddle should always hold the ball. Given by
+    a power up.
