@@ -17,3 +17,4 @@ MonoBehaviour:
   scoreMultiplier: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
   ballPower: {fileID: 11400000, guid: fb2edea36861a4410b6e686aae2997f3, type: 2}
   OnPowerBall: {fileID: 11400000, guid: 8014e135b3a7b43048efcc024390737a, type: 2}
+  increasedPower: 99

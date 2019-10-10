@@ -6,13 +6,14 @@ public class PowerUpBallPower : PowerUp
 {
     public IntVariable ballPower;
     public GameEvent OnPowerBall;
+    public int increasedPower;
 
     public override void UsePowerUpPayload()
     {
         base.UsePowerUpPayload();
 
         // Payload is to add lives
-        ballPower.Value = 99;
+        ballPower.Value = increasedPower;
         OnPowerBall.Raise();
     }
 }
