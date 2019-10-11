@@ -9,13 +9,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameEvent", menuName = "Event/Game Event")]
 public class GameEvent : ScriptableObject
 {
+    [SerializeField] private string Description;
+
     private List<GameEventListener> listeners = new List<GameEventListener>();
 
-    public void Raise()
+    public void Raise(GameObject parameter = null)
     {
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
-            listeners[i].OnEventRaised();
+            listeners[i].OnEventRaised(parameter);
         }
     }
 

@@ -10,6 +10,7 @@ public class GameEventListener : MonoBehaviour
 {
     public GameEvent Event;
     public UnityEvent Response;
+    //public GameObjectEvent Response2;
 
     private void OnEnable()
     {
@@ -21,8 +22,9 @@ public class GameEventListener : MonoBehaviour
         Event.UnregisterListener(this);
     }
 
-    public void OnEventRaised()
+    public void OnEventRaised(GameObject parameter = null)
     {
         Response.Invoke();
+        //Response2.Invoke(parameter);
     }
 }

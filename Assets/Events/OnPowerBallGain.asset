@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d736d392c4c04aaead2cd374945eb21, type: 3}
   m_Name: OnPowerBallGain
   m_EditorClassIdentifier: 
+  Description: Called when the Power Ball Power Up is gained
