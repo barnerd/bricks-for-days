@@ -5,10 +5,10 @@ public class Ball : MonoBehaviour
     public Transform paddle;
     public Transform ballPositionOnPaddle;
     public float ballSpeed = 50f;
-    public FloatVariable ballSpeedMultiplier;
+    public FloatReference ballSpeedMultiplier;
     public bool ballHeld;
-    public BoolVariable ballAlwaysHeld;
-    public IntVariable ballPower;
+    public BoolReference ballAlwaysHeld;
+    public IntReference ballPower;
 
     [Header("Sprites")]
     public Sprite ballSprite;
@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
     public Sprite bananaSprite;
     public Color bananaSpriteColor;
 
-    public BoolVariable bananaBall;
+    public BoolReference bananaBall;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;

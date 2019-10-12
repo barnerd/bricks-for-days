@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public IntVariable gameScore;
+    public IntReference gameScore;
     public Text scoreText;
 
     // Update is called once per frame

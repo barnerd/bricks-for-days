@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     public KeyCode loadLevel; // define as l
 
     public int NumBrickLevels = 7;
-    public IntVariable gameScore;
+    public IntReference gameScore;
     public GameEvent OnLevelComplete;
 
     public WeightedObjects powerUpLootTable;

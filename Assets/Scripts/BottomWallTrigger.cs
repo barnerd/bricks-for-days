@@ -2,7 +2,7 @@
 
 public class BottomWallTrigger : MonoBehaviour
 {
-    public IntVariable playerLives;
+    public IntReference playerLives;
     public GameEvent OnBallExit;
     public GameEvent OnGameOver;
 

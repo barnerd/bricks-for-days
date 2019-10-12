@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Lives : MonoBehaviour
 {
-    public IntVariable playerLives;
+    public IntReference playerLives;
     public Text livesText;
 
     // Update is called once per frame

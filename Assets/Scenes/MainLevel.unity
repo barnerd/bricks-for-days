@@ -3199,7 +3199,10 @@ MonoBehaviour:
   maxRow: 17
   loadLevel: 108
   NumBrickLevels: 7
-  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  gameScore:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   OnLevelComplete: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
   powerUpLootTable: {fileID: 11400000, guid: 6f8d17f7e3a304cce9489921266d45e8, type: 2}
 --- !u!114 &274422788
@@ -3750,16 +3753,27 @@ MonoBehaviour:
   paddle: {fileID: 976936084}
   ballPositionOnPaddle: {fileID: 1982510560}
   ballSpeed: 4
-  ballSpeedMultiplier: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300,
-    type: 2}
+  ballSpeedMultiplier:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300, type: 2}
   ballHeld: 1
-  ballAlwaysHeld: {fileID: 11400000, guid: 6213dab8516f74dea8a9a877337b0d47, type: 2}
-  ballPower: {fileID: 11400000, guid: fb2edea36861a4410b6e686aae2997f3, type: 2}
+  ballAlwaysHeld:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 6213dab8516f74dea8a9a877337b0d47, type: 2}
+  ballPower:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: fb2edea36861a4410b6e686aae2997f3, type: 2}
   ballSprite: {fileID: 21300000, guid: 307730e69c13449d7bf785b36ca9a6bf, type: 3}
   ballSpriteColor: {r: 0.30980393, g: 0.30980393, b: 0.30980393, a: 1}
   bananaSprite: {fileID: 21300000, guid: 4c77a1a715b954fb8a47b47070916b30, type: 3}
   bananaSpriteColor: {r: 1, g: 1, b: 1, a: 1}
-  bananaBall: {fileID: 11400000, guid: 4f2fc9632bad643fc8a52febc36a09f7, type: 2}
+  bananaBall:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 4f2fc9632bad643fc8a52febc36a09f7, type: 2}
 --- !u!114 &283558399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10024,7 +10038,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bac1502117624342bf844aef6516957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
+  playerLives:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   livesText: {fileID: 873838745}
 --- !u!114 &873838748
 MonoBehaviour:
@@ -14158,7 +14175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301693045fbfa4221a1617a405b1ad01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  gameScore:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   scoreText: {fileID: 1123485426}
 --- !u!1 &1125897760
 GameObject:
@@ -24802,9 +24822,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb8440b66f604c5ea8c40963d7434b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  scoreMultiplier: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
-  playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
+  gameScore:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  scoreMultiplier:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
+  playerLives:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   AITimeScale: 3
   pauseKey: 32
   optionsKey: 111
@@ -25017,7 +25046,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84db66b5726234e75b6e835ec5d90362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLives: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
+  playerLives:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 4e60cf9d3061a4d3b9cbdad53d09b9e0, type: 2}
   OnBallExit: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
   OnGameOver: {fileID: 11400000, guid: b88094dd419bb44c4a431f460f1c11bd, type: 2}
 --- !u!1001 &1965921160
