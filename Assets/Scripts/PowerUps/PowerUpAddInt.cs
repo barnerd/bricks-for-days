@@ -5,7 +5,7 @@ using System.Collections;
 public class PowerUpAddInt : PowerUp
 {
     public int _value;
-    public IntVariable _intSetting;
+    public IntReference _intSetting;
 
     public override void UsePowerUpPayload()
     {

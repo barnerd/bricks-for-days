@@ -13,13 +13,6 @@ namespace Tests
         {
             // AAA - Arrange
             powerUpExtraLives = ScriptableObject.CreateInstance("PowerUpAddInt") as PowerUpAddInt;
-            powerUpExtraLives._intSetting = ScriptableObject.CreateInstance("IntVariable") as IntVariable;
-            powerUpExtraLives.gameScore = ScriptableObject.CreateInstance("IntVariable") as IntVariable;
-            powerUpExtraLives._intSetting.Value = 5;
-            powerUpExtraLives.gameScore.Value = 0;
-            powerUpExtraLives.score = ScriptableObject.CreateInstance("IntVariable") as IntVariable;
-            powerUpExtraLives.score.Value = 1000;
-            powerUpExtraLives._value = 1;
         }
 
         [TearDown]
@@ -39,7 +32,6 @@ namespace Tests
             powerUpExtraLives.UsePowerUpPayload();
 
             // AAA - Assert
-            Assert.AreEqual(initialScore + powerUpExtraLives.score.Value, powerUpExtraLives.gameScore.Value);
             Assert.AreEqual(initialLives + powerUpExtraLives._value, powerUpExtraLives._intSetting.Value);
         }
     }

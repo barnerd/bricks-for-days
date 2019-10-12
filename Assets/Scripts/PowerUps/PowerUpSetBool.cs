@@ -4,7 +4,7 @@ using System.Collections;
 [CreateAssetMenu(fileName = "PowerUp", menuName = "Power Up/Set Bool")]
 public class PowerUpSetBool : PowerUp
 {
-    public BoolVariable _booleanSetting;
+    public BoolReference _booleanSetting;
 
     public override void UsePowerUpPayload()
     {

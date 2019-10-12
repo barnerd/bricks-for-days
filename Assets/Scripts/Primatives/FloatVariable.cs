@@ -1,23 +1,41 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "FloatVariable", menuName = "Primatives/FloatVariable")]
 public class FloatVariable : ScriptableObject, ISerializationCallbackReceiver
 {
-    [SerializeField] private float InitialValue;
-    [SerializeField] private bool IsConstant = true;
-    [SerializeField] private string Description;
+#if UNITY_EDITOR
+    [Multiline]
+    public string Description = "";
+#endif
+    public float InitialValue;
+    public float Value;
 
-    private float _value;
-
-    public float Value
+    public void SetValue(float value)
     {
-        get { return IsConstant ? InitialValue : _value; }
-        set { _value = value; }
+        Value = value;
+    }
+
+    public void SetValue(FloatVariable value)
+    {
+        Value = value.Value;
+    }
+
+    public void ApplyChange(float amount)
+    {
+        Value += amount;
+    }
+
+    public void ApplyChange(FloatVariable amount)
+    {
+        Value += amount.Value;
     }
 
     public void OnAfterDeserialize()
     {
-        _value = InitialValue;
+        // OnAfterDeserialize is being called all the time
+        // cannot save Value from editor, as it's being overridden by InitialValue
+        // Value = InitialValue;
     }
 
     public void OnBeforeSerialize() { }

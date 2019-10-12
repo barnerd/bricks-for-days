@@ -5,7 +5,7 @@ using System.Collections;
 public class PowerUpMultiplyFloat : PowerUp
 {
     public float _value;
-    public FloatVariable _floatSetting;
+    public FloatReference _floatSetting;
 
     public override void UsePowerUpPayload()
     {

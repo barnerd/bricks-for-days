@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc5cd8802b254e75a8fe327f7a2e65d, type: 3}
   m_Name: gameScore
   m_EditorClassIdentifier: 
+  Description: How many points are gained in a game
   InitialValue: 0
-  IsConstant: 0
-  Description: How many points scored during a game.
+  Value: 0

@@ -2,9 +2,9 @@
 
 public class PowerUp : ScriptableObject
 {
-    public IntVariable score;
-    public IntVariable gameScore;
-    public IntVariable scoreMultiplier;
+    public IntReference score;
+    public IntReference gameScore;
+    public IntReference scoreMultiplier;
 
     public GameEvent _event;
 

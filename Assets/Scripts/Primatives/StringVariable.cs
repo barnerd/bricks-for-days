@@ -4,21 +4,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StringVariable", menuName = "Primatives/StringVariable")]
 public class StringVariable : ScriptableObject, ISerializationCallbackReceiver
 {
-    [SerializeField] private string InitialValue;
-    [SerializeField] private bool IsConstant = true;
-    [SerializeField] private string Description;
+#if UNITY_EDITOR
+    [Multiline]
+    public string Description = "";
+#endif
+    public string InitialValue;
+    public string Value;
 
-    private string _value;
-
-    public string Value
+    public void SetValue(string value)
     {
-        get { return IsConstant ? InitialValue : _value; }
-        set { _value = value; }
+        Value = value;
+    }
+
+    public void SetValue(StringVariable value)
+    {
+        Value = value.Value;
     }
 
     public void OnAfterDeserialize()
     {
-        _value = InitialValue;
+        // OnAfterDeserialize is being called all the time
+        // cannot save Value from editor, as it's being overridden by InitialValue
+        // Value = InitialValue;
     }
 
     public void OnBeforeSerialize() { }

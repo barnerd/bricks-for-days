@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc5cd8802b254e75a8fe327f7a2e65d, type: 3}
   m_Name: ballPower
   m_EditorClassIdentifier: 
+  Description: 'How strong the ball is and how many levels
+
+    of a brick it will break.'
   InitialValue: 1
-  IsConstant: 0
-  Description: How strong the ball is. Used to determine how to break bricks.
+  Value: 1

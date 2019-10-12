@@ -10,7 +10,7 @@ public class GameEventListener : MonoBehaviour
 {
     public GameEvent Event;
     public UnityEvent Response;
-    //public GameObjectEvent Response2;
+    public GameObjectEvent Response2;
 
     private void OnEnable()
     {

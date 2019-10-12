@@ -3,7 +3,7 @@
 public class PowerUpBehaviour : MonoBehaviour
 {
     public PowerUp powerUp;
-    public FloatVariable powerUpDropSpeed;
+    public FloatReference powerUpDropSpeed;
 
     private void Start()
     {
