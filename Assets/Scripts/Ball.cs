@@ -130,4 +130,10 @@ public class Ball : MonoBehaviour
             spriteRenderer.color = ballSpriteColor;
         }
     }
+
+    public void ClampBallSpeed()
+    {
+        // ensure that the ball speed multiplier doesn't get below 33%, or above 500%
+        ballSpeedMultiplier.Value = Mathf.Clamp(ballSpeedMultiplier.Value, .3333f, 5f);
+    }
 }

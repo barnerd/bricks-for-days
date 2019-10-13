@@ -3604,6 +3604,7 @@ GameObject:
   - component: {fileID: 283558400}
   - component: {fileID: 283558395}
   - component: {fileID: 283558402}
+  - component: {fileID: 283558403}
   m_Layer: 12
   m_Name: Ball
   m_TagString: ball
@@ -3943,6 +3944,33 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 283558398}
         m_MethodName: ResetBall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &283558403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283558392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: ff0cb68955bb04e05ae409b1d46ce36e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 283558398}
+        m_MethodName: ClampBallSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
