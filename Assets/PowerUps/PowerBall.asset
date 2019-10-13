@@ -24,7 +24,7 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
-  _event: {fileID: 11400000, guid: 8014e135b3a7b43048efcc024390737a, type: 2}
+  _event: {fileID: 11400000, guid: d99a2653730a14d7fbee407c1c546b01, type: 2}
   _value: 99
   _intSetting:
     UseConstant: 0

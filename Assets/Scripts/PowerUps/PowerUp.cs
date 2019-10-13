@@ -16,7 +16,7 @@ public class PowerUp : ScriptableObject
         // spawn a cool effect
         if (_event != null)
         {
-            _event.Raise();
+            _event.Raise(this);
         }
     }
 }

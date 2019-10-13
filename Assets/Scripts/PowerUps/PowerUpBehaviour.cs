@@ -7,7 +7,7 @@ public class PowerUpBehaviour : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, powerUpDropSpeed.Value));
+        GetComponent<Rigidbody2D>().AddForce(Vector2.down * powerUpDropSpeed.Value);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
