@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9078bb5f1a7dd402a9c4bfe727bf6999, type: 3}
   m_Name: powerUpDropSpeed
   m_EditorClassIdentifier: 
-  Value: -200
+  Description: How fast power ups drop.
+  InitialValue: 200
+  Value: 200

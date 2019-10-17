@@ -2,22 +2,30 @@
 
 public class Ball : MonoBehaviour
 {
+    [Header("Paddle")]
     public Transform paddle;
     public Transform ballPositionOnPaddle;
+
+    [Header("Ball Speed")]
     public float ballSpeed = 50f;
-    public FloatVariable ballSpeedMultiplier;
+    public float minBallSpeed = .3333f;
+    public float maxBallSpeed = 5f;
+    public FloatReference ballSpeedMultiplier;
+
+    [Space()]
     public bool ballHeld;
-    public BoolVariable ballAlwaysHeld;
-    public IntVariable ballPower;
+    public BoolReference ballAlwaysHeld;
+    public IntReference ballPower;
 
     [Header("Sprites")]
     public Sprite ballSprite;
     public Color ballSpriteColor;
+
     [Space()]
     public Sprite bananaSprite;
     public Color bananaSpriteColor;
 
-    public BoolVariable bananaBall;
+    public BoolReference bananaBall;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -129,5 +137,11 @@ public class Ball : MonoBehaviour
             spriteRenderer.sprite = ballSprite;
             spriteRenderer.color = ballSpriteColor;
         }
+    }
+
+    public void ClampBallSpeed()
+    {
+        // ensure that the ball speed multiplier doesn't get below min, or above max
+        ballSpeedMultiplier.Value = Mathf.Clamp(ballSpeedMultiplier.Value, minBallSpeed, maxBallSpeed);
     }
 }

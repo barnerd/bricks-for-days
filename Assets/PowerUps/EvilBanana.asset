@@ -9,11 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f59c321ee85423d9589e7f548b66e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a7f5f48d201f45e0bee8b205ec3b7ff, type: 3}
   m_Name: EvilBanana
   m_EditorClassIdentifier: 
-  score: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
-  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  scoreMultiplier: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
-  bananaBall: {fileID: 11400000, guid: 4f2fc9632bad643fc8a52febc36a09f7, type: 2}
-  OnBananaBall: {fileID: 11400000, guid: dde0aab6c7471416ea722e15e2f0087b, type: 2}
+  score:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
+  gameScore:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  scoreMultiplier:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
+  _event: {fileID: 11400000, guid: d99a2653730a14d7fbee407c1c546b01, type: 2}
+  _booleanSetting:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 4f2fc9632bad643fc8a52febc36a09f7, type: 2}

@@ -135,7 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: {fileID: 11400000, guid: ff9c459d8df124cb08ef08061cfed54a, type: 2}
-  powerUpDropSpeed: {fileID: 11400000, guid: 30b45b4b8a5dd4520b7064f3118708ae, type: 2}
+  powerUpDropSpeed:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 30b45b4b8a5dd4520b7064f3118708ae, type: 2}
 --- !u!114 &2097124803170625257
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,12 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b04df80b58ce48778e1b202478464a0, type: 3}
+  m_Script: {fileID: 11500000, guid: e76af905c16fe4833a5a63c79b563dae, type: 3}
   m_Name: HalfBallSpeed
   m_EditorClassIdentifier: 
-  score: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
-  gameScore: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  scoreMultiplier: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
-  multiplier: 0.75
-  ballSpeedMultiplier: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300,
-    type: 2}
+  score:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
+  gameScore:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  scoreMultiplier:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
+  _event: {fileID: 11400000, guid: ff0cb68955bb04e05ae409b1d46ce36e, type: 2}
+  _value: 0.75
+  _floatSetting:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300, type: 2}

@@ -7,9 +7,9 @@ using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
-    public IntVariable gameScore;
-    public IntVariable scoreMultiplier;
-    public IntVariable playerLives;
+    public IntReference gameScore;
+    public IntReference scoreMultiplier;
+    public IntReference playerLives;
     public float AITimeScale;
     public KeyCode pauseKey;
     public KeyCode optionsKey;
@@ -32,10 +32,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ResetGameValues();
-        ResetScoreMultiplier();
-        playerLives.Value = 5;
-
         Time.timeScale = AITimeScale;
 
         // Add function call to wantsToQuit event

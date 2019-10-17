@@ -134,8 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a85904063bb4a5881c3beabbcfbe3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 11400000, guid: d8450113ad475463eadafdeb6fa4b773, type: 2}
-  powerUpDropSpeed: {fileID: 11400000, guid: 30b45b4b8a5dd4520b7064f3118708ae, type: 2}
+  powerUp: {fileID: 11400000, guid: e4a7de0bc4bc542e49c4def11df8de6c, type: 2}
+  powerUpDropSpeed:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 30b45b4b8a5dd4520b7064f3118708ae, type: 2}
 --- !u!114 &2097124803170625257
 MonoBehaviour:
   m_ObjectHideFlags: 0

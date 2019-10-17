@@ -5,16 +5,16 @@ using UnityEngine;
 [Serializable]
 public class Highscores
 {
-	public string[] names;
-	public DateTime[] dates;
-	public int[] scores;
+    public string[] names;
+    public DateTime[] dates;
+    public int[] scores;
 
     public Highscores(int length = 10)
-	{
-		names = new string[length];
-		dates = new DateTime[length];
-		scores = new int[length];
-	}
+    {
+        names = new string[length];
+        dates = new DateTime[length];
+        scores = new int[length];
+    }
 
     public int AddHighscore(int _score)
     {
@@ -44,7 +44,7 @@ public class Highscores
     {
         Highscores hs = SaveSystem.LoadHighScores();
 
-        if(hs == null)
+        if (hs == null)
         {
             hs = new Highscores();
         }

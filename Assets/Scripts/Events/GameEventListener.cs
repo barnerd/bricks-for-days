@@ -6,10 +6,16 @@ using UnityEngine.Events;
  * video: https://www.youtube.com/watch?v=raQ3iHhE_Kk&feature=youtu.be
  */
 
+[System.Serializable]
+public class ScriptablebjectUnityEvent : UnityEvent<ScriptableObject> { }
+
 public class GameEventListener : MonoBehaviour
 {
+    [Tooltip("Event to register with.")]
     public GameEvent Event;
-    public UnityEvent Response;
+
+    [Tooltip("Response to invoke when Event is raised.")]
+    public ScriptablebjectUnityEvent Response;
 
     private void OnEnable()
     {
@@ -21,8 +27,8 @@ public class GameEventListener : MonoBehaviour
         Event.UnregisterListener(this);
     }
 
-    public void OnEventRaised()
+    public void OnEventRaised(ScriptableObject obj = null)
     {
-        Response.Invoke();
+        Response.Invoke(obj);
     }
 }

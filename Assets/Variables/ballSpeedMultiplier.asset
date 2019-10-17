@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9078bb5f1a7dd402a9c4bfe727bf6999, type: 3}
   m_Name: ballSpeedMultiplier
   m_EditorClassIdentifier: 
+  Description: How fast the ball goes. Used to speed up/slow down the ball from power
+    ups.
+  InitialValue: 1
   Value: 1

@@ -8,8 +8,8 @@ public class Brick : MonoBehaviour
     public int score = 1;
     public int scoreMultiplierPerLevel = 1;
     private int totalScore;
-    public IntVariable gameScore;
-    public IntVariable scoreMultiplier;
+    public IntReference gameScore;
+    public IntReference scoreMultiplier;
 
     public GameEvent onLevelComplete;
 
