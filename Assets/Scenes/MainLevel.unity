@@ -3754,6 +3754,8 @@ MonoBehaviour:
   paddle: {fileID: 976936084}
   ballPositionOnPaddle: {fileID: 1982510560}
   ballSpeed: 4
+  minBallSpeed: 0.3333
+  maxBallSpeed: 5
   ballSpeedMultiplier:
     UseConstant: 0
     ConstantValue: 0
@@ -20943,7 +20945,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 000d00b79533243d1b46a158d0c894cc, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
