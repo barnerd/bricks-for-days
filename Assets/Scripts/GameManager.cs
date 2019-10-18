@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     // TODO: move to UI Manager
     public void UpdateHighScoresUI()
     {
-        Transform bg = highscoresUI.transform.Find("Background");
+        Transform bg = highscoresUI.transform.Find("Background").Find("High Scores Table");
         Transform scoreEntry;
         for (int i = 0; i < 10; i++)
         {
