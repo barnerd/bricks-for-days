@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public IntReference playerLives;
     public float AITimeScale;
     public KeyCode pauseKey;
-    public KeyCode optionsKey;
 
     [Header("UI Components")]
     public GameObject pauseUI;
@@ -49,11 +48,6 @@ public class GameManager : MonoBehaviour
         {
             pauseUI.SetActive(!pauseUI.activeSelf);
             Time.timeScale = (pauseUI.activeSelf) ? 0f : 1f;
-        }
-        if (Input.GetKeyUp(optionsKey))
-        {
-            optionsUI.gameObject.SetActive(true);
-            Time.timeScale = 0f;
         }
     }
 
