@@ -45,11 +45,20 @@ public class GameEventEditor : Editor
 
         GUI.enabled = Application.isPlaying;
         GUILayout.BeginHorizontal();
-        _event.debugParameter = (ScriptableObject)EditorGUILayout.ObjectField("Debug Parameter", _event.debugParameter, typeof(ScriptableObject), true);
+        _event.debugSOParameter = (ScriptableObject)EditorGUILayout.ObjectField("Debug Parameter", _event.debugSOParameter, typeof(ScriptableObject), true);
 
         if (GUILayout.Button("Raise", GUILayout.Width(40)))
         {
-            _event.Raise(_event.debugParameter);
+            _event.Raise(_event.debugSOParameter);
+        }
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        _event.debugMBParameter = (MonoBehaviour)EditorGUILayout.ObjectField("Debug Parameter", _event.debugMBParameter, typeof(MonoBehaviour), true);
+
+        if (GUILayout.Button("Raise", GUILayout.Width(40)))
+        {
+            _event.Raise(_event.debugMBParameter);
         }
         GUILayout.EndHorizontal();
         GUI.enabled = true;

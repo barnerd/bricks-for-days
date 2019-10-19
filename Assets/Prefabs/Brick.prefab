@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 8014e135b3a7b43048efcc024390737a, type: 2}
-  Response:
+  SOResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2623304617873138259}
@@ -173,6 +173,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  MBResponse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3909609784591825847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
-  Response:
+  SOResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2623304617873138259}
@@ -200,3 +203,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  MBResponse:
+    m_PersistentCalls:
+      m_Calls: []

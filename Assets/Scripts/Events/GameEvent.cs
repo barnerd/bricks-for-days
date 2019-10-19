@@ -24,7 +24,8 @@ public class GameEvent : ScriptableObject
     public string Description = "";
 
     // used in the editor to raise test events
-    public ScriptableObject debugParameter;
+    public ScriptableObject debugSOParameter;
+    public MonoBehaviour debugMBParameter;
 #endif
 
     /// <summary>
@@ -50,6 +51,14 @@ public class GameEvent : ScriptableObject
     }
 
     public void Raise(ScriptableObject obj = null)
+    {
+        for (int i = listeners.Count - 1; i >= 0; i--)
+        {
+            listeners[i].OnEventRaised(obj);
+        }
+    }
+
+    public void Raise(MonoBehaviour obj)
     {
         for (int i = listeners.Count - 1; i >= 0; i--)
         {

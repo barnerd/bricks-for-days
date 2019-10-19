@@ -12,15 +12,13 @@ public class GameManager : MonoBehaviour
     public IntReference playerLives;
     public float AITimeScale;
     public KeyCode pauseKey;
+    public GameEvent OnLevelStart;
 
     [Header("UI Components")]
     public GameObject pauseUI;
     public GameObject levelCompleteUI;
     public GameObject gameOverUI;
     public GameObject highscoresUI;
-    public GameObject optionsUI;
-    public GameObject powerupInfoUI;
-    public GameObject creditsUI;
 
     private Highscores hs;
     private int newHighscoreRank;
@@ -46,8 +44,8 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyUp(pauseKey))
         {
-            pauseUI.SetActive(!pauseUI.activeSelf);
-            Time.timeScale = (pauseUI.activeSelf) ? 0f : 1f;
+            pauseUI.GetComponent<ScreenController>().SetWindowState(!Mathf.Approximately(Time.timeScale, 0f));
+            Time.timeScale = (!Mathf.Approximately(Time.timeScale, 0f)) ? 0f : 1f;
         }
     }
 
@@ -55,18 +53,25 @@ public class GameManager : MonoBehaviour
     {
         ResetGameValues();
         ResetScoreMultiplier();
-        Time.timeScale = 1f;
+        ResumePlay();
+        OnLevelStart.Raise();
     }
 
     // TODO: move to UI Manager?
     public void LevelWon()
     {
-        levelCompleteUI.gameObject.SetActive(true);
+        Debug.Log("Level Won");
+        // Create new animation for notifications (fade in, fade out)
+        levelCompleteUI.GetComponent<ScreenController>().SetWindowState(true);
+        // when window animation is complete, call close window
+        //levelCompleteUI.GetComponent<ScreenController>().SetWindowState(false);
+        // when window animation is complete, call raise event
+        OnLevelStart.Raise();
     }
 
     public void EndGame()
     {
-        Time.timeScale = 0f;
+        PausePlay();
 
         newHighscoreRank = hs.AddHighscore(gameScore.Value);
 
@@ -74,10 +79,10 @@ public class GameManager : MonoBehaviour
         {
             // There's a new highscore
             UpdateHighScoresUI();
-            highscoresUI.gameObject.SetActive(true);
+            highscoresUI.GetComponent<ScreenController>().SetWindowState(true);
         }
         // show end game UI
-        gameOverUI.gameObject.SetActive(true);
+        gameOverUI.GetComponent<ScreenController>().SetWindowState(true);
     }
 
     // TODO: move to UI Manager
@@ -102,6 +107,11 @@ public class GameManager : MonoBehaviour
     public void ResetScoreMultiplier()
     {
         scoreMultiplier.Value = 1;
+    }
+
+    public void PausePlay()
+    {
+        Time.timeScale = 0f;
     }
 
     public void ResumePlay()

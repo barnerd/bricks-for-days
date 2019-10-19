@@ -9,13 +9,19 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ScriptablebjectUnityEvent : UnityEvent<ScriptableObject> { }
 
+[System.Serializable]
+public class MonoBehaviourUnityEvent : UnityEvent<MonoBehaviour> { }
+
 public class GameEventListener : MonoBehaviour
 {
     [Tooltip("Event to register with.")]
     public GameEvent Event;
 
     [Tooltip("Response to invoke when Event is raised.")]
-    public ScriptablebjectUnityEvent Response;
+    public ScriptablebjectUnityEvent SOResponse;
+
+    [Tooltip("Response to invoke when Event is raised.")]
+    public MonoBehaviourUnityEvent MBResponse;
 
     private void OnEnable()
     {
@@ -29,6 +35,11 @@ public class GameEventListener : MonoBehaviour
 
     public void OnEventRaised(ScriptableObject obj = null)
     {
-        Response.Invoke(obj);
+        SOResponse.Invoke(obj);
+    }
+
+    public void OnEventRaised(MonoBehaviour obj = null)
+    {
+        MBResponse.Invoke(obj);
     }
 }
