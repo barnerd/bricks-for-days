@@ -30,9 +30,10 @@ public class ScreenController : MonoBehaviour
         Debug.Log("open");
         if (onWindowOpen != null)
         {
-            onWindowOpen.Raise();
+            onWindowOpen.Raise(this);
         }
     }
+
     public void OnUIWindowClose()
     {
         Debug.Log("close");

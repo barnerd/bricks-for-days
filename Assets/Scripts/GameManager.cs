@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     [Header("Audio Components")]
     public AudioMixer soundMixer;
 
+    [Header("Game States")]
+    public bool gameOver;
+
     private void Start()
     {
         Time.timeScale = AITimeScale;
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
         ResetGameValues();
         ResetScoreMultiplier();
         ResumePlay();
+        gameOver = false;
         OnLevelStart.Raise();
     }
 
@@ -71,6 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        gameOver = true;
         PausePlay();
 
         newHighscoreRank = hs.AddHighscore(gameScore.Value);
@@ -81,8 +86,20 @@ public class GameManager : MonoBehaviour
             UpdateHighScoresUI();
             highscoresUI.GetComponent<ScreenController>().SetWindowState(true);
         }
-        // show end game UI
-        gameOverUI.GetComponent<ScreenController>().SetWindowState(true);
+        else
+        {
+            // show end game UI
+            gameOverUI.GetComponent<ScreenController>().SetWindowState(true);
+        }
+    }
+
+    public void OnUIWindowClose(MonoBehaviour obj)
+    {
+        if (gameOver && obj.gameObject == highscoresUI)
+        {
+            // show end game UI
+            gameOverUI.GetComponent<ScreenController>().SetWindowState(true);
+        }
     }
 
     // TODO: move to UI Manager

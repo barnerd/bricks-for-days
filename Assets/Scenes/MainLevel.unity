@@ -2211,7 +2211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onWindowOpen: {fileID: 0}
-  onWindowClose: {fileID: 0}
+  onWindowClose: {fileID: 11400000, guid: 9d0f7758c8d594e7aad2f7675527a573, type: 2}
 --- !u!1001 &195858434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25945,6 +25945,7 @@ GameObject:
   - component: {fileID: 1947342645}
   - component: {fileID: 1947342646}
   - component: {fileID: 1947342647}
+  - component: {fileID: 1947342648}
   m_Layer: 0
   m_Name: _GM
   m_TagString: Untagged
@@ -26033,6 +26034,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 376990388}
   highscoresUI: {fileID: 193705211}
   soundMixer: {fileID: 24100000, guid: d8ee4d1982f534ff79957f560357ab04, type: 2}
+  gameOver: 0
 --- !u!114 &1947342645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26123,6 +26125,36 @@ MonoBehaviour:
   MBResponse:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1947342648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947342641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 9d0f7758c8d594e7aad2f7675527a573, type: 2}
+  SOResponse:
+    m_PersistentCalls:
+      m_Calls: []
+  MBResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1947342644}
+        m_MethodName: OnUIWindowClose
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1949602657
 GameObject:
   m_ObjectHideFlags: 0
