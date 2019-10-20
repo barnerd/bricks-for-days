@@ -19,6 +19,11 @@ public class Brick : MonoBehaviour
     [Header("PowerUps")]
     public GameObject powerUp;
 
+    void Start()
+    {
+        GetComponent<Material>().SetFloat("_RandomOffset", Random.Range(0f, 5f));
+    }
+
     public void SetLevel(int _level)
     {
         level = (_level >= 1 && _level <= 7) ? _level : 1;
