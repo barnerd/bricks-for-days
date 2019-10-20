@@ -32,7 +32,6 @@ public class ScreenController : MonoBehaviour
 
     public void OnUIWindowOpen()
     {
-        Debug.Log("open");
         if (onWindowOpen != null)
         {
             onWindowOpen.Raise(this);
@@ -41,7 +40,6 @@ public class ScreenController : MonoBehaviour
 
     public void OnUIWindowClose()
     {
-        Debug.Log("close");
         if (onWindowClose != null)
         {
             onWindowClose.Raise(this);

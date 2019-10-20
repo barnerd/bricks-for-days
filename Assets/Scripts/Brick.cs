@@ -21,7 +21,7 @@ public class Brick : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Material>().SetFloat("_RandomOffset", Random.Range(0f, 5f));
+        GetComponent<SpriteRenderer>().material.SetFloat("_RandomOffset", Random.Range(0f, 5f));
     }
 
     public void SetLevel(int _level)

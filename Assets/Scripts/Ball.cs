@@ -30,6 +30,9 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private AudioSource bounceSound;
+    private TrailRenderer trail;
+    public Gradient normalTrail;
+    public Gradient powerballTrail;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,8 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         bounceSound = GetComponent<AudioSource>();
+        trail = GetComponent<TrailRenderer>();
+
         ResetBall();
     }
 
@@ -99,6 +104,7 @@ public class Ball : MonoBehaviour
         // Reset Power Ups
         ballSpeedMultiplier.Value = 1f;
         ballPower.Value = 1;
+        trail.colorGradient = normalTrail;
         ballAlwaysHeld.Value = false;
 
         bananaBall.Value = false;
@@ -143,5 +149,10 @@ public class Ball : MonoBehaviour
     {
         // ensure that the ball speed multiplier doesn't get below min, or above max
         ballSpeedMultiplier.Value = Mathf.Clamp(ballSpeedMultiplier.Value, minBallSpeed, maxBallSpeed);
+    }
+
+    public void SetPowerBallTrail()
+    {
+        trail.colorGradient = powerballTrail;
     }
 }

@@ -50,7 +50,10 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyUp(pauseKey))
         {
-            pauseUI.GetComponent<ScreenController>().SetWindowState(!Mathf.Approximately(Time.timeScale, 0f));
+            if(pauseUI != null)
+            {
+                pauseUI.GetComponent<ScreenController>().SetWindowState(!Mathf.Approximately(Time.timeScale, 0f));
+            }
 
             Time.timeScale = (!Mathf.Approximately(Time.timeScale, 0f)) ? 0f : 1f;
         }
@@ -68,8 +71,10 @@ public class GameManager : MonoBehaviour
     // TODO: move to UI Manager?
     public void LevelWon()
     {
-        Debug.Log("Level Won");
-        levelCompleteUI.GetComponent<ScreenController>().StartNotificationFade();
+        if(levelCompleteUI != null)
+        {
+            levelCompleteUI.GetComponent<ScreenController>().StartNotificationFade();
+        }
         OnLevelStart.Raise();
     }
 
