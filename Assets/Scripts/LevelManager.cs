@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
     public int NumBrickLevels = 7;
     public IntReference gameScore;
-    public GameEvent OnLevelComplete;
+    public GameEvent OnLevelStart;
 
     public WeightedObjects powerUpLootTable;
 
@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyUp(loadLevel))
         {
-            OnLevelComplete.Raise();
+            OnLevelStart.Raise();
         }
     }
 

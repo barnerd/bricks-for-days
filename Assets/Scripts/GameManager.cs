@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.Audio;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +29,9 @@ public class GameManager : MonoBehaviour
     public AudioMixer soundMixer;
 
     [Header("Game States")]
-    public bool gameOver;
+    public BoolReference gameOver;
+
+    public GameEvent onGameStart;
 
     private void Start()
     {
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(pauseKey))
         {
             pauseUI.GetComponent<ScreenController>().SetWindowState(!Mathf.Approximately(Time.timeScale, 0f));
+
             Time.timeScale = (!Mathf.Approximately(Time.timeScale, 0f)) ? 0f : 1f;
         }
     }
@@ -57,7 +61,7 @@ public class GameManager : MonoBehaviour
         ResetGameValues();
         ResetScoreMultiplier();
         ResumePlay();
-        gameOver = false;
+        gameOver.Value = false;
         OnLevelStart.Raise();
     }
 
@@ -65,18 +69,13 @@ public class GameManager : MonoBehaviour
     public void LevelWon()
     {
         Debug.Log("Level Won");
-        // Create new animation for notifications (fade in, fade out)
-        levelCompleteUI.GetComponent<ScreenController>().SetWindowState(true);
-        // when window animation is complete, call close window
-        //levelCompleteUI.GetComponent<ScreenController>().SetWindowState(false);
-        // when window animation is complete, call raise event
+        levelCompleteUI.GetComponent<ScreenController>().StartNotificationFade();
         OnLevelStart.Raise();
     }
 
     public void EndGame()
     {
-        gameOver = true;
-        PausePlay();
+        gameOver.Value = true;
 
         newHighscoreRank = hs.AddHighscore(gameScore.Value);
 
@@ -88,18 +87,23 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // show end game UI
-            gameOverUI.GetComponent<ScreenController>().SetWindowState(true);
+            StartCoroutine(StartNewGame());
         }
     }
 
     public void OnUIWindowClose(MonoBehaviour obj)
     {
-        if (gameOver && obj.gameObject == highscoresUI)
+        if (gameOver.Value && obj.gameObject == highscoresUI)
         {
-            // show end game UI
-            gameOverUI.GetComponent<ScreenController>().SetWindowState(true);
+            StartCoroutine(StartNewGame());
         }
+    }
+
+    public IEnumerator StartNewGame()
+    {
+        gameOverUI.GetComponent<ScreenController>().StartNotificationFade();
+        yield return new WaitForSeconds(3f);
+        onGameStart.Raise();
     }
 
     // TODO: move to UI Manager

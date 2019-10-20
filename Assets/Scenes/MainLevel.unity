@@ -3265,7 +3265,7 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  OnLevelComplete: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
+  OnLevelStart: {fileID: 11400000, guid: 99284b9b8befe4d759b90276ab144bfc, type: 2}
   powerUpLootTable: {fileID: 11400000, guid: 990328ceb665b442ba97a833a60802ca, type: 2}
 --- !u!114 &274422788
 MonoBehaviour:
@@ -10644,6 +10644,8 @@ GameObject:
   - component: {fileID: 873838747}
   - component: {fileID: 873838748}
   - component: {fileID: 873838749}
+  - component: {fileID: 873838751}
+  - component: {fileID: 873838750}
   m_Layer: 5
   m_Name: Lives
   m_TagString: Untagged
@@ -10770,6 +10772,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: 85028f6056d054f7e9c3622e043b1aa6, type: 2}
+  SOResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873838747}
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  MBResponse:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &873838750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873838743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c060e7748dfd74697b081069e47c6cd9, type: 2}
+  SOResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873838747}
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  MBResponse:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &873838751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873838743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: b88094dd419bb44c4a431f460f1c11bd, type: 2}
   SOResponse:
     m_PersistentCalls:
       m_Calls:
@@ -13274,6 +13336,10 @@ MonoBehaviour:
   playerInputs: {fileID: 11400000, guid: cc9eece929759478691b3ca6ab9e8b30, type: 2}
   aiInputs: {fileID: 11400000, guid: 8ccdd9f0d72344de0b95e9d9ebf50a01, type: 2}
   setAI: 105
+  gameOver:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: e139a980829a244a2bc41f234efda62e, type: 2}
 --- !u!1 &982003334
 GameObject:
   m_ObjectHideFlags: 0
@@ -26034,7 +26100,11 @@ MonoBehaviour:
   gameOverUI: {fileID: 376990388}
   highscoresUI: {fileID: 193705211}
   soundMixer: {fileID: 24100000, guid: d8ee4d1982f534ff79957f560357ab04, type: 2}
-  gameOver: 0
+  gameOver:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: e139a980829a244a2bc41f234efda62e, type: 2}
+  onGameStart: {fileID: 11400000, guid: c060e7748dfd74697b081069e47c6cd9, type: 2}
 --- !u!114 &1947342645
 MonoBehaviour:
   m_ObjectHideFlags: 0

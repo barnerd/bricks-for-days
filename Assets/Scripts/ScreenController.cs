@@ -25,6 +25,11 @@ public class ScreenController : MonoBehaviour
         m_animator.SetBool("Open", windowState);
     }
 
+    public void StartNotificationFade()
+    {
+        m_animator.SetTrigger("Fade");
+    }
+
     public void OnUIWindowOpen()
     {
         Debug.Log("open");

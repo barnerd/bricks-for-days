@@ -12,11 +12,14 @@ public class BottomWallTrigger : MonoBehaviour
         {
             // check for number of balls remaining
             playerLives.Value -= 1;
-            OnBallExit.Raise();
 
             if(playerLives.Value <= 0)
             {
                 OnGameOver.Raise();
+            }
+            else
+            {
+                OnBallExit.Raise();
             }
         }
         if (hitInfo.CompareTag("powerUp"))

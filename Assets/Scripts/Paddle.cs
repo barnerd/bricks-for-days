@@ -15,6 +15,8 @@ public class Paddle : MonoBehaviour
 
     public KeyCode setAI; // define as i
 
+    public BoolReference gameOver;
+
     private void Start()
     {
         paddle = GetComponent<Rigidbody2D>();
@@ -36,7 +38,10 @@ public class Paddle : MonoBehaviour
     // FixedUpdate is used with physics
     void FixedUpdate()
     {
-        currentController.ProcessInput(gameObject);
+        if (!gameOver.Value)
+        {
+            currentController.ProcessInput(gameObject);
+        }
 
         // need to clamp velocity to 0 to max speed
         paddle.velocity = new Vector2(Mathf.Clamp(paddle.velocity.x, -paddleSpeed, paddleSpeed), 0);
