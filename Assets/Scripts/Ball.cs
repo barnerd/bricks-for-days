@@ -2,6 +2,9 @@
 
 public class Ball : MonoBehaviour
 {
+    public GameObject ballPrefab;
+    public IntReference numBalls;
+
     [Header("Paddle")]
     public Transform paddle;
     public Transform ballPositionOnPaddle;
@@ -11,6 +14,10 @@ public class Ball : MonoBehaviour
     public float minBallSpeed = .3333f;
     public float maxBallSpeed = 5f;
     public FloatReference ballSpeedMultiplier;
+
+    [Header("Ball Size")]
+    public float normalBallSize = .18f;
+    public FloatReference ballSizeScaler;
 
     [Space()]
     public bool ballHeld;
@@ -41,8 +48,6 @@ public class Ball : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         bounceSound = GetComponent<AudioSource>();
         trail = GetComponent<TrailRenderer>();
-
-        ResetBall();
     }
 
     // Update is called once per frame
@@ -103,6 +108,7 @@ public class Ball : MonoBehaviour
     {
         // Reset Power Ups
         ballSpeedMultiplier.Value = 1f;
+        transform.localScale = Vector3.one * normalBallSize;
         ballPower.Value = 1;
         trail.colorGradient = normalTrail;
         ballAlwaysHeld.Value = false;
@@ -142,6 +148,26 @@ public class Ball : MonoBehaviour
         {
             spriteRenderer.sprite = ballSprite;
             spriteRenderer.color = ballSpriteColor;
+        }
+    }
+
+    public void setBallSize()
+    {
+        transform.localScale = Vector3.one * ballSizeScaler.Value;
+    }
+
+    public void splitBall(IntVariable numNewBalls)
+    {
+        if(numBalls.Value < 5)
+        {
+            for (int i = 0; i < numNewBalls.Value - 1; i++)
+            {
+                numBalls.Value++;
+                Ball b = Instantiate(ballPrefab, transform.position, Quaternion.identity).GetComponent<Ball>();
+
+                b.GetComponent<Rigidbody2D>().velocity = Quaternion.AngleAxis(33f, Vector3.up) * GetComponent<Rigidbody2D>().velocity;
+                GetComponent<Rigidbody2D>().velocity = Quaternion.AngleAxis(-33f, Vector3.up) * GetComponent<Rigidbody2D>().velocity;
+            }
         }
     }
 

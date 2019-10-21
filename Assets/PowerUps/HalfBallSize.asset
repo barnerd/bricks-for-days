@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719894f9c68734e75bdcabd74255e2d6, type: 3}
+  m_Name: HalfBallSize
+  m_EditorClassIdentifier: 
+  score:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 5d872c6a954e44def8b5ed9a1f1ec55d, type: 2}
+  gameScore:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
+  scoreMultiplier:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 39c0f42c1c4bf49e68bc5aa28dfb24ce, type: 2}
+  _event: {fileID: 11400000, guid: 0605340c1a370454390fa5c2fdafb454, type: 2}
+  _value: 0.12
+  _floatSetting:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 0cb12287dc91d45e1ab7fff91aa4d436, type: 2}
