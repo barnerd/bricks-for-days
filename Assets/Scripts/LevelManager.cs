@@ -24,11 +24,8 @@ public class LevelManager : MonoBehaviour
 
     [Space]
 
-    public KeyCode loadLevel; // define as l
-
     public int NumBrickLevels = 7;
     public IntReference gameScore;
-    public GameEvent OnLevelStart;
 
     public WeightedObjects powerUpLootTable;
 
@@ -50,10 +47,6 @@ public class LevelManager : MonoBehaviour
     // Called once a frame.
     void Update()
     {
-        if (Input.GetKeyUp(loadLevel))
-        {
-            OnLevelStart.Raise();
-        }
     }
 
     public void LoadLevel()
