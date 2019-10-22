@@ -30,10 +30,6 @@ public class AIController : InputController
         Vector3 closestBall = new Vector3();
         float minDistance = 99999f;
 
-
-        // TODO: replace heldBall & ballHeld logic
-
-
         for (int i = 0; i < paddle.balls.Count; i++)
         {
             // cache components
