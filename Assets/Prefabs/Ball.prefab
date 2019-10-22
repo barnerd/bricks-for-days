@@ -15,13 +15,12 @@ GameObject:
   - component: {fileID: 8635739606971440181}
   - component: {fileID: 8635739606971441103}
   - component: {fileID: 8635739606971440176}
-  - component: {fileID: 8635739606971441102}
   - component: {fileID: 8635739606971441098}
-  - component: {fileID: 8635739606971440179}
   - component: {fileID: 8635739606971440178}
   - component: {fileID: 8635739606971440177}
   - component: {fileID: -6153106912286995774}
-  - component: {fileID: 6881487106867325412}
+  - component: {fileID: 6802112130611722381}
+  - component: {fileID: 2609700759481855134}
   m_Layer: 12
   m_Name: Ball
   m_TagString: ball
@@ -246,13 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4e4ab776b7b40cc99ee96eb051962c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 8635739606971441097}
-  numBalls:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 73538df338246463495912b073cedf8f, type: 2}
-  paddle: {fileID: 0}
-  ballPositionOnPaddle: {fileID: 0}
   ballSpeed: 4
   minBallSpeed: 0.3333
   maxBallSpeed: 5
@@ -266,10 +258,6 @@ MonoBehaviour:
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 0cb12287dc91d45e1ab7fff91aa4d436, type: 2}
   ballHeld: 1
-  ballAlwaysHeld:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 6213dab8516f74dea8a9a877337b0d47, type: 2}
   ballPower:
     UseConstant: 0
     ConstantValue: 0
@@ -437,36 +425,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8635739606971441102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8635739606971441097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
-  SOResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8635739606971441103}
-        m_MethodName: ResetBall
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  MBResponse:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8635739606971441098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,36 +443,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8635739606971441103}
         m_MethodName: SetSprite
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  MBResponse:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &8635739606971440179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8635739606971441097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 99284b9b8befe4d759b90276ab144bfc, type: 2}
-  SOResponse:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8635739606971441103}
-        m_MethodName: ResetBall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -574,7 +502,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8635739606971441103}
-        m_MethodName: SetPowerBallTrail
+        m_MethodName: SetBallTrail
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -604,7 +532,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8635739606971441103}
-        m_MethodName: setBallSize
+        m_MethodName: SetBallSize
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -617,7 +545,7 @@ MonoBehaviour:
   MBResponse:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6881487106867325412
+--- !u!114 &6802112130611722381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -629,17 +557,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 585957b69e6ea49f1bdc4c4cad80e2de, type: 2}
+  Event: {fileID: 11400000, guid: 99284b9b8befe4d759b90276ab144bfc, type: 2}
   SOResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8635739606971441103}
-        m_MethodName: splitBall
-        m_Mode: 2
+        m_MethodName: ResetPowerUps
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 05240f97fd6144fa1857e86045c7444b,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: IntVariable, Main
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  MBResponse:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2609700759481855134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635739606971441097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8da830b5137894fda8427016a9a4c2ef, type: 2}
+  SOResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8635739606971441103}
+        m_MethodName: ResetPowerUps
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -28,5 +28,5 @@ MonoBehaviour:
   _value: 2
   _intSetting:
     UseConstant: 0
-    ConstantValue: 0
+    ConstantValue: 2
     Variable: {fileID: 11400000, guid: 05240f97fd6144fa1857e86045c7444b, type: 2}

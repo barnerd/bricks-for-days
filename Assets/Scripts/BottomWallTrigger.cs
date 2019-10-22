@@ -2,7 +2,7 @@
 
 public class BottomWallTrigger : MonoBehaviour
 {
-    public IntReference numBalls;
+    public Paddle paddle;
     public IntReference playerLives;
     public GameEvent OnBallExit;
     public GameEvent OnGameOver;
@@ -11,12 +11,10 @@ public class BottomWallTrigger : MonoBehaviour
     {
         if (hitInfo.CompareTag("ball"))
         {
-            if (numBalls.Value > 1)
-            {
-                numBalls.Value--;
-                Destroy(hitInfo.gameObject);
-            }
-            else
+            paddle.balls.Remove(hitInfo.gameObject);
+            Destroy(hitInfo.gameObject);
+
+            if (paddle.balls.Count <= 1) // <= 1 because the Destroy hasn't happened yet
             {
                 playerLives.Value -= 1;
 

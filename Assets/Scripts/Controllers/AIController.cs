@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "InputController", menuName = "Input Controller/AI Controller")]
@@ -13,151 +15,133 @@ public class AIController : InputController
     private Vector3 paddleCenter;
     private float paddleWidth;
 
-    private Ball ball;
-    private Collider2D ballCollider;
-    private Rigidbody2D ballRigidBody;
-    private Vector3 ballCenter;
-
     public override void Initialize(GameObject obj)
     {
         paddle = obj.GetComponent<Paddle>();
         paddleCollider = obj.GetComponent<Collider2D>();
-
-        ball = paddle.ball.GetComponent<Ball>();
-        ballCollider = paddle.ball.GetComponent<Collider2D>();
-        ballRigidBody = paddle.ball.GetComponent<Rigidbody2D>();
     }
 
     public override void ProcessInput(GameObject obj)
     {
         paddleCenter = paddleCollider.bounds.center;
         paddleWidth = paddleCollider.bounds.extents.x;
-        ballCenter = ballCollider.bounds.center;
+        float paddleHeight = paddleCenter.y;
+
+        Vector3 closestBall = new Vector3();
+        float minDistance = 99999f;
+
+
+        // TODO: replace heldBall & ballHeld logic
+
+
+        for (int i = 0; i < paddle.balls.Count; i++)
+        {
+            // cache components
+            Ball b = paddle.balls[i].GetComponent<Ball>();
+            float ballYVelocity = paddle.balls[i].GetComponent<Rigidbody2D>().velocity.y;
+
+            // find closest ball
+            float newDistance = Vector3.Distance(paddleCenter, paddle.balls[i].GetComponent<Collider2D>().bounds.center);
+            float ballHeight = paddle.balls[i].GetComponent<Collider2D>().bounds.center.y;
+
+            if (newDistance < minDistance && ballHeight > paddleHeight && !b.ballHeld && ballYVelocity < 0)
+            {
+                closestBall = paddle.balls[i].GetComponent<Collider2D>().bounds.center;
+                minDistance = newDistance;
+            }
+        }
 
         Vector3 closestPowerUp = GetClosestPowerUp();
         Vector3 bestBrick = GetBestBrick();
 
         /******* Logic *******
          *
-         * If the ball is held, collect power ups
-         * position under the highest level brick
-         * release ball
+         * If all the balls are held, collect power ups
          *
-         * else
+         * if a ball or power up is under the threshold
          * chase after power ups until the ball is closer
          * then go after the ball
          *
+         * else
+         * position under the highest level brick
+         * release a ball
+         * 
          */
 
-
-        if (ball.ballHeld)
+        if (paddle.ballHeld && paddle.balls.Count == 1 && closestPowerUp != new Vector3(0, 0, 0))
         {
-            if (closestPowerUp != new Vector3(0, 0, 0))
+            //Debug.Log("Chasing Power Up because I'm holding all the balls");
+            // move paddle Left
+            if (paddleCenter.x > closestPowerUp.x)
             {
-                //Debug.Log("Chasing Power Up because I'm holding the ball");
-                // move paddle Left
-                if (paddleCenter.x > closestPowerUp.x)
-                {
-                    paddle.MoveLeft();
-                }
-                // move paddle Right
-                else if (paddleCenter.x < closestPowerUp.x)
-                {
-                    paddle.MoveRight();
-                }
+                paddle.MoveLeft();
             }
-            else if (Mathf.Abs(bestBrick.x - paddleCenter.x) > thresholdToPaddle + paddleWidth / 2)
+            // move paddle Right
+            else if (paddleCenter.x < closestPowerUp.x)
             {
-                //Debug.Log("Positioning under a good brick because I have the ball");
-                // move paddle Left
-                if (paddleCenter.x > bestBrick.x)
-                {
-                    paddle.MoveLeft();
-                }
-                // move paddle Right
-                else if (paddleCenter.x < bestBrick.x)
-                {
-                    paddle.MoveRight();
-                }
-            }
-            else
-            {
-                //Debug.Log("I can't hold onto the ball forever");
-                ball.StartCoroutine(ReleaseBallCoroutine(ball));
+                paddle.MoveRight();
             }
         }
-        else
+        else if (closestBall != new Vector3(0, 0, 0) && closestBall.y < heightToFocusOnBall)
         {
-            /*
-             * if there's no powerup, go after the ball
-             * if the ball is closer go after the ball
-             * else go after the powerup, if there's one
-             * 
-             * */
-            if (closestPowerUp == new Vector3(0, 0, 0))
+            //Debug.Log("Let's get that ball");
+            // check ball to move left or right
+            if (Mathf.Abs(closestBall.x - paddleCenter.x) > thresholdToPaddle)
             {
-                //Debug.Log("Let's get that ball");
-                // check ball to move left or right
-                if (Mathf.Abs(ballCenter.x - paddleCenter.x) > thresholdToPaddle)
+                // move paddle Left
+                if (paddleCenter.x > closestBall.x)
                 {
-                    // move paddle Left
-                    if (paddleCenter.x > ballCenter.x)
-                    {
-                        paddle.MoveLeft();
-                    }
-                    // move paddle Right
-                    else if (paddleCenter.x < ballCenter.x)
-                    {
-                        paddle.MoveRight();
-                    }
+                    paddle.MoveLeft();
+                }
+                // move paddle Right
+                else if (paddleCenter.x < closestBall.x)
+                {
+                    paddle.MoveRight();
                 }
             }
-            else
+        }
+        else if (closestPowerUp != new Vector3(0, 0, 0) && Mathf.Abs(closestPowerUp.x - paddleCenter.x) > thresholdToPaddle)
+        {
+            //Debug.Log("Let's get that powerup");
+
+            // move paddle Left
+            if (paddleCenter.x > closestPowerUp.x)
             {
-                if (Vector3.Distance(paddleCenter, ballCenter) < Vector3.Distance(paddleCenter, closestPowerUp) || (ballRigidBody.velocity.y < 0 && ballCenter.y < heightToFocusOnBall))
-                {
-                    //Debug.Log("Let's get that ball");
-                    // check ball to move left or right
-                    if (Mathf.Abs(ballCenter.x - paddleCenter.x) > thresholdToPaddle)
-                    {
-                        // move paddle Left
-                        if (paddleCenter.x > ballCenter.x)
-                        {
-                            paddle.MoveLeft();
-                        }
-                        // move paddle Right
-                        else if (paddleCenter.x < ballCenter.x)
-                        {
-                            paddle.MoveRight();
-                        }
-                    }
-                }
-                else
-                {
-                    //Debug.Log("Let's get that powerup");
-                    // check ball to move left or right
-                    if (Mathf.Abs(closestPowerUp.x - paddleCenter.x) > thresholdToPaddle)
-                    {
-                        // move paddle Left
-                        if (paddleCenter.x > closestPowerUp.x)
-                        {
-                            paddle.MoveLeft();
-                        }
-                        // move paddle Right
-                        else if (paddleCenter.x < closestPowerUp.x)
-                        {
-                            paddle.MoveRight();
-                        }
-                    }
-                }
+                paddle.MoveLeft();
             }
+            // move paddle Right
+            else if (paddleCenter.x < closestPowerUp.x)
+            {
+                paddle.MoveRight();
+            }
+        }
+        else if (paddle.ballHeld && Mathf.Abs(bestBrick.x - paddleCenter.x) > thresholdToPaddle + paddleWidth / 2)
+        {
+            //Debug.Log("Positioning under a good brick because I have the ball");
+            // move paddle Left
+            if (paddleCenter.x > bestBrick.x)
+            {
+                paddle.MoveLeft();
+            }
+            // move paddle Right
+            else if (paddleCenter.x < bestBrick.x)
+            {
+                paddle.MoveRight();
+            }
+        }
+        else if (paddle.heldBall != null && paddle.ballHeld)
+        {
+            //Debug.Log("I can't hold onto the ball forever");
+            paddle.StartCoroutine(ReleaseBallCoroutine(paddle.heldBall));
         }
     }
 
-    IEnumerator ReleaseBallCoroutine(Ball b)
+    private IEnumerator ReleaseBallCoroutine(Ball b)
     {
         yield return new WaitForSeconds(waitTimeToReleaseBall);
         b.ReleaseBall();
+        paddle.ballHeld = false;
+        paddle.heldBall = null;
     }
 
     private Vector3 GetClosestPowerUp()
@@ -200,7 +184,7 @@ public class AIController : InputController
             newDistance = Vector3.Distance(paddleCenter, brick.GetComponent<Collider2D>().bounds.center);
             newLevel = brick.GetComponent<Brick>().level;
 
-            if(newLevel > maxLevel || (newDistance < minDistance && newLevel == maxLevel))
+            if (newLevel > maxLevel || (newDistance < minDistance && newLevel == maxLevel))
             {
                 bestBrick = brick.GetComponent<Collider2D>().bounds.center;
                 minDistance = newDistance;

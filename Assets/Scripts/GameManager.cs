@@ -91,14 +91,14 @@ public class GameManager : MonoBehaviour
         EdgeCollider2D leftEdge = transform.Find("leftWall").GetComponent<EdgeCollider2D>();
         colliderPoints = leftEdge.points;
         colliderPoints[0] = new Vector2(0, topRightCorner.y);
-        colliderPoints[1] = new Vector2(0, bottomLeftCorner.y);
+        colliderPoints[1] = new Vector2(0, bottomLeftCorner.y - height * .1f);
         leftEdge.points = colliderPoints;
         leftEdge.offset = new Vector2(bottomLeftCorner.x + width * .09f, 0); // move leftWall in 9%
 
         EdgeCollider2D rightEdge = transform.Find("rightWall").GetComponent<EdgeCollider2D>();
         colliderPoints = rightEdge.points;
         colliderPoints[0] = new Vector2(0, topRightCorner.y);
-        colliderPoints[1] = new Vector2(0, bottomLeftCorner.y);
+        colliderPoints[1] = new Vector2(0, bottomLeftCorner.y - height * .1f);
         rightEdge.points = colliderPoints;
         rightEdge.offset = new Vector2(topRightCorner.x - width * .09f, 0); // move rightWall in 9%
     }
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         ResetScoreMultiplier();
         ResumePlay();
         gameOver.Value = false;
-        OnLevelStart.Raise();
+        StartCoroutine(StartNewLevel(.5f));
     }
 
     // TODO: move to UI Manager?
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         {
             levelCompleteUI.GetComponent<ScreenController>().StartNotificationFade();
         }
-        OnLevelStart.Raise();
+        StartCoroutine(StartNewLevel(2f));
     }
 
     public void EndGame()
@@ -153,6 +153,12 @@ public class GameManager : MonoBehaviour
         gameOverUI.GetComponent<ScreenController>().StartNotificationFade();
         yield return new WaitForSeconds(3f);
         onGameStart.Raise();
+    }
+
+    public IEnumerator StartNewLevel(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        OnLevelStart.Raise();
     }
 
     // TODO: move to UI Manager

@@ -15,4 +15,4 @@ MonoBehaviour:
   Description: Turned on for when the paddle should always hold the ball. Given by
     a power up.
   InitialValue: 0
-  Value: 0
+  Value: 1

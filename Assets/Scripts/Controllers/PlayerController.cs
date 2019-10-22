@@ -11,8 +11,6 @@ public class PlayerController : InputController
     private Collider2D paddleCollider;
     private Vector3 paddleCenter;
 
-    private Ball ball;
-
     private Camera mainCamera;
 
     public override void Initialize(GameObject obj)
@@ -20,13 +18,21 @@ public class PlayerController : InputController
         paddle = obj.GetComponent<Paddle>();
         paddleCollider = obj.GetComponent<Collider2D>();
 
-        ball = paddle.ball.GetComponent<Ball>();
-
         mainCamera = Camera.main;
     }
 
     public override void ProcessInput(GameObject obj)
     {
+        for (int i = 0; i < paddle.balls.Count; i++)
+        {
+            // holding ball
+            if (paddle.balls[i].GetComponent<Ball>().ballHeld)
+            {
+                paddle.heldBall = paddle.balls[i].GetComponent<Ball>();
+                break;
+            }
+        }
+
         // Controls on a keyboard
         // move paddle Left
         if (Input.GetKey(moveLeft))
@@ -38,9 +44,11 @@ public class PlayerController : InputController
         {
             paddle.MoveRight();
         }
-        else if (ball.ballHeld && Input.GetKeyUp(releaseBall))
+        else if (paddle.heldBall != null && paddle.ballHeld && Input.GetKeyUp(releaseBall))
         {
-            ball.ReleaseBall();
+            paddle.heldBall.ReleaseBall();
+            paddle.ballHeld = false;
+            paddle.heldBall = null;
         }
 
         // Controls on a touchscreen
@@ -58,9 +66,11 @@ public class PlayerController : InputController
             {
                 paddle.MoveRight();
             }
-            if (touch.phase == TouchPhase.Began && ball.ballHeld)
+            if (paddle.heldBall != null && paddle.ballHeld && touch.phase == TouchPhase.Began)
             {
-                ball.ReleaseBall();
+                paddle.heldBall.ReleaseBall();
+                paddle.ballHeld = false;
+                paddle.heldBall = null;
             }
         }
     }
