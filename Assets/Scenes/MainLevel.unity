@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2725,9 +2725,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickPrefab: {fileID: 2623304617873138284, guid: cdde03e4d551643c784856736166176f,
     type: 3}
-  brickSlots: {fileID: 915420030}
-  maxColumn: 7
-  maxRow: 12
+  topWall: {fileID: 1554799460}
+  leftWall: {fileID: 762244640}
+  rightWall: {fileID: 1007255068}
+  bottomBoundary: {fileID: 892721845}
+  gridColumns: 0
+  gridRows: 0
+  gridOffset: {x: 0.05, y: 0.1}
+  gridSpacing: {x: 0.02, y: 0.01}
   loadLevel: 108
   NumBrickLevels: 7
   gameScore:
@@ -2735,7 +2740,7 @@ MonoBehaviour:
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
   OnLevelStart: {fileID: 11400000, guid: 99284b9b8befe4d759b90276ab144bfc, type: 2}
-  powerUpLootTable: {fileID: 11400000, guid: 6f8d17f7e3a304cce9489921266d45e8, type: 2}
+  powerUpLootTable: {fileID: 11400000, guid: 990328ceb665b442ba97a833a60802ca, type: 2}
 --- !u!114 &274422788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2766,8 +2771,8 @@ MonoBehaviour:
   MBResponse:
     m_PersistentCalls:
       m_Calls: []
---- !u!224 &274422789
-RectTransform:
+--- !u!4 &274422789
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2776,15 +2781,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 892721845}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &279449913
 GameObject:
   m_ObjectHideFlags: 0
@@ -8641,6 +8642,36 @@ MonoBehaviour:
   MBResponse:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &892721844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 892721845}
+  m_Layer: 0
+  m_Name: BottomBoundary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &892721845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892721844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 274422789}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893511508
 GameObject:
   m_ObjectHideFlags: 0
@@ -9123,7 +9154,7 @@ Transform:
   - {fileID: 1399115945}
   - {fileID: 994221045}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &917417750
 PrefabInstance:
@@ -10779,7 +10810,7 @@ MonoBehaviour:
   paddleSpeed: 750
   paddleForce: 30
   playerInputs: {fileID: 11400000, guid: cc9eece929759478691b3ca6ab9e8b30, type: 2}
-  aiInputs: {fileID: 11400000, guid: 8ccdd9f0d72344de0b95e9d9ebf50a01, type: 2}
+  aiInputs: {fileID: 11400000, guid: cc9eece929759478691b3ca6ab9e8b30, type: 2}
   setAI: 105
   gameOver:
     UseConstant: 0

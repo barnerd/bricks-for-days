@@ -15,8 +15,8 @@ public class Paddle : MonoBehaviour
     public float paddleSpeed = 500f;
     public float paddleForce = 100f;
 
-    public PlayerController playerInputs;
-    public AIController aiInputs;
+    public InputController playerInputs;
+    public InputController aiInputs;
     private InputController currentController;
 
     public KeyCode setAI; // define as i

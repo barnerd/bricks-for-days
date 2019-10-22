@@ -34,11 +34,14 @@ public class GameManager : MonoBehaviour
 
     public GameEvent onGameStart;
 
-    private void Start()
+    private void Awake()
     {
         camera = Camera.main;
         GenerateCollidersAcrossScreen();
+    }
 
+    private void Start()
+    {
         Time.timeScale = AITimeScale;
 
         ResetGameValues();

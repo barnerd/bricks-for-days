@@ -4,13 +4,25 @@ public class LevelManager : MonoBehaviour
 {
     [Header("Bricks")]
     public GameObject brickPrefab;
-    public GameObject brickSlots;
+    private Vector3 brickSize;
 
-    [Space]
+    [Header("Boundaries")]
+    public EdgeCollider2D topWall;
+    private float maxHeight;
+    public EdgeCollider2D leftWall;
+    public EdgeCollider2D rightWall;
+    public Transform bottomBoundary;
 
     [Header("Grid Size")]
-    public int maxColumn = 17; // should always be odd
-    public int maxRow = 15;
+    public Vector2 gridOffset;
+    public Vector2 gridSpacing;
+    private int gridColumns; // should always be odd
+    private int gridRows;
+    private int gridHalfColumns; // half of gridColumns - 1
+    private float gridRowHeight;
+    private float gridColumnWidth;
+
+    [Space]
 
     public KeyCode loadLevel; // define as l
 
@@ -23,6 +35,15 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxHeight = topWall.offset.y;
+
+        GameObject testBrick = Instantiate(brickPrefab);
+        brickSize = testBrick.GetComponent<Collider2D>().bounds.size;
+        DestroyImmediate(testBrick);
+
+        gridRowHeight = brickSize.y + gridSpacing.y;
+        gridColumnWidth = brickSize.x + gridSpacing.x;
+
         LoadLevel();
     }
 
@@ -43,6 +64,8 @@ public class LevelManager : MonoBehaviour
             Destroy(b);
         }
 
+        FindGridSize();
+
         // define patterns
         // randomly select patterns
         // randomly place patterns
@@ -58,7 +81,7 @@ public class LevelManager : MonoBehaviour
          * 
          * ***************************/
 
-        int rowsRemaining = maxRow;
+        int rowsRemaining = gridRows;
         int pattern;
         bool mirrored, rainbow, ascending;
 
@@ -72,6 +95,7 @@ public class LevelManager : MonoBehaviour
                 mirrored = false;
             }
 
+            pattern = 3;
             switch (pattern)
             {
                 case 0:
@@ -80,18 +104,18 @@ public class LevelManager : MonoBehaviour
                 case 1:
                     // Pattern: group of rows, with variable num of columns, either mirrored or checkered
                     int numRows = Random.Range(mirrored ? 1 : 3, rowsRemaining);
-                    int numCols = Random.Range(mirrored ? 1 : 2, mirrored ? (maxColumn - 1) / 2 + 1 : maxColumn);
+                    int numCols = Random.Range(mirrored ? 1 : 2, mirrored ? (gridColumns - 1) / 2 + 1 : gridColumns);
                     int minCol, maxCol;
                     bool checkered = false;
 
                     if (mirrored)
                     {
-                        minCol = (maxColumn - 1) / 2 - numCols;
-                        maxCol = (maxColumn - 1) / 2 + numCols;
+                        minCol = (gridColumns - 1) / 2 - numCols;
+                        maxCol = (gridColumns - 1) / 2 + numCols;
                     }
                     else
                     {
-                        minCol = Random.Range(0, maxColumn - numCols);
+                        minCol = Random.Range(0, gridColumns - numCols);
                         maxCol = minCol + numCols;
                     }
 
@@ -124,6 +148,16 @@ public class LevelManager : MonoBehaviour
                     // Pattern: Blank Row
                     rowsRemaining -= 1;
                     break;
+                case 3:
+                    for (int y = 0; y < gridRows; y++)
+                    {
+                        for (int x = 0; x < gridColumns; x++)
+                        {
+                            CreateBrick(x, y, 1);
+                        }
+                    }
+                    rowsRemaining -= gridRows;
+                    break;
                 default:
                     break;
             }
@@ -131,9 +165,28 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    void FindGridSize()
+    {
+        float width = rightWall.offset.x - leftWall.offset.x - 2 * gridOffset.x; // right edge - left edge
+        float height = maxHeight - bottomBoundary.position.y; // top edge - height of bottom row
+
+        gridRows = Mathf.FloorToInt(height / gridRowHeight);
+        gridColumns = Mathf.FloorToInt(width / gridColumnWidth);
+
+        // should always be odd
+        if(gridColumns % 2 == 0)
+        {
+            gridColumns--;
+        }
+
+        gridHalfColumns = (gridColumns - 1) / 2;
+
+        Debug.Log("Grid size: " + gridColumns + " by " + gridRows);
+    }
+
     void CreateBrick(int _col, int _row, int _level)
     {
-        Vector3 p = brickSlots.transform.Find("Row" + _row).Find("Col" + _col).position;
+        Vector3 p = new Vector3(gridColumnWidth * (_col - gridHalfColumns), maxHeight - gridRowHeight * _row - gridRowHeight / 2 - gridOffset.y, 0);
 
         Brick b = Instantiate(brickPrefab, p, Quaternion.identity).GetComponent<Brick>();
         // make child of levelManager
