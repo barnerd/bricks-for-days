@@ -110,7 +110,7 @@ public class Paddle : MonoBehaviour
 
     public void ResetPowerUps()
     {
-        ballAlwaysHeld.Value = false;
+        ballAlwaysHeld.Value = ballAlwaysHeld.Variable.InitialValue;
     }
 
     public void InitializeBall()

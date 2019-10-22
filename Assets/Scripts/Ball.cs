@@ -9,7 +9,6 @@ public class Ball : MonoBehaviour
     public FloatReference ballSpeedMultiplier;
 
     [Header("Ball Size")]
-    public float normalBallSize = .18f;
     public FloatReference ballSizeScaler;
 
     [Header("Ball hold & power")]
@@ -86,10 +85,10 @@ public class Ball : MonoBehaviour
 
     public void ResetPowerUps()
     {
-        ballSpeedMultiplier.Value = 1f;
-        ballPower.Value = 1;
-        bananaBall.Value = false;
-        ballSizeScaler.Value = normalBallSize;
+        ballSpeedMultiplier.Value = ballSpeedMultiplier.Variable.InitialValue;
+        ballPower.Value = ballPower.Variable.InitialValue;
+        bananaBall.Value = bananaBall.Variable.InitialValue;
+        ballSizeScaler.Value = ballSizeScaler.Variable.InitialValue;
     }
 
     public void ReleaseBall()

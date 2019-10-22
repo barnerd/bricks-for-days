@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = AITimeScale;
 
+        ResetGameValues();
+        ResetScoreMultiplier();
+
         if (highscoresUI != null)
         {
             // Add function call to wantsToQuit event
@@ -175,14 +178,14 @@ public class GameManager : MonoBehaviour
 
     public void ResetGameValues()
     {
-        gameScore.Value = 0;
-        playerLives.Value = 5;
+        gameScore.Value = gameScore.Variable.InitialValue;
+        playerLives.Value = playerLives.Variable.InitialValue;
         newHighscoreRank = -1;
     }
 
     public void ResetScoreMultiplier()
     {
-        scoreMultiplier.Value = 1;
+        scoreMultiplier.Value = scoreMultiplier.Variable.InitialValue;
     }
 
     public void PausePlay()

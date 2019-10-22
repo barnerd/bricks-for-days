@@ -14,7 +14,7 @@ public class BottomWallTrigger : MonoBehaviour
             paddle.balls.Remove(hitInfo.gameObject);
             Destroy(hitInfo.gameObject);
 
-            if (paddle.balls.Count <= 1) // <= 1 because the Destroy hasn't happened yet
+            if (paddle.balls.Count <= 0)
             {
                 playerLives.Value -= 1;
 

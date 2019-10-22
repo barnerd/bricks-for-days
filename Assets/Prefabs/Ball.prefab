@@ -252,7 +252,6 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: db922b0a7a19d4443af0e489b2d4f300, type: 2}
-  normalBallSize: 0.18
   ballSizeScaler:
     UseConstant: 0
     ConstantValue: 0
@@ -557,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b497a59351bf9486a9cf706b508cee8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 99284b9b8befe4d759b90276ab144bfc, type: 2}
+  Event: {fileID: 11400000, guid: 8088d9bd2fa4848278afb02bdf6387ed, type: 2}
   SOResponse:
     m_PersistentCalls:
       m_Calls:

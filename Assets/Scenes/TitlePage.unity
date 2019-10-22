@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 355748621}
   - component: {fileID: 355748620}
   - component: {fileID: 355748619}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingScreenUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 516525714}
   - component: {fileID: 516525716}
   - component: {fileID: 516525715}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 741840849}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,11 +363,11 @@ RectTransform:
   m_Father: {fileID: 516525714}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 6, y: -62}
-  m_SizeDelta: {x: 948.48, y: 948.48}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -160}
+  m_SizeDelta: {x: 873.7, y: 948.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &775420517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 1713200363}
   - component: {fileID: 1713200365}
   - component: {fileID: 1713200364}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 1769539395}
   - component: {fileID: 1769539397}
   - component: {fileID: 1769539396}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -753,7 +753,7 @@ GameObject:
   - component: {fileID: 1911980688}
   - component: {fileID: 1911980690}
   - component: {fileID: 1911980689}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2119389271}
   - component: {fileID: 2119389272}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
