@@ -2725,21 +2725,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickPrefab: {fileID: 2623304617873138284, guid: cdde03e4d551643c784856736166176f,
     type: 3}
+  NumBrickLevels: 7
   topWall: {fileID: 1554799460}
   leftWall: {fileID: 762244640}
   rightWall: {fileID: 1007255068}
   bottomBoundary: {fileID: 892721845}
-  gridColumns: 0
-  gridRows: 0
   gridOffset: {x: 0.05, y: 0.1}
   gridSpacing: {x: 0.02, y: 0.01}
-  loadLevel: 108
-  NumBrickLevels: 7
+  minDifficultyScore: 2
+  gameScoreDifficultyWeight: 0.9
+  scoreVariance: 0.33
   gameScore:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 37c388ebf9b634b00ba70f8c62451b18, type: 2}
-  OnLevelStart: {fileID: 11400000, guid: 99284b9b8befe4d759b90276ab144bfc, type: 2}
   powerUpLootTable: {fileID: 11400000, guid: 990328ceb665b442ba97a833a60802ca, type: 2}
 --- !u!114 &274422788
 MonoBehaviour:
