@@ -2734,7 +2734,12 @@ MonoBehaviour:
   gridSpacing: {x: 0.02, y: 0.01}
   minDifficultyScore: 2
   gameScoreDifficultyWeight: 0.9
+  highScoreDifficultyWeight: 0.1
   scoreVariance: 0.33
+  chancePercentHalved: 0.2
+  chanceMirrorTop: 0.5
+  chanceMirrorBottom: 0.5
+  chanceMirrorVertically: 0.5
   gameScore:
     UseConstant: 0
     ConstantValue: 0
