@@ -584,6 +584,7 @@ public class LevelManager : MonoBehaviour
         {
             for (int x = 0; x < bricks.GetLength(0); x++)
             {
+                // TODO: add ability to create barrier
                 if (bricks[x, y] > 0)
                 {
                     CreateBrick(x, y, Mathf.Min(bricks[x, y], NumBrickLevels));
