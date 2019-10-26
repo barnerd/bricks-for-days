@@ -144,8 +144,10 @@ MonoBehaviour:
   - {fileID: -1329884388522435883, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   - {fileID: 4529836531766607832, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
   - {fileID: 7732266518838291544, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
-  - {fileID: 1217184777182393201, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
-  - {fileID: -8342414399252672130, guid: eb61e2df95da541d3afb98b9e3f99c6e, type: 3}
+  brickBarrierBreakable: {fileID: 1217184777182393201, guid: eb61e2df95da541d3afb98b9e3f99c6e,
+    type: 3}
+  brickBarrierUnbreakable: {fileID: -8342414399252672130, guid: eb61e2df95da541d3afb98b9e3f99c6e,
+    type: 3}
   powerUp: {fileID: 0}
 --- !u!114 &-8681027038330959792
 MonoBehaviour:
@@ -163,9 +165,9 @@ MonoBehaviour:
   SOResponse:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2623304617873138259}
-        m_MethodName: set_isTrigger
-        m_Mode: 6
+      - m_Target: {fileID: 9064174934582955796}
+        m_MethodName: SetTrigger
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

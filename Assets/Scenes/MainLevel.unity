@@ -2740,6 +2740,11 @@ MonoBehaviour:
   chanceMirrorTop: 0.5
   chanceMirrorBottom: 0.5
   chanceMirrorVertically: 0.5
+  chanceMirrorColors: 0.33
+  chanceColorVerticalEdges: 0.35
+  chanceColorHorizontalEdges: 0.35
+  chanceColorBottomEdge: 0.55
+  chanceColorAlternating: 0.6
   gameScore:
     UseConstant: 0
     ConstantValue: 0

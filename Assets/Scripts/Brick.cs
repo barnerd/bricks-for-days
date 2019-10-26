@@ -15,6 +15,8 @@ public class Brick : MonoBehaviour
 
     [Header("Sprites")]
     public List<Sprite> brickSprites;
+    public Sprite brickBarrierBreakable;
+    public Sprite brickBarrierUnbreakable;
 
     [Header("PowerUps")]
     public GameObject powerUp;
@@ -26,7 +28,7 @@ public class Brick : MonoBehaviour
 
     public void SetLevel(int _level)
     {
-        level = (_level >= 1 && _level <= 7) ? _level : 1;
+        level = (_level >= 1 && _level <= 7 || _level == 63 || _level == 127) ? _level : 1;
         score = level * scoreMultiplierPerLevel;
 
         totalScore = 0;
@@ -36,38 +38,62 @@ public class Brick : MonoBehaviour
         }
 
         // update graphics of brick
-        GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
+        if(level <= 7)
+        {
+            GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
+        }
+        else if (level == 63)
+        {
+            GetComponent<SpriteRenderer>().sprite = brickBarrierBreakable;
+        }
+        else if (level == 127)
+        {
+            GetComponent<SpriteRenderer>().sprite = brickBarrierUnbreakable;
+        }
     }
 
     public void DecreaseLevel(int decrease = 1)
     {
-        level -= decrease;
-
-        if (level <= 0)
+        if(level == 63 || level == 127)
         {
-            gameScore.Value += totalScore * scoreMultiplier.Value;
-
-            if (powerUp != null)
+            if(decrease >= level)
             {
-                Instantiate(powerUp, transform.position, Quaternion.identity);
-            }
+                gameScore.Value += score * scoreMultiplier.Value;
 
-            Destroy(gameObject);
-
-            // Set to 1 left as Destroy does not immediately completed.
-            if (GameObject.FindGameObjectsWithTag("brick").Length <= 1)
-            {
-                onLevelComplete.Raise();
+                Destroy(gameObject);
             }
         }
         else
         {
-            gameScore.Value += score * scoreMultiplier.Value;
-            totalScore -= score;
-            score -= scoreMultiplierPerLevel;
+            level -= decrease;
 
-            // display new brick level
-            GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
+            if (level <= 0)
+            {
+                gameScore.Value += totalScore * scoreMultiplier.Value;
+
+                if (powerUp != null)
+                {
+                    Instantiate(powerUp, transform.position, Quaternion.identity);
+                }
+
+                Destroy(gameObject);
+
+                // TODO: Count only non-barriers
+                // Set to 1 left as Destroy does not immediately completed.
+                if (GameObject.FindGameObjectsWithTag("brick").Length <= 1)
+                {
+                    onLevelComplete.Raise();
+                }
+            }
+            else
+            {
+                gameScore.Value += score * scoreMultiplier.Value;
+                totalScore -= score;
+                score -= scoreMultiplierPerLevel;
+
+                // display new brick level
+                GetComponent<SpriteRenderer>().sprite = brickSprites[level - 1];
+            }
         }
     }
 
@@ -85,5 +111,10 @@ public class Brick : MonoBehaviour
         {
             DecreaseLevel(collision.GetComponent<Ball>().ballPower.Value);
         }
+    }
+
+    public void SetTrigger()
+    {
+        GetComponent<Collider2D>().isTrigger |= level != 127;
     }
 }

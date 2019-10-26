@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     private float gridRowHeight;
     private float gridColumnWidth;
 
-    [Header("Level Parameters")]
+    [Header("Level Shape Parameters")]
     public int minDifficultyScore;
     [Range(0f, 1f)]
     public float gameScoreDifficultyWeight;
@@ -39,6 +39,18 @@ public class LevelManager : MonoBehaviour
     public float chanceMirrorBottom;
     [Range(0f, 1f)]
     public float chanceMirrorVertically;
+
+    [Header("Level Color Parameters")]
+    [Range(0f, 1f)]
+    public float chanceMirrorColors;
+    [Range(0f, 1f)]
+    public float chanceColorVerticalEdges;
+    [Range(0f, 1f)]
+    public float chanceColorHorizontalEdges;
+    [Range(0f, 1f)]
+    public float chanceColorBottomEdge;
+    [Range(0f, 1f)]
+    public float chanceColorAlternating;
 
     [Space]
 
@@ -104,9 +116,13 @@ public class LevelManager : MonoBehaviour
          *
          * ********** Colors **********
          *
-         * Rainbow, with different slopes
+         * Rainbow, with different slopes [-1, 0, 1]
          * Mirrored rainbow
-         * Edge colors
+         * bool verticalEdges colors
+         * bool horizontalEdges colors
+         * bool bottonEdge color
+         * bool alternating
+         * int colorChange [0, ±1, ±2, ±3]
          *
          * ******** Difficulty ********
          *
@@ -131,13 +147,12 @@ public class LevelManager : MonoBehaviour
         int currentRow = Mathf.FloorToInt((gridRows - Mathf.Min(gridRows, Mathf.Sqrt(difficultyScore))) / 2);
         int rowsRemaining = gridRows - currentRow;
         int pattern;
-        bool alternating, fill;
         bool mirroredTop, mirroredBottom, mirroredVertically;
         bool halfTop, halfBottom, halfLeft, halfRight;
         int numHalfCols, numHalfRows;
-        float minScorePerRow, maxScorePerRow;
 
         int scorePerRow;
+        float minScorePerRow, maxScorePerRow;
 
         Debug.Log("Overall difficultyScore: " + difficultyScore);
         Debug.Log("*********************");
@@ -170,9 +185,6 @@ public class LevelManager : MonoBehaviour
             // halved so it's mirrorred
             numHalfCols = Mathf.Min(gridHalfColumns, Mathf.CeilToInt((Random.Range(minScorePerRow, maxScorePerRow) - 1) / 2));
             numHalfRows = Mathf.FloorToInt(Mathf.Min(Random.Range(1, maxScorePerRow), rowsRemaining) / 2);
-            Debug.Log("numHalfRows: " + numHalfRows);
-            Debug.Log("numHalfCols: " + numHalfCols);
-
             // check if only half should be displayed
             halfTop = Random.Range(0f, 1f) > chancePercentHalved;
             halfBottom = Random.Range(0f, 1f) > chancePercentHalved;
@@ -190,6 +202,12 @@ public class LevelManager : MonoBehaviour
                     halfBottom = false;
                 }
             }
+            Debug.Log("numHalfRows: " + numHalfRows);
+            Debug.Log("numHalfCols: " + numHalfCols);
+
+            int middleRow = currentRow + ((halfTop) ? numHalfRows : 0);
+            Debug.Log("middleRow: " + middleRow);
+
             Debug.Log("halfTop: " + halfTop);
             Debug.Log("halfBottom: " + halfBottom);
             Debug.Log("halfLeft: " + halfLeft);
@@ -203,21 +221,39 @@ public class LevelManager : MonoBehaviour
             Debug.Log("mirroredBottom: " + mirroredBottom);
             Debug.Log("mirroredVertically: " + mirroredVertically);
 
-            pattern = Random.Range(1, 4);
-            pattern = Random.Range(3, 4);
-            pattern = Random.Range(1, 1);
+            // color parameters
+            float colorSlope = Random.Range(-4, 4f); // slopes of -1, 0, 1, treat ±3.5 as infinity
+            bool colorMirrored = Random.Range(0f, 1f) < chanceMirrorColors;
+            bool colorVerticalEdges = Random.Range(0f, 1f) < chanceColorVerticalEdges;
+            bool colorHorizontalEdges = Random.Range(0f, 1f) < chanceColorHorizontalEdges;
+            bool colorBottomEdge = Random.Range(0f, 1f) < chanceColorBottomEdge;
+            bool colorAlternating = Random.Range(0f, 1f) < chanceColorAlternating;
+            int colorChange = Random.Range(-2, 2 + 1); // changes of [0, ±1, ±2]
+            int colorBase = Mathf.CeilToInt(Mathf.Sqrt(Random.Range(minScorePerRow, maxScorePerRow) / (2 * numHalfCols + 1)));
+            int color;
+            int colorEdge = 9;
+            // TODO: Set center "edge" to 0 for shapes on either side
+            // TODO: add colorEdges: figure out when they look good
+            // TODO: add barriers
+            // [gridHalfColumns, middleRow] = colorBase
+            // if edges && colorEdge then [x,y] = colorBase + colorChange;
+
+            Debug.Log("colorSlope: " + colorSlope);
+            Debug.Log("colorMirrored: " + colorMirrored);
+            Debug.Log("colorAlternating: " + colorAlternating);
+            Debug.Log("colorChange: " + colorChange);
+            Debug.Log("colorBase: " + colorBase);
+
+            pattern = Random.Range(1, 2);
             switch (pattern)
             {
                 case 1: // rectangle
                     // determine slope of the top/bottom edges
-                    int slope = Random.Range(0, 2 + 1) - 1; // slopes of -1, 0, 1
+                    int slope = Random.Range(-1, 1 + 1); // slopes of -1, 0, 1
                     Debug.Log("slope: " + slope);
-                    int slopeRise;
+                    int slopeRise, slopeRun;
                     int topShift = ((slope == 0 || (mirroredTop && slope > 0)) ? 0 : numHalfCols);
                     int bottomShift = ((slope == 0 || (!mirroredVertically && mirroredBottom && slope < 0) || (mirroredVertically && mirroredBottom && slope > 0)) ? 0 : -numHalfCols) - 1;
-
-                    int middleRow = currentRow + ((halfTop) ? numHalfRows : 0);
-                    Debug.Log("middleRow: " + middleRow);
 
                     // draw top/bottom edge
                     if (numHalfRows >= 1)
@@ -225,21 +261,26 @@ public class LevelManager : MonoBehaviour
                         if (halfTop)
                         {
                             // draw center of the top edge
+                            slopeRun = 0;
                             slopeRise = -numHalfRows + topShift;
                             if (slopeRise < 0 && middleRow + slopeRise >= 0)
                             {
-                                bricks[gridHalfColumns, middleRow + slopeRise] = 7;
-                                difficultyScore -= 7;
+                                color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                color = (colorHorizontalEdges && color > 0) ? colorEdge : color;
+                                bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                difficultyScore -= color;
                             }
                         }
                         if (halfBottom)
                         {
                             // draw center of the bottom edge
+                            slopeRun = 0;
                             slopeRise = numHalfRows + bottomShift;
                             if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                             {
-                                bricks[gridHalfColumns, middleRow + slopeRise] = 7;
-                                difficultyScore -= 7;
+                                color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                difficultyScore -= color;
                             }
                         }
 
@@ -251,21 +292,25 @@ public class LevelManager : MonoBehaviour
                                 if (halfRight)
                                 {
                                     // right center area
+                                    slopeRun = x;
                                     slopeRise = -numHalfRows + topShift - slope * x * (mirroredTop ? -1 : 1);
                                     if (slopeRise < 0 && middleRow + slopeRise >= 0)
                                     {
-                                        bricks[gridHalfColumns + x, middleRow + slopeRise] = 2;
-                                        difficultyScore -= 2;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                                 if (halfLeft)
                                 {
                                     // left center area
+                                    slopeRun = -x;
                                     slopeRise = -numHalfRows + topShift - slope * -x;
                                     if (slopeRise < 0 && middleRow + slopeRise >= 0)
                                     {
-                                        bricks[gridHalfColumns - x, middleRow + slopeRise] = 2;
-                                        difficultyScore -= 2;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                             }
@@ -274,21 +319,25 @@ public class LevelManager : MonoBehaviour
                                 if (halfRight)
                                 {
                                     // right center area
+                                    slopeRun = x;
                                     slopeRise = numHalfRows + bottomShift - slope * x * (mirroredBottom ? -1 : 1) * (mirroredVertically ? -1 : 1);
                                     if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                                     {
-                                        bricks[gridHalfColumns + x, middleRow + slopeRise] = 4;
-                                        difficultyScore -= 4;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                                 if (halfLeft)
                                 {
                                     // left center area
+                                    slopeRun = -x;
                                     slopeRise = numHalfRows + bottomShift - slope * -x * (mirroredVertically ? -1 : 1);
                                     if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                                     {
-                                        bricks[gridHalfColumns - x, middleRow + slopeRise] = 4;
-                                        difficultyScore -= 4;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                             }
@@ -302,21 +351,25 @@ public class LevelManager : MonoBehaviour
                                 if (halfRight)
                                 {
                                     // top right corner
+                                    slopeRun = numHalfCols;
                                     slopeRise = -numHalfRows + topShift - slope * numHalfCols * (mirroredTop ? -1 : 1);
                                     if (slopeRise < 0 && middleRow + slopeRise >= 0)
                                     {
-                                        bricks[gridHalfColumns + numHalfCols, middleRow + slopeRise] = 7;
-                                        difficultyScore -= 7;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                                 if (halfLeft)
                                 {
                                     // top left corner
+                                    slopeRun = -numHalfCols;
                                     slopeRise = -numHalfRows + topShift - slope * -numHalfCols;
                                     if (slopeRise < 0 && middleRow + slopeRise >= 0)
                                     {
-                                        bricks[gridHalfColumns - numHalfCols, middleRow + slopeRise] = 7;
-                                        difficultyScore -= 7;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                             }
@@ -325,28 +378,40 @@ public class LevelManager : MonoBehaviour
                                 if (halfRight)
                                 {
                                     // bottom right corner
+                                    slopeRun = numHalfCols;
                                     slopeRise = numHalfRows + bottomShift - slope * numHalfCols * (mirroredBottom ? -1 : 1) * (mirroredVertically ? -1 : 1);
                                     if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                                     {
-                                        bricks[gridHalfColumns + numHalfCols, middleRow + slopeRise] = 7;
-                                        difficultyScore -= 7;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                                 if (halfLeft)
                                 {
                                     // bottom left corner
+                                    slopeRun = -numHalfCols;
                                     slopeRise = numHalfRows + bottomShift - slope * -numHalfCols * (mirroredVertically ? -1 : 1);
                                     if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                                     {
-                                        bricks[gridHalfColumns - numHalfCols, middleRow + slopeRise] = 7;
-                                        difficultyScore -= 7;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                             }
                         }
 
-                        currentRow++;
-                        rowsRemaining--;
+                        if (halfTop)
+                        {
+                            currentRow++;
+                            rowsRemaining--;
+                        }
+                        if (halfBottom)
+                        {
+                            currentRow++;
+                            rowsRemaining--;
+                        }
                     }
 
                     // main part of the shape
@@ -355,21 +420,25 @@ public class LevelManager : MonoBehaviour
                         if (halfTop)
                         {
                             // draw center "edge"
+                            slopeRun = 0;
                             slopeRise = -numHalfRows + y + topShift;
                             if (slopeRise < 0 && middleRow + slopeRise >= 0)
                             {
-                                bricks[gridHalfColumns, middleRow + slopeRise] = 3;
-                                difficultyScore -= 3;
+                                color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                difficultyScore -= color;
                             }
                         }
                         if (halfBottom)
                         {
                             // draw center "edge"
+                            slopeRun = 0;
                             slopeRise = numHalfRows - y + bottomShift;
                             if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                             {
-                                bricks[gridHalfColumns, middleRow + slopeRise] = 3;
-                                difficultyScore -= 3;
+                                color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                difficultyScore -= color;
                             }
                         }
 
@@ -381,21 +450,25 @@ public class LevelManager : MonoBehaviour
                                 if (halfRight)
                                 {
                                     // right center area
+                                    slopeRun = x;
                                     slopeRise = -numHalfRows + y + topShift - slope * x * (mirroredTop ? -1 : 1);
                                     if (slopeRise < 0 && middleRow + slopeRise >= 0)
                                     {
-                                        bricks[gridHalfColumns + x, middleRow + slopeRise] = 1;
-                                        difficultyScore -= 1;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                                 if (halfLeft)
                                 {
                                     // left center area
+                                    slopeRun = -x;
                                     slopeRise = -numHalfRows + y + topShift - slope * -x;
                                     if (slopeRise < 0 && middleRow + slopeRise >= 0)
                                     {
-                                        bricks[gridHalfColumns - x, middleRow + slopeRise] = 1;
-                                        difficultyScore -= 1;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                             }
@@ -404,21 +477,25 @@ public class LevelManager : MonoBehaviour
                                 if (halfRight)
                                 {
                                     // right center area
+                                    slopeRun = x;
                                     slopeRise = numHalfRows - y + bottomShift - slope * x * (mirroredBottom ? -1 : 1) * (mirroredVertically ? -1 : 1);
                                     if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                                     {
-                                        bricks[gridHalfColumns + x, middleRow + slopeRise] = 1;
-                                        difficultyScore -= 1;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                                 if (halfLeft)
                                 {
                                     // left center area
+                                    slopeRun = -x;
                                     slopeRise = numHalfRows - y + bottomShift - slope * -x * (mirroredVertically ? -1 : 1);
                                     if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                                     {
-                                        bricks[gridHalfColumns - x, middleRow + slopeRise] = 1;
-                                        difficultyScore -= 1;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                             }
@@ -432,21 +509,26 @@ public class LevelManager : MonoBehaviour
                                 if (halfRight)
                                 {
                                     // right edge
+                                    slopeRun = numHalfCols;
                                     slopeRise = -numHalfRows + y + topShift - slope * numHalfCols * (mirroredTop ? -1 : 1);
                                     if (slopeRise < 0 && middleRow + slopeRise >= 0)
                                     {
-                                        bricks[gridHalfColumns + numHalfCols, middleRow + slopeRise] = 6;
-                                        difficultyScore -= 6;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                                 if (halfLeft)
                                 {
                                     // left edge
+                                    slopeRun = -numHalfCols;
                                     slopeRise = -numHalfRows + y + topShift - slope * -numHalfCols;
                                     if (slopeRise < 0 && middleRow + slopeRise >= 0)
                                     {
-                                        bricks[gridHalfColumns - numHalfCols, middleRow + slopeRise] = 5;
-                                        difficultyScore -= 5;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
+
                                     }
                                 }
                             }
@@ -455,41 +537,43 @@ public class LevelManager : MonoBehaviour
                                 if (halfRight)
                                 {
                                     // right edge
+                                    slopeRun = numHalfCols;
                                     slopeRise = numHalfRows - y + bottomShift - slope * numHalfCols * (mirroredBottom ? -1 : 1) * (mirroredVertically ? -1 : 1);
                                     if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                                     {
-                                        bricks[gridHalfColumns + numHalfCols, middleRow + slopeRise] = 6;
-                                        difficultyScore -= 6;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                                 if (halfLeft)
                                 {
                                     // left edge
+                                    slopeRun = -numHalfCols;
                                     slopeRise = numHalfRows - y + bottomShift - slope * -numHalfCols * (mirroredVertically ? -1 : 1);
                                     if (slopeRise >= 0 && middleRow + slopeRise < gridRows)
                                     {
-                                        bricks[gridHalfColumns - numHalfCols, middleRow + slopeRise] = 5;
-                                        difficultyScore -= 5;
+                                        color = DetermineColor(slopeRun, slopeRise, colorSlope, colorChange, colorAlternating, colorMirrored);
+                                        bricks[gridHalfColumns + slopeRun, middleRow + slopeRise] = colorBase + color;
+                                        difficultyScore -= color;
                                     }
                                 }
                             }
                         }
 
-                        currentRow++;
-                        rowsRemaining--;
+                        if (halfTop)
+                        {
+                            currentRow++;
+                            rowsRemaining--;
+                        }
+                        if (halfBottom)
+                        {
+                            currentRow++;
+                            rowsRemaining--;
+                        }
                     }
                     break;
                 case 2: // circle
-                    break;
-                case 3: // full fill
-                    for (; currentRow < gridRows; currentRow++)
-                    {
-                        for (int x = 0; x < gridColumns; x++)
-                        {
-                            bricks[x, currentRow] = 1;
-                        }
-                        rowsRemaining--;
-                    }
                     break;
                 default:
                     break;
@@ -502,7 +586,7 @@ public class LevelManager : MonoBehaviour
             {
                 if (bricks[x, y] > 0)
                 {
-                    CreateBrick(x, y, bricks[x, y]);
+                    CreateBrick(x, y, Mathf.Min(bricks[x, y], NumBrickLevels));
                 }
             }
         }
@@ -523,6 +607,30 @@ public class LevelManager : MonoBehaviour
         }
 
         gridHalfColumns = (gridColumns - 1) / 2;
+    }
+
+    int DetermineColor(int _x, int _y, float _slope, int _change, bool _alternate, bool _mirror)
+    {
+        // [colorX, colorY] is distance from [gridHalfColumns, middleRow]
+        int _distance = Mathf.RoundToInt(_slope * _x) + _y;
+
+        if (Mathf.Abs(_slope) > 3.5f)
+        {
+            // slope is infinity
+            _distance = _x;
+        }
+
+        if (_mirror)
+        {
+            _distance = Mathf.Abs(_distance);
+        }
+
+        if (_alternate)
+        {
+            _distance = Mathf.Abs(_distance) % 2;
+        }
+
+        return (_distance) * _change;
     }
 
     void CreateBrick(int _col, int _row, int _level)
@@ -547,82 +655,11 @@ public class LevelManager : MonoBehaviour
         chanceMirrorTop = Mathf.Clamp01(chanceMirrorTop);
         chanceMirrorBottom = Mathf.Clamp01(chanceMirrorBottom);
         chanceMirrorVertically = Mathf.Clamp01(chanceMirrorVertically);
+
+        chanceMirrorColors = Mathf.Clamp01(chanceMirrorColors);
+        chanceColorVerticalEdges = Mathf.Clamp01(chanceColorVerticalEdges);
+        chanceColorHorizontalEdges = Mathf.Clamp01(chanceColorHorizontalEdges);
+        chanceColorBottomEdge = Mathf.Clamp01(chanceColorBottomEdge);
+        chanceColorAlternating = Mathf.Clamp01(chanceColorAlternating);
     }
 }
-
-/*
- *             pattern = Random.Range(1, 3); // TODO: Put back to 0, 3)
-
-            mirrored = true;
-            if (Random.Range(0, 2) == 0 && rowsRemaining > 3)
-            {
-                mirrored = false;
-            }
-
-            pattern = 3;
-            switch (pattern)
-            {
-                case 0:
-                    // Put a pattern here
-                    break;
-                case 1:
-                    // Pattern: group of rows, with variable num of columns, either mirrored or checkered
-                    int numRows = Random.Range(mirrored ? 1 : 3, rowsRemaining);
-                    int numCols = Random.Range(mirrored ? 1 : 2, mirrored ? (gridColumns - 1) / 2 + 1 : gridColumns);
-                    int minCol, maxCol;
-                    bool checkered = false;
-
-                    if (mirrored)
-                    {
-                        minCol = (gridColumns - 1) / 2 - numCols;
-                        maxCol = (gridColumns - 1) / 2 + numCols;
-                    }
-                    else
-                    {
-                        minCol = Random.Range(0, gridColumns - numCols);
-                        maxCol = minCol + numCols;
-                    }
-
-                    if (numRows > 2 && numCols > 1 && Random.Range(0, 2) == 0)
-                    {
-                        checkered = true;
-                    }
-
-                    rainbow = Random.Range(0, 2) == 0;
-                    ascending = Random.Range(0, 2) == 0 && rainbow;
-                    int minBrickLevel = Random.Range(1, NumBrickLevels + 1 - numRows);
-                    int maxBrickLevel = Random.Range(minBrickLevel, NumBrickLevels + 1);
-                    int brickLevel = rainbow ? (ascending ? minBrickLevel : maxBrickLevel) : Random.Range(1, NumBrickLevels + 1);
-
-                    for (int y = 0; y < numRows; y++)
-                    {
-                        for (int x = (checkered && y % 2 == 0) ? minCol + 1 : minCol; x <= maxCol; x += checkered ? 2 : 1)
-                        {
-                            CreateBrick(x, rowsRemaining - 1 - y, brickLevel);
-                        }
-
-                        if (rainbow)
-                        {
-                            brickLevel += ascending ? 1 : -1;
-                        }
-                    }
-                    rowsRemaining -= numRows;
-                    break;
-                case 2:
-                    // Pattern: Blank Row
-                    rowsRemaining -= 1;
-                    break;
-                case 3:
-                    for (int y = 0; y < gridRows; y++)
-                    {
-                        for (int x = 0; x < gridColumns; x++)
-                        {
-                            CreateBrick(x, y, 1);
-                        }
-                    }
-                    rowsRemaining -= gridRows;
-                    break;
-                default:
-                    break;
-            }
-*/
